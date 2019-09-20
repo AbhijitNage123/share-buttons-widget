@@ -5,6 +5,7 @@ namespace ShareButtonsWidgets;
  * Class Share_Button_widget
  *
  * Main Plugin class
+ *
  * @since 1.2.0
  */
 class Share_Button_widget_Loader {
@@ -46,7 +47,7 @@ class Share_Button_widget_Loader {
 	 * @access public
 	 */
 	public function widget_scripts() {
-		wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
+		// wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -58,7 +59,7 @@ class Share_Button_widget_Loader {
 	 * @access private
 	 */
 	private function include_widgets_files() {
-		require ASBW_BASE_DIR.'/widgets/advanced-share-buttons-widget.php';
+		require ASBW_BASE_DIR . '/widgets/class-advanced-share-buttons-widget.php';
 	}
 
 	/**
@@ -92,8 +93,7 @@ class Share_Button_widget_Loader {
 
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
-		//
-		$this->define_constants();
+				$this->define_constants();
 	}
 	/**
 	 * Define constants.

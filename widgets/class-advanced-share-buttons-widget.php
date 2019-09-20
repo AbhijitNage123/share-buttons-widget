@@ -110,17 +110,17 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		);
 		$repeater = new Repeater();
 		$repeater->add_control(
-			'Social icon',
+			'social_icon',
 			[
-				'label' => __( 'Icon', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::ICONS,
+				'label'            => __( 'Icon', 'advanced-share-buttons-widget' ),
+				'type'             => Controls_Manager::ICONS,
 				'fa4compatibility' => 'social',
-				'label_block' => true,
-				'default' => [
-					'value' => 'fab fa-wordpress',
+				'label_block'      => true,
+				'default'          => [
+					'value'   => 'fab fa-wordpress',
 					'library' => 'fa-brands',
 				],
-				'recommended' => [
+				'recommended'      => [
 					'fa-brands' => [
 						'android',
 						'apple',
@@ -178,7 +178,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'youtube',
 						'500px',
 					],
-					'fa-solid' => [
+					'fa-solid'  => [
 						'envelope',
 						'link',
 						'rss',
@@ -186,16 +186,16 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 			]
 		);
-		
+
 		$repeater->add_control(
 			'item_icon_color',
 			[
-				'label' => __( 'Color', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SELECT,
+				'label'   => __( 'Color', 'advanced-share-buttons-widget' ),
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
 					'default' => __( 'Official Color', 'advanced-share-buttons-widget' ),
-					'custom' => __( 'Custom', 'advanced-share-buttons-widget' ),
+					'custom'  => __( 'Custom', 'advanced-share-buttons-widget' ),
 				],
 			]
 		);
@@ -203,8 +203,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_icon_primary_color',
 			[
-				'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::COLOR,
+				'label'     => __( 'Primary Color', 'advanced-share-buttons-widget' ),
+				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'item_icon_color' => 'custom',
 				],
@@ -218,8 +218,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_icon_secondary_color',
 			[
-				'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::COLOR,
+				'label'     => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
+				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'item_icon_color' => 'custom',
 				],
@@ -231,25 +231,25 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'social_icon_list',
 			[
-				'label' => __( 'Social Icons', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
+				'label'       => __( 'Social Icons', 'advanced-share-buttons-widget' ),
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'default'     => [
 					[
 						'social_icon' => [
-							'value' => 'fab fa-facebook',
+							'value'   => 'fab fa-facebook',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-twitter',
+							'value'   => 'fab fa-twitter',
 							'library' => 'fa-brands',
 						],
 					],
 					[
 						'social_icon' => [
-							'value' => 'fab fa-google-plus',
+							'value'   => 'fab fa-google-plus',
 							'library' => 'fa-brands',
 						],
 					],
@@ -261,23 +261,23 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'align',
 			[
-				'label' => __( 'Alignment', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left'    => [
+				'label'     => __( 'Alignment', 'advanced-share-buttons-widget' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
 						'title' => __( 'Left', 'advanced-share-buttons-widget' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'advanced-share-buttons-widget' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
-					'right' => [
+					'right'  => [
 						'title' => __( 'Right', 'advanced-share-buttons-widget' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'default' => 'center',
+				'default'   => 'center',
 				'selectors' => [
 					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				],
@@ -287,14 +287,14 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'shape',
 			[
-				'label' => __( 'Shape', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'square' => __( 'Square', 'advanced-share-buttons-widget' ),
+				'label'        => __( 'Shape', 'advanced-share-buttons-widget' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => [
+					'square'  => __( 'Square', 'advanced-share-buttons-widget' ),
 					'rounded' => __( 'Rounded', 'advanced-share-buttons-widget' ),
-					'circle' => __( 'Circle', 'advanced-share-buttons-widget' ),
+					'circle'  => __( 'Circle', 'advanced-share-buttons-widget' ),
 				],
-				'default' => 'square',
+				'default'      => 'square',
 				'prefix_class' => 'asbw-share-buttons--shape-',
 			]
 		);
@@ -305,19 +305,19 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'section_buttons_style',
 			[
 				'label' => __( 'Share Buttons', 'advanced-share-buttons-widget' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_responsive_control(
 			'button_size',
 			[
-				'label' => __( 'Button Size', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
+				'label'     => __( 'Button Size', 'advanced-share-buttons-widget' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
 					'px' => [
-						'min' => 0.5,
-						'max' => 2,
+						'min'  => 0.5,
+						'max'  => 2,
 						'step' => 0.05,
 					],
 				],
@@ -327,17 +327,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-	
-
 		$this->add_responsive_control(
 			'button_height',
 			[
-				'label' => __( 'Button Height', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
+				'label'          => __( 'Button Height', 'advanced-share-buttons-widget' ),
+				'type'           => Controls_Manager::SLIDER,
+				'range'          => [
 					'em' => [
-						'min' => 1,
-						'max' => 7,
+						'min'  => 1,
+						'max'  => 7,
 						'step' => 0.1,
 					],
 					'px' => [
@@ -345,7 +343,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'max' => 100,
 					],
 				],
-				'default' => [
+				'default'        => [
 					'unit' => 'em',
 				],
 				'tablet_default' => [
@@ -354,8 +352,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'mobile_default' => [
 					'unit' => 'em',
 				],
-				'size_units' => [ 'em', 'px' ],
-				'selectors' => [
+				'size_units'     => [ 'em', 'px' ],
+				'selectors'      => [
 					'{{WRAPPER}} .title .asbw_btn' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
@@ -401,6 +399,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$this->end_controls_tab();
 	}
+	
 
 	/**
 	 * Render the widget output on the frontend.
@@ -413,22 +412,52 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		// echo "<prev>";
+		// echo $settings['title'];
+		// // print_r($settings['social_icon_list'][]['social_icon']);
+		// echo "</prev>";
+		// wp_die();
+		//J61DYCMGJ75NLCZ3 API Key
+		
+	
+		$url='https://www.facebook.com';
+ 		
+	    $api = file_get_contents( 'http://count-server.sharethis.com/v2.0/get_counts?url=' . $url );
+	 
+	    $counts = json_decode( $api );
+
+ 		// echo "<pre>";
+ 		// // echo $counts;
+ 		// print_r($counts->shares->all);
+ 		// print_r($counts->shares->facebook);
+ 		// // echo $counts->shares;
+ 		// echo "</pre>";
+	 	// die();
+	    
+
 		$count = 0;
-		if ( $settings['hover_animation'] ) {
-						$this->add_render_attribute( 'button_' . $i,'class','asbw_btn elementor-animation-' . $settings['hover_animation'] );
-					}
-		echo '<div class="title">';				
-			foreach ( $settings['social_icon_list'] as $index ) {
-			echo '<button '; 
-			echo $this->get_render_attribute_string( 'button_' . $i );
-			echo '>'; 
-			echo $settings['title'];
-			echo '<span class="'; echo $settings['social_icon_list'][$count]['social_icon']['value']; echo '">';
-			$count = $count + 1;
-			echo '</span>';
-			echo '</button>';			
+
+		// if ( $settings['hover_animation'] ) {
+
+		// 				$this->add_render_attribute( 'button_' . $count, 'class', 'asbw_btn elementor-animation-' . $settings['hover_animation'] );
+		// }
+		echo '<div class="title">';
+		foreach ( $settings['social_icon_list'] as $index ) {
+			// echo '<button ';
+			// echo $this->get_render_attribute_string( 'button_' . $count );
+			echo '<button class = asbw_btn';
+			echo '>';
+			echo '<span class="';
+			echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+			echo '">';
+			$count++;
+			echo '</span>&nbsp;';
+			echo '&nbsp;';
+			echo $counts->shares->all;
+			echo '</button>';
 		}
-		echo '</div>';		
+		
+		echo '</div>';
 	}
 
 	/**
@@ -441,7 +470,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 * @access protected
 	 */
 	protected function _content_template() {
-		
 
 		?>
 		<# 
@@ -456,7 +484,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			#>
 			<button class='asbw_btn {{button_wrap}}'>
 
-				{{{ settings.title }}}
+				<!-- {{{ settings.section_buttons_content }}} -->
 				<#
 						iconsHTML[ count ] = elementor.helpers.renderIcon( view, item.social_icon, {}, 'span', 'object' );
 						if ( ( ! item.social ) && iconsHTML[ count ] && iconsHTML[ count ].rendered ) { #>

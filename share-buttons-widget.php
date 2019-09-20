@@ -1,15 +1,17 @@
 <?php
 /**
-* Plugin Name: Advanced Share buttons widget
-* Description: Advanced Share buttons widgets for Controlling how and who shares your content can be the difference in your online social marketing strategy. Social Snap gives you the power of social sharing with ease. No setup required.
-* Plugin URI:  
-* Version:     1.0.0
-* Author:      Brainstorm Force
-* Author URI:  https://brainstormforce.com
-* Text Domain: advanced-share-buttons-widget
-*/
+ * Plugin Name: Advanced Share buttons widget
+ * Description: Advanced Share buttons widgets for Controlling how and who shares your content can be the difference in your online social marketing strategy. Social Snap gives you the power of social sharing with ease. No setup required.
+ * Plugin URI:
+ * Version:     1.0.0
+ * Author:      Brainstorm Force
+ * Author URI:  https://brainstormforce.com
+ * Text Domain: advanced-share-buttons-widget
+ */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Main Elementor Hello World Class
@@ -20,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * You should only modify the constants to match your plugin's needs.
  *
  * Any custom code should go inside Plugin Class in the plugin.php file.
+ *
  * @since 1.2.0
  */
 final class Share_Buttons_Widget {
@@ -109,7 +112,7 @@ final class Share_Buttons_Widget {
 		}
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
-		require_once( 'classes/share-buttons-widget-loader.php' );
+		require_once 'classes/class-share-buttons-widget-loader.php';
 	}
 
 	/**
