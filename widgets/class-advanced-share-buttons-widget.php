@@ -228,6 +228,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 			]
 		);
+
+		
+
 		$this->add_control(
 			'social_icon_list',
 			[
@@ -255,6 +258,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
+			]
+		);
+
+		$this->add_control(
+			'show_share',
+			[
+				'label' => __( 'Total Share Count', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
 			]
 		);
 
@@ -412,14 +424,17 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		// echo "<prev>";
+		echo "<prev>";
 		// echo $settings['title'];
 		// // print_r($settings['social_icon_list'][]['social_icon']);
 		// echo "</prev>";
 		// wp_die();
 		//J61DYCMGJ75NLCZ3 API Key
+		// print_r($settings['social_icon_list']);
+		// print_r($settings['show_share']);
 		
-	
+		// echo "</prev>";
+		// wp_die();
 		$url='https://www.facebook.com';
  		
 	    $api = file_get_contents( 'http://count-server.sharethis.com/v2.0/get_counts?url=' . $url );
@@ -433,10 +448,31 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
  		// // echo $counts->shares;
  		// echo "</pre>";
 	 	// die();
-	    
+	 	$post_id = get_post();
 
+	 	// print_r($post_id);
+
+	    $page_url = get_permalink( $post_id );
+		//$page_url = urlencode( $page_url );
+
+		$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
+		// $access_secret_key = '500da9612480472b2cb99e6636111750'; 
+
+		// $url = 'https://graph.facebook.com/v2.12/?id=' . $page_url; . '&access_token=' . $access_token . '&fields=engagement';
+		$args = array( 'timeout' => 30 );	
+		$url = 'https://graph.facebook.com/v2.12/?id=' . 'https://wpastra.com' . '&access_token=' . $access_token . '&fields=engagement';	
+
+		$response = wp_remote_get( $url, $args );	
+
+		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
+
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		
+			// print_r($body['engagement']['share_count']);
+		
 		$count = 0;
-
+		
 		// if ( $settings['hover_animation'] ) {
 
 		// 				$this->add_render_attribute( 'button_' . $count, 'class', 'asbw_btn elementor-animation-' . $settings['hover_animation'] );
@@ -453,10 +489,23 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			$count++;
 			echo '</span>&nbsp;';
 			echo '&nbsp;';
-			echo $counts->shares->all;
 			echo '</button>';
 		}
-		
+		switch ($settings['show_share']) {
+			case 'yes':
+				echo '<span>';
+				// echo $counts->shares->all;
+				echo '<b>';
+				echo $body['engagement']['share_count'];
+				echo '<b>&nbsp;SHARES</b>';
+				echo '</span>';
+				break;
+			
+			default:
+				echo '';
+				break;
+		}
+		}	
 		echo '</div>';
 	}
 
@@ -497,6 +546,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			</button>
 
 			<# } ); #>
+		<!-- 	<# switch( settings.show_share) {
+			case 'yes':
+				<span>$counts->shares->all;</span>
+				break;
+
+			default:
+				break;
+
+		} -->
 		</div>
 		<?php
 	}
