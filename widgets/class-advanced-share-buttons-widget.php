@@ -424,59 +424,59 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		echo "<prev>";
-		// echo $settings['title'];
-		// // print_r($settings['social_icon_list'][]['social_icon']);
-		// echo "</prev>";
-		// wp_die();
-		//J61DYCMGJ75NLCZ3 API Key
-		// print_r($settings['social_icon_list']);
-		// print_r($settings['show_share']);
 		
-		// echo "</prev>";
-		// wp_die();
-		$url='https://www.facebook.com';
+		// $url='https://www.facebook.com';
  		
-	    $api = file_get_contents( 'http://count-server.sharethis.com/v2.0/get_counts?url=' . $url );
+	 //    $api = file_get_contents( 'http://count-server.sharethis.com/v2.0/get_counts?url=' . $url );
 	 
-	    $counts = json_decode( $api );
+	 //    $counts = json_decode( $api );
 
- 		// echo "<pre>";
- 		// // echo $counts;
- 		// print_r($counts->shares->all);
- 		// print_r($counts->shares->facebook);
- 		// // echo $counts->shares;
- 		// echo "</pre>";
-	 	// die();
+ 
 	 	$post_id = get_post();
 
 	 	// print_r($post_id);
+	 	// $page_url1 = 'https://www.wpastra.com';
 
 	    $page_url = get_permalink( $post_id );
 		//$page_url = urlencode( $page_url );
+
+		// print_r($page_url);
+		// wp_die();
 
 		$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
 		// $access_secret_key = '500da9612480472b2cb99e6636111750'; 
 
 		// $url = 'https://graph.facebook.com/v2.12/?id=' . $page_url; . '&access_token=' . $access_token . '&fields=engagement';
 		$args = array( 'timeout' => 30 );	
-		$url = 'https://graph.facebook.com/v2.12/?id=' . 'https://wpastra.com' . '&access_token=' . $access_token . '&fields=engagement';	
+		if ( empty($access_token) ) {
+
+			$url = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
+		} else {
+
+			//in case $access_token :
+			$url = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
+		}
+
+		// $url= 'https://counts.twitcount.com/counts.php?url=' . $page_url; 
+			
+			
+			// case 'TWEETER':
+				// $url1 = 'https://www.linkedin.com/sharing/share-offsite/?url=' . $page_url;
+			// 	break;
+
+			// echo '<a href="http://twitcount.com/btn" class="twitcount-button" data-count="vertical" data-size="" data-url="https://wpastra.com" data-text="" data-related="" data-hashtag="" data-via="NageAbhijit">TwitCount Button</a><script type="text/javascript" src="https://static1.twitcount.com/js/button.js"></script>';
+
+		
 
 		$response = wp_remote_get( $url, $args );	
 
 		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
 
 			$body = json_decode( wp_remote_retrieve_body( $response ), true );
-
-		
-			// print_r($body['engagement']['share_count']);
 		
 		$count = 0;
 		
-		// if ( $settings['hover_animation'] ) {
-
-		// 				$this->add_render_attribute( 'button_' . $count, 'class', 'asbw_btn elementor-animation-' . $settings['hover_animation'] );
-		// }
+		
 		echo '<div class="title">';
 		foreach ( $settings['social_icon_list'] as $index ) {
 			// echo '<button ';
@@ -496,6 +496,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				echo '<span>';
 				// echo $counts->shares->all;
 				echo '<b>';
+				// echo $url1;
 				echo $body['engagement']['share_count'];
 				echo '<b>&nbsp;SHARES</b>';
 				echo '</span>';
