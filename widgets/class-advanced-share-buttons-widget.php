@@ -250,12 +250,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 							'library' => 'fa-brands',
 						],
 					],
-					[
-						'social_icon' => [
-							'value'   => 'fab fa-google-plus',
-							'library' => 'fa-brands',
-						],
-					],
 				],
 				'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
 			]
@@ -265,6 +259,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'show_share',
 			[
 				'label' => __( 'Total Share Count', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+			]
+		);
+
+		$this->add_control(
+			'access_token',
+			[
+				'label' => __( 'Access Token', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 			]
@@ -424,6 +427,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+
+		
+		
+		// var_dump($settings);
+		// wp_die();
 		
 		// $url='https://www.facebook.com';
  		
@@ -436,6 +444,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 	 	// print_r($post_id);
 	 	$page_url1 = 'https://www.wpastra.com';
+	 	// $page_url1 = 'https://www.facebook.com/groups/wpastra/permalink/683474735455127/';
 
 	    $page_url = get_permalink( $post_id );
 		//$page_url = urlencode( $page_url );
@@ -526,6 +535,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			// // https://www.facebook.com/sharer/sharer.php?u=example.org
 			// echo "Share";
 			// echo '</a>';
+
+			// echo $body['engagement']['share_count'];
 			if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-facebook' )
 			{
 			echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
@@ -566,7 +577,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				echo '<b>';
 				$total_share_count = $body['engagement']['share_count'] + $matches[0][0]; 
 				echo $total_share_count;
-				echo '<b>&nbsp;SHARES</b>';
+				echo '<b>&nbsp;Total Shares</b>';
 				echo '</span>';
 				break;
 			
@@ -594,6 +605,16 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		var count = 0; 
 		var iconsHTML = {};
 		#>
+		<?php 
+		// $asbw_fb_API = get_site_transient( '_site_transient_asbw_fb_API' );
+		// echo $asbw_fb_API;
+		// preg_match_all('!\d+!', $asbw_fb_API, $matches);
+		// echo $matches[0][0];
+		
+		// $asbw_pin_API = get_site_transient( $asbw_pin_API );
+		// echo $asbw_pin_API;
+
+		?>
 		<div class="title">
 			
 			<# _.each( settings.social_icon_list, function( item, index ) { 
