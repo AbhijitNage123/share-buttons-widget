@@ -246,7 +246,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 					[
 						'social_icon' => [
-							'value'   => 'fab fa-twitter',
+							'value'   => 'fab fa-pinterest',
 							'library' => 'fa-brands',
 						],
 					],
@@ -526,6 +526,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			// // https://www.facebook.com/sharer/sharer.php?u=example.org
 			// echo "Share";
 			// echo '</a>';
+			if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-facebook' )
+			{
 			echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
 			echo '<button class = asbw_btn';
 			echo '>';
@@ -537,6 +539,26 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			echo '&nbsp;';
 			echo '</button>';
 			echo '</a>';
+			}
+			else if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-pinterest' ){
+			echo '<a href=http://pinterest.com/pin/create/link/?url='.$page_url1.' target="_blank">';
+			echo '<button class = asbw_btn';
+			echo '>';
+			echo '<span class="';
+			echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+			echo '" >';
+			$count++;
+			echo '</span>&nbsp;';
+			echo '&nbsp;';
+			echo '</button>';
+			echo '</a>';
+			}
+			else{
+			echo "Not Supported for Social Icon!";
+			}
+			// echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+			// echo '<a href=http://pinterest.com/pin/create/link/?url='.$page_url1.' target="_blank">';
+			// echo '</a>';
 		}
 		switch ($settings['show_share']) {
 			case 'yes':
