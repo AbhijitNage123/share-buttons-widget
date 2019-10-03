@@ -435,7 +435,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	$post_id = get_post();
 
 	 	// print_r($post_id);
-	 	// $page_url1 = 'https://www.wpastra.com';
+	 	$page_url1 = 'https://www.wpastra.com';
 
 	    $page_url = get_permalink( $post_id );
 		//$page_url = urlencode( $page_url );
@@ -444,60 +444,106 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		// wp_die();
 
 		$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
-		// $access_secret_key = '500da9612480472b2cb99e6636111750'; 
-
-		// $url = 'https://graph.facebook.com/v2.12/?id=' . $page_url; . '&access_token=' . $access_token . '&fields=engagement';
+		
 		$args = array( 'timeout' => 30 );	
 		if ( empty($access_token) ) {
 
-			$url = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
+			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
 		} else {
 
 			//in case $access_token :
-			$url = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
+			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url1 . '&access_token=' . $access_token . '&fields=engagement';
 		}
 
-		// $url= 'https://counts.twitcount.com/counts.php?url=' . $page_url; 
-			
-			
-			// case 'TWEETER':
-				// $url1 = 'https://www.linkedin.com/sharing/share-offsite/?url=' . $page_url;
-			// 	break;
+		$urlpin = 'https://widgets.pinterest.com/v1/urls/count.json?source=6&url=https://wpastra.com/';
 
-			// echo '<a href="http://twitcount.com/btn" class="twitcount-button" data-count="vertical" data-size="" data-url="https://wpastra.com" data-text="" data-related="" data-hashtag="" data-via="NageAbhijit">TwitCount Button</a><script type="text/javascript" src="https://static1.twitcount.com/js/button.js"></script>';
+		// $data = array('0' => $urlfb ,'1' => $urlpin );
 
+		// foreach ($data as $key ) {
+		// 	// var_dump($value);
+		// 	$response[] = wp_remote_get( $key, $args );
+		//  var_dump($response);
+		//  wp_die();
+		// if( wp_remote_retrieve_response_code( $response ) == 200 ) {
+
+		// $body = json_decode( wp_remote_retrieve_body( $response[$key] ), true );
+		// }
+		// preg_match_all('!\d+!', $response[$key]['body'], $matches);
+		// }
+
+		// 	echo '<pre>';
+		// var_dump($response);
+		// wp_die();	
+
+		$response1 = wp_remote_get( $urlfb, $args );
+
+		$response2 = wp_remote_get( $urlpin, $args );
+
+		if( wp_remote_retrieve_response_code( $response1 ) == 200 ) {
+
+		$body = json_decode( wp_remote_retrieve_body( $response1 ), true );
+
+		$asbw_fb_API = 'asbw_fb_API';//empty($asbw_fb_API) ? $asbw_fb_API : '';
 		
+		set_site_transient( $asbw_fb_API , $body , 86400 );
 
-		$response = wp_remote_get( $url, $args );	
+		$asbw_fb_API = get_site_transient( $asbw_fb_API );			
 
-		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
+		// echo "<pre>";				
+		//  print_r(get_site_transient( $asbw_fb_API ));
+		//  wp_die();
 
-			$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		
+
+		// echo "<pre>";
+		// var_dump( $asbw_fb_API );
+		// wp_die();	
+
 		$count = 0;
+
+		preg_match_all('!\d+!', $response2['body'], $matches);
+
+		$asbw_pin_API = 'asbw_pin_API';// empty( $asbw_pin_API ) ?  $asbw_pin_API  : '';
+
+		set_site_transient( $asbw_pin_API, $response2['body'] , 86400 );
+
+		$asbw_pin_API = get_site_transient( $asbw_pin_API );
 		
-		
+
+		// echo "<pre>";
+		//  var_dump( $asbw_pin_API );
+		//  wp_die();
+
+		// echo $matches[0][0];
+		// echo "&nbsp;";
+		// echo $body['engagement']['share_count'];
+		// wp_die();
+
 		echo '<div class="title">';
 		foreach ( $settings['social_icon_list'] as $index ) {
 			// echo '<button ';
 			// echo $this->get_render_attribute_string( 'button_' . $count );
+			// echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
+			// // https://www.facebook.com/sharer/sharer.php?u=example.org
+			// echo "Share";
+			// echo '</a>';
+			echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
 			echo '<button class = asbw_btn';
 			echo '>';
 			echo '<span class="';
 			echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
-			echo '">';
+			echo '" >';
 			$count++;
 			echo '</span>&nbsp;';
 			echo '&nbsp;';
 			echo '</button>';
+			echo '</a>';
 		}
 		switch ($settings['show_share']) {
 			case 'yes':
 				echo '<span>';
-				// echo $counts->shares->all;
 				echo '<b>';
-				// echo $url1;
-				echo $body['engagement']['share_count'];
+				$total_share_count = $body['engagement']['share_count'] + $matches[0][0]; 
+				echo $total_share_count;
 				echo '<b>&nbsp;SHARES</b>';
 				echo '</span>';
 				break;
