@@ -48,6 +48,7 @@ class Share_Button_widget_Loader {
 	 */
 	public function widget_scripts() {
 		// wp_register_script( 'asbw-uae', plugins_url( '/assets/js/social-window.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**

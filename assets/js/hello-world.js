@@ -5,6 +5,7 @@
 	 */ 
 	var WidgetHelloWorldHandler = function( $scope, $ ) {
 		console.log( $scope );
+		Console.log( "$scope" );
 	};
 	
 	// Make sure you run this code under Elementor.

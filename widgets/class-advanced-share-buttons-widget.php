@@ -8,6 +8,7 @@ use Elementor\Core\Base;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Settings;
+wp_enqueue_script('elementor-hello-world');
 // use ShareButtonsWidgets\Share_Buttons_Module;
 // use ShareButtonsWidgets\widget\Module;
 
@@ -267,9 +268,30 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'access_token',
 			[
-				'label' => __( 'Access Token', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => '',
+				'label'   => __( 'Enable Access Token', 'advanced-share-buttons-widget' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'no'   => __( 'NO', 'advanced-share-buttons-widget' ),
+					'yes' => __( 'YES', 'advanced-share-buttons-widget' ),
+				],
+				'default' => 'no',
+			]
+		);
+
+		$this->add_control(
+			'caption',
+			[
+				'label'       => __( 'Access Token', 'advanced-share-buttons-widget' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '',
+				'placeholder' => __( 'Enter your access token', 'advanced-share-buttons-widget' ),
+				'condition'   => [
+					'access_token' => 'yes',
+				],
+				'dynamic'     => [
+					'active' => true,
+				],
+				'label_block' => true,
 			]
 		);
 
@@ -296,21 +318,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				],
-			]
-		);
-
-		$this->add_control(
-			'shape',
-			[
-				'label'        => __( 'Shape', 'advanced-share-buttons-widget' ),
-				'type'         => Controls_Manager::SELECT,
-				'options'      => [
-					'square'  => __( 'Square', 'advanced-share-buttons-widget' ),
-					'rounded' => __( 'Rounded', 'advanced-share-buttons-widget' ),
-					'circle'  => __( 'Circle', 'advanced-share-buttons-widget' ),
-				],
-				'default'      => 'square',
-				'prefix_class' => 'asbw-share-buttons--shape-',
 			]
 		);
 
@@ -539,7 +546,35 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			// echo $body['engagement']['share_count'];
 			if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-facebook' )
 			{
-			echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
+			// 			echo '<a target="_blank" OnClick="window.open(this.href,"targetWindow","toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250"); return false;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fyoursite.com%2Fem%2F4881-01%2F&picture=http%3A%2F%2Fyoursite.com%2Fem%2F4881-01%2Fimg%2Fmercedes-maybach.png&title=title+here&description=Your+description">
+			//   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAUCAMAAAAA9GVfAAACnVBMVEU0TI01TIw1TY01TY41TY81To82TY42TY85UZU6U5k7VJs7VZ07VaE8VZs8Vp08VqE8VqI8V6I9Vp49V6A9V6M+WJ8+WKA+WKQ+WaQ+WaU/WaM/WaQ/WaY/WqY/WqdAW6ZAW6dAW6hBW6dBXKhBXKlCXapCXatCXqpCXqxDXqtDXqxDX6xEX65EYK5EYK9FX65FYK9FYa9FYbBGYbBGYrFGYrJHYrFHY7JHY7NIZLNIZLRIZbRJZbVJZrZKZrZKZ7dLZ7hLaLhLaLlMablSaKpSaaxTaq1ZcbVbc7hfdLJfdbNfdbRfdrZgdrdhd7dhe8Fiebtie8Fofr9qgcFsgb5shMVthcZugrhugrtvgrxwhL1whL5xhb9xhcBzh8JziL9ziMJziMN1isV1isZ2iL12ir52isF5jMWAjreAk8eEk7+ElMOFlseFmMiIl7yKmsqOnL+RnsGSnsGVpdCXp9SeqsmfrNKfrNOfrdSgrdOgrdSgrtOgrtWhrtShrtWhr9Sir9WisNaisNejsNimstWoss+qtM+suNesudyuudmwvNyyvNazvNizvdqzvtqzvtu0vtu0vty0v9y0v961v921v962v9i3v9a3wd24wt65wtu5w+G8xeG8xuG9xNq+xtzAyeHAyePByuHCyd7Dy+DEzOPFzOHGz+fGz+nJ0OLL0uXN1OjP1urQ1+vS1+bS2OfT2evU2uzV2+vW2+jY3evZ3uzZ3u3b4O7c4vHd4ezd4/Le4/Df4+3f4+/g5PHg5fHh5vHk5/Dk6PLn6vXo6/Xo7Pbp7PTq7fbr7vTr7vbt8Pbx8vfx8vjx8/j09fr09vn19vr19/v29/r3+Pv5+vz6+/z6+/37+/37/P78/P38/P78/f79/f7+/v////+ZYdejAAACCUlEQVR4AWNYEebkTAYMXMHg7+BIFgxlsLMnEzLY2tja7LqHBHYARYiBDFbWVtb3UABQhBjIYGlhaQHTszw5uOTePZCIpakoEwOvmQarMpCNHTKYmJuYQzUeBbKT7t0DiZj4rbtzd09K49UpQDZ2yGBibGIM1dlsEnQESIFETFquL+i4sbzhajcbs5SxkRATA6e+PCMHs5IYMxOfAVgFg56hniFUZ5NeIogCiehNvjuPS12v/uqxazcXa3uvv3P3YOqke6duzVx5687mcLAKBl0dXR2wviNNcboeTbPv3QOJ6KYfv7szT6L26u6EQ6czu85ktd6cOOnepoBZF4oKLy0Dq2DQ0tbSButcC2JpFd+7B6a1QxZevD2t+uoMrVXnc13a9l65N2HCvQnaW0Aq94FVMGiqaaqBdR6uidV0r1lz7x5IRJObRTr+xLEZV/s1V53PWXJ9afvVfqBOta3ns6XZhcEqGFRUVVSh/qxTiQFRIBGV1ddKM84e6LzapwLUue1ywfy7Pb33elXn3J5eemUuWAWDiqKKIlRnlUo0WKciEKbtv3P3ZH7ttSkqqy/mVJy7e/zyhqn3pir6brh1Z6MPWAWDnIKcAlRnpVwUiAKKEAMZZGVkZaA6y2UjQRRQhBjIIC4pLrkdorNMPAJIbgeKEAMZxEXIhAxuggJkQS+GRZ78PGRA10UAUdSA0BPiLlkAAAAASUVORK5CYII=" width="57" />
+			// </a>';
+// 				echo '<button></<script>
+// let newWin = window.open("about:blank", "hello", "width=200,height=200");
+
+// newWin.document.write(
+//   "<script>window.opener.document.body.innerHTML = "Test"<\/script>"
+// );
+// </script></button>';
+
+			echo '<script>
+				function basicPopup(url) {
+			popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
+				}
+			</script>
+			<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank" onclick="basicPopup(this.href);return false">';
+				
+			// echo '<div id="fb-root"></div>
+			// <script>(function(d, s, id) {
+			//   var js, fjs = d.getElementsByTagName(s)[0];
+			//   if (d.getElementById(id)) return;
+			//   js = d.createElement(s); js.id = id;
+			//   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			//   fjs.parentNode.insertBefore(js, fjs);
+			// }(document, "script", "facebook-jssdk"));</script>
+			// <div class="fb-share-button" data-href="https://www.wpastra.com" data-width="200" data-type="button_count"></div>';
+
+			// echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
 			echo '<button class = asbw_btn';
 			echo '>';
 			echo '<span class="';
@@ -552,7 +587,12 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			echo '</a>';
 			}
 			else if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-pinterest' ){
-			echo '<a href=http://pinterest.com/pin/create/link/?url='.$page_url1.' target="_blank">';
+			echo '<script>
+				function basicPopup(url) {
+			popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
+				}
+			</script>
+			<a href=http://pinterest.com/pin/create/link/?url='.$page_url1.' target="_blank" onclick="basicPopup(this.href);return false">';
 			echo '<button class = asbw_btn';
 			echo '>';
 			echo '<span class="';
