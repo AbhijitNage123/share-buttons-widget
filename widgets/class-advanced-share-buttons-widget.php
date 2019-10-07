@@ -450,12 +450,12 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	$post_id = get_post();
 
 	 	// print_r($post_id);
-	 	$page_url1 = 'https://www.wpastra.com';
+	 	$page_url = 'https://www.wpastra.com';
 	 	// $page_url1 = 'https://www.facebook.com/groups/wpastra/permalink/683474735455127/';
 
-	    $page_url = get_permalink( $post_id );
-		//$page_url = urlencode( $page_url );
-
+	    // $page_url = get_permalink( $post_id );
+		// $page_url = urlencode( $page_url );
+	    //https://www.facebook.com/sharer/sharer.php?href=https%3A%2F%2Fwpastra.com%2Fastra-2-1%2F&u=https%3A%2F%2Fwpastra.com%2Fastra-2-1%2F
 		// print_r($page_url);
 		// wp_die();
 
@@ -465,10 +465,14 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		if ( empty($access_token) ) {
 
 			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
+
 		} else {
 
 			//in case $access_token :
-			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url1 . '&access_token=' . $access_token . '&fields=engagement';
+			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
+			// var_dump($page_url);
+			// var_dump($urlfb);
+			// wp_die();
 		}
 
 		$urlpin = 'https://widgets.pinterest.com/v1/urls/count.json?source=6&url=https://wpastra.com/';
@@ -562,7 +566,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 				}
 			</script>
-			<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank" onclick="basicPopup(this.href);return false">';
+			<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
 				
 			// echo '<div id="fb-root"></div>
 			// <script>(function(d, s, id) {
@@ -573,7 +577,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			//   fjs.parentNode.insertBefore(js, fjs);
 			// }(document, "script", "facebook-jssdk"));</script>
 			// <div class="fb-share-button" data-href="https://www.wpastra.com" data-width="200" data-type="button_count"></div>';
-
+			echo $page_url;
 			// echo '<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url1.' target="_blank">';
 			echo '<button class = asbw_btn';
 			echo '>';
@@ -592,7 +596,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 				}
 			</script>
-			<a href=http://pinterest.com/pin/create/link/?url='.$page_url1.' target="_blank" onclick="basicPopup(this.href);return false">';
+			<a href=http://pinterest.com/pin/create/link/?url='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
 			echo '<button class = asbw_btn';
 			echo '>';
 			echo '<span class="';

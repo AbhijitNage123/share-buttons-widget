@@ -48,7 +48,16 @@ class Share_Button_widget_Loader {
 	 */
 	public function widget_scripts() {
 		// wp_register_script( 'asbw-uae', plugins_url( '/assets/js/social-window.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
+		// wp_register_script( 'cswp-image-upload', CSWP_PLUGIN_URL . 'assets/js/cs_image_upload.js', array( 'jquery' ), CSWP_CURRENCY_SWITCHER_VER, true );
+		wp_register_script( 'elementor-hello-world', ASBW_BASE_URL . '/assets/js/hello-world.js', [ 'jquery' ], ASBW_BASE_VERSION, true );
+		/*wp_localize_script(
+			'uae-popup-window',
+			'uae_url',
+			array(
+				'cswp_get_button_value' => $cswp_get_button_value,
+			),
+			true
+		);*/
 	}
 
 	/**
