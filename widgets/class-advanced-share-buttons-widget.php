@@ -1,5 +1,6 @@
 <?php
 namespace ShareButtonsWidgets\Widgets;
+// namespace ShareButtonsWidgets\Modules;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -8,9 +9,10 @@ use Elementor\Core\Base;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Settings;
+
 wp_enqueue_script('elementor-hello-world');
-// use ShareButtonsWidgets\Share_Buttons_Module;
-// use ShareButtonsWidgets\widget\Module;
+
+// use ShareButtonsWidgets\Module;
 
 /**
  * Elementor Advanced Share Buttons
@@ -110,6 +112,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 		$repeater = new Repeater();
+
+		// $networks = Module::get_networks();
+		// echo "<prev>";
+		// print_r($networks);wp_die();
+
 		$repeater->add_control(
 			'social_icon',
 			[
@@ -118,65 +125,13 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'fa4compatibility' => 'social',
 				'label_block'      => true,
 				'default'          => [
-					'value'   => 'fab fa-wordpress',
+					'value'   => 'fab fa-facebook',
 					'library' => 'fa-brands',
 				],
 				'recommended'      => [
 					'fa-brands' => [
-						'android',
-						'apple',
-						'behance',
-						'bitbucket',
-						'codepen',
-						'delicious',
-						'deviantart',
-						'digg',
-						'dribbble',
-						'elementor',
 						'facebook',
-						'flickr',
-						'foursquare',
-						'free-code-camp',
-						'github',
-						'gitlab',
-						'globe',
-						'google-plus',
-						'houzz',
-						'instagram',
-						'jsfiddle',
-						'linkedin',
-						'medium',
-						'meetup',
-						'mixcloud',
-						'odnoklassniki',
 						'pinterest',
-						'product-hunt',
-						'reddit',
-						'shopping-cart',
-						'skype',
-						'slideshare',
-						'snapchat',
-						'soundcloud',
-						'spotify',
-						'stack-overflow',
-						'steam',
-						'stumbleupon',
-						'telegram',
-						'thumb-tack',
-						'tripadvisor',
-						'tumblr',
-						'twitch',
-						'twitter',
-						'viber',
-						'vimeo',
-						'vk',
-						'weibo',
-						'weixin',
-						'whatsapp',
-						'wordpress',
-						'xing',
-						'yelp',
-						'youtube',
 						'500px',
 					],
 					'fa-solid'  => [
@@ -185,6 +140,32 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'rss',
 					],
 				],
+			]
+		);
+
+		$this->add_control(
+			'view',
+			[
+				'label' => __( 'View', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SELECT,
+				'label_block' => false,
+				'options' => [
+					'icon-text' => 'Icon & Text',
+					'icon' => 'Icon',
+					'text' => 'Text',
+				],
+				'default' => 'icon-text',
+				'separator' => 'before',
+				'prefix_class' => 'elementor-share-buttons--view-',
+				'render_type' => 'template',
+			]
+		);
+
+		$repeater->add_control(
+			'text',
+			[
+				'label' => __( 'Custom Label', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
 			]
 		);
 
@@ -210,7 +191,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'item_icon_color' => 'custom',
 				],
 				'selectors' => [
-					// '{{WRAPPER}}.title .asbw-icon' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}}.title .asbw_fb' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .title .asbw_btn' => 'background-color: {{VALUE}}',
 				],
 			]
@@ -267,37 +248,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-		// //If display_position is Inline.
-		// $this->add_responsive_control(
-		// 	'display_inline_button_align',
-		// 	[
-		// 		'label'     => __( 'Alignment', 'advanced-share-buttons-widget' ),
-		// 		'type'      => Controls_Manager::CHOOSE,
-		// 		'options'   => [
-		// 			'left'    => [
-		// 				'title' => __( 'Left', 'advanced-share-buttons-widget' ),
-		// 				'icon'  => 'fa fa-align-left',
-		// 			],
-		// 			'center'  => [
-		// 				'title' => __( 'Center', 'advanced-share-buttons-widget' ),
-		// 				'icon'  => 'fa fa-align-center',
-		// 			],
-		// 			'right'   => [
-		// 				'title' => __( 'Right', 'advanced-share-buttons-widget' ),
-		// 				'icon'  => 'fa fa-align-right',
-		// 			],
-		// 			'justify' => [
-		// 				'title' => __( 'Justified', 'advanced-share-buttons-widget' ),
-		// 				'icon'  => 'fa fa-align-justify',
-		// 			],
-		// 		],
-		// 		'default'   => 'left',
-		// 		'condition'   => [
-		// 			'display_position' => 'floating',
-		// 		],
-		// 		'toggle'    => false,
-		// 	]
-		// );
 		$this->add_responsive_control(
 			'align',
 			[
@@ -515,22 +465,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	}
 
 	/**
-	 * Render Button.
-	 *
-	 * @since 1.0.0
-	 * @param int   $node_id The node id.
-	 * @param array $settings The settings array.
-	 * @access public
-	 */
-	public function render_button( $node_id, $settings ) {
-
-		// var_dump($none_id);
-		// var_dump($settings);
-		// wp_die();
-
-	}
-
-	/**
 	 * Render the widget output on the frontend.
 	 *
 	 * Written in PHP and used to generate the final HTML.
@@ -547,7 +481,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	$page_url = 'https://www.wpastra.com';
 	 	// $page_url1 = 'https://www.facebook.com/groups/wpastra/permalink/683474735455127/';
 
-	    // $page_url = get_permalink( $post_id );
+	 //    $page_url = get_permalink( $post_id );
 		// $page_url = urlencode( $page_url );
 
 		$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
@@ -565,24 +499,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$urlpin = 'https://widgets.pinterest.com/v1/urls/count.json?source=6&url=https://wpastra.com/';
 
-		// $data = array('0' => $urlfb ,'1' => $urlpin );
-
-		// foreach ($data as $key ) {
-		// 	// var_dump($value);
-		// 	$response[] = wp_remote_get( $key, $args );
-		//  var_dump($response);
-		//  wp_die();
-		// if( wp_remote_retrieve_response_code( $response ) == 200 ) {
-
-		// $body = json_decode( wp_remote_retrieve_body( $response[$key] ), true );
-		// }
-		// preg_match_all('!\d+!', $response[$key]['body'], $matches);
-		// }
-
-		// 	echo '<pre>';
-		// var_dump($response);
-		// wp_die();	
-
 		$response1 = wp_remote_get( $urlfb, $args );
 
 		$response2 = wp_remote_get( $urlpin, $args );
@@ -591,7 +507,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$body = json_decode( wp_remote_retrieve_body( $response1 ), true );
 
-		$asbw_fb_API = 'asbw_fb_API';//empty($asbw_fb_API) ? $asbw_fb_API : '';
+		$asbw_fb_API = 'asbw_fb_API';
 		
 		set_site_transient( $asbw_fb_API , $body , 86400 );
 
@@ -636,6 +552,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			// 			echo '<a target="_blank" OnClick="window.open(this.href,"targetWindow","toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250"); return false;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fyoursite.com%2Fem%2F4881-01%2F&picture=http%3A%2F%2Fyoursite.com%2Fem%2F4881-01%2Fimg%2Fmercedes-maybach.png&title=title+here&description=Your+description">
 			//   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAUCAMAAAAA9GVfAAACnVBMVEU0TI01TIw1TY01TY41TY81To82TY42TY85UZU6U5k7VJs7VZ07VaE8VZs8Vp08VqE8VqI8V6I9Vp49V6A9V6M+WJ8+WKA+WKQ+WaQ+WaU/WaM/WaQ/WaY/WqY/WqdAW6ZAW6dAW6hBW6dBXKhBXKlCXapCXatCXqpCXqxDXqtDXqxDX6xEX65EYK5EYK9FX65FYK9FYa9FYbBGYbBGYrFGYrJHYrFHY7JHY7NIZLNIZLRIZbRJZbVJZrZKZrZKZ7dLZ7hLaLhLaLlMablSaKpSaaxTaq1ZcbVbc7hfdLJfdbNfdbRfdrZgdrdhd7dhe8Fiebtie8Fofr9qgcFsgb5shMVthcZugrhugrtvgrxwhL1whL5xhb9xhcBzh8JziL9ziMJziMN1isV1isZ2iL12ir52isF5jMWAjreAk8eEk7+ElMOFlseFmMiIl7yKmsqOnL+RnsGSnsGVpdCXp9SeqsmfrNKfrNOfrdSgrdOgrdSgrtOgrtWhrtShrtWhr9Sir9WisNaisNejsNimstWoss+qtM+suNesudyuudmwvNyyvNazvNizvdqzvtqzvtu0vtu0vty0v9y0v961v921v962v9i3v9a3wd24wt65wtu5w+G8xeG8xuG9xNq+xtzAyeHAyePByuHCyd7Dy+DEzOPFzOHGz+fGz+nJ0OLL0uXN1OjP1urQ1+vS1+bS2OfT2evU2uzV2+vW2+jY3evZ3uzZ3u3b4O7c4vHd4ezd4/Le4/Df4+3f4+/g5PHg5fHh5vHk5/Dk6PLn6vXo6/Xo7Pbp7PTq7fbr7vTr7vbt8Pbx8vfx8vjx8/j09fr09vn19vr19/v29/r3+Pv5+vz6+/z6+/37+/37/P78/P38/P78/f79/f7+/v////+ZYdejAAACCUlEQVR4AWNYEebkTAYMXMHg7+BIFgxlsLMnEzLY2tja7LqHBHYARYiBDFbWVtb3UABQhBjIYGlhaQHTszw5uOTePZCIpakoEwOvmQarMpCNHTKYmJuYQzUeBbKT7t0DiZj4rbtzd09K49UpQDZ2yGBibGIM1dlsEnQESIFETFquL+i4sbzhajcbs5SxkRATA6e+PCMHs5IYMxOfAVgFg56hniFUZ5NeIogCiehNvjuPS12v/uqxazcXa3uvv3P3YOqke6duzVx5687mcLAKBl0dXR2wviNNcboeTbPv3QOJ6KYfv7szT6L26u6EQ6czu85ktd6cOOnepoBZF4oKLy0Dq2DQ0tbSButcC2JpFd+7B6a1QxZevD2t+uoMrVXnc13a9l65N2HCvQnaW0Aq94FVMGiqaaqBdR6uidV0r1lz7x5IRJObRTr+xLEZV/s1V53PWXJ9afvVfqBOta3ns6XZhcEqGFRUVVSh/qxTiQFRIBGV1ddKM84e6LzapwLUue1ywfy7Pb33elXn3J5eemUuWAWDiqKKIlRnlUo0WKciEKbtv3P3ZH7ttSkqqy/mVJy7e/zyhqn3pir6brh1Z6MPWAWDnIKcAlRnpVwUiAKKEAMZZGVkZaA6y2UjQRRQhBjIIC4pLrkdorNMPAJIbgeKEAMZxEXIhAxuggJkQS+GRZ78PGRA10UAUdSA0BPiLlkAAAAASUVORK5CYII=" width="57" />
 			// </a>';
+			$button_classes = 'elementor-share-btn';
+			// echo "<pre>";
+			// print_r($settings['view']);
+			// print_r($settings['social_icon_list'][0]['text']);
+			// echo "</pre>";
+			// wp_die();
+			
+			$show_text = $settings['view'];
+			// echo $settings['view'];
 
 			echo '<script>
 				function basicPopup(url) {
@@ -646,9 +571,25 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		
 			echo '<button class = asbw_btn';
 			echo '>';
-			echo '<span class="';
-			echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
-			echo '" >';
+			echo '<span class= asbw_fb>';
+			if ( $show_text ){
+				if ( 'icon-text' === $settings['view'] ){
+					echo '<i class="';
+					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo '" ></i>';
+					echo '&nbsp;';
+					echo $settings['social_icon_list'][$count]['text'];
+				}else if ( 'icon' === $settings['view'] ){
+					echo '<i class="';
+					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo '" ></i>';
+				}
+			}
+			if ( $show_text ){
+				if ( 'text' === $settings['view'] ){
+					echo $settings['social_icon_list'][$count]['text'];
+				}
+			}
 			$count++;
 			echo '</span>&nbsp;';
 			echo '&nbsp;';
@@ -664,9 +605,27 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			<a href=http://pinterest.com/pin/create/link/?url='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
 			echo '<button class = asbw_btn';
 			echo '>';
-			echo '<span class="';
-			echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
-			echo '" >';
+			echo '<span class= asbw_fb>';
+			if ( $show_text ){
+				if ( 'icon-text' === $settings['view'] ){
+					echo '<i class="';
+					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo '" ></i>';
+					echo '&nbsp;';
+					echo $settings['social_icon_list'][$count]['text'];
+				}else if ( 'icon' === $settings['view'] ){
+					echo '<i class="';
+					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo '" ></i>';
+				}
+			}
+			if ( $show_text ) 
+			{
+			 if ( 'text' === $settings['view'] ) 
+			 { 
+			 	echo $settings['social_icon_list'][$count]['text']; 
+			 }
+			}
 			$count++;
 			echo '</span>&nbsp;';
 			echo '&nbsp;';
