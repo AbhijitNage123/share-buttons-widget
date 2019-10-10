@@ -595,7 +595,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		
 		set_site_transient( $asbw_fb_API , $body , 86400 );
 
-		$asbw_fb_API = get_site_transient( $asbw_fb_API );			
+		$asbw_fb_API = get_site_transient( $asbw_fb_API );		
 
 		$count = 0;
 
@@ -606,6 +606,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		set_site_transient( $asbw_pin_API, $response2['body'] , 86400 );
 
 		$asbw_pin_API = get_site_transient( $asbw_pin_API );
+
+		// echo( $body['engagement']['share_count'] );
+		// echo "&nbsp;";
+		// echo( $matches[0][0] );
 
 		// echo "<prev>";
 		// print_r( $settings[ 'display_floating_on_window_position' ] );
@@ -709,7 +713,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		var iconsHTML = {};
 		#>
 		<?php 
-		
+		$asbw_fb_API = get_site_transient( $asbw_fb_API );	
+		echo( $asbw_fb_API['engagement']['share_count'] );
 		?>
 		<div class="title">
 			
@@ -728,9 +733,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				<# }
 					#>
 			</button>
-
 			<# } ); #>
-
 		</div>
 		<?php
 	}
