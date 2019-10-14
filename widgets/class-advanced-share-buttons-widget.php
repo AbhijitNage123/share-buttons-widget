@@ -128,18 +128,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'value'   => 'fab fa-facebook',
 					'library' => 'fa-brands',
 				],
-				'recommended'      => [
-					'fa-brands' => [
-						'facebook',
-						'pinterest',
-						'500px',
-					],
-					'fa-solid'  => [
-						'envelope',
-						'link',
-						'rss',
-					],
-				],
 			]
 		);
 
@@ -148,7 +136,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'View', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SELECT,
-				'label_block' => false,
+				'label_block' => true,
 				'options' => [
 					'icon-text' => 'Icon & Text',
 					'icon' => 'Icon',
@@ -221,12 +209,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					[
 						'social_icon' => [
 							'value'   => 'fab fa-facebook',
-							'library' => 'fa-brands',
-						],
-					],
-					[
-						'social_icon' => [
-							'value'   => 'fab fa-pinterest',
 							'library' => 'fa-brands',
 						],
 					],
@@ -422,6 +404,86 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 			]
 		);
+
+		$this->add_responsive_control(
+			'padding',
+			[
+				'label' => __( 'Padding', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'selectors' => [
+					'{{WRAPPER}} .asbw_btn' => 'padding: {{SIZE}}{{UNIT}};',
+				],
+				'default' => [
+					'unit' => 'em',
+				],
+				'tablet_default' => [
+					'unit' => 'em',
+				],
+				'mobile_default' => [
+					'unit' => 'em',
+				],
+				'range' => [
+					'em' => [
+						'min' => 0,
+						'max' => 5,
+					],
+				],
+			]
+		);
+
+				$this->add_responsive_control(
+			'icon_size',
+			[
+				'label' => __( 'Icon Size', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'em' => [
+						'min' => 0.5,
+						'max' => 4,
+						'step' => 0.1,
+					],
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'em',
+				],
+				'tablet_default' => [
+					'unit' => 'em',
+				],
+				'mobile_default' => [
+					'unit' => 'em',
+				],
+				'size_units' => [ 'em', 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .asbw_btn .asbw_fb .fab.fa-facebook' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'view!' => 'text',
+				],
+			]
+		);
+
+		$icon_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
+
+		$this->add_responsive_control(
+			'icon_spacing',
+			[
+				'label' => __( 'Spacing', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} i.fab.fa-facebook' => $icon_spacing,
+				],
+			]
+		);
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -458,7 +520,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				[
 					'label' => __( 'Hover Animation', 'advanced-share-buttons-widget' ),
 					'type'  => Controls_Manager::HOVER_ANIMATION,
-				]
+				],
 			);
 
 		$this->end_controls_tab();
@@ -479,23 +541,22 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	$post_id = get_post();
 
 	 	$page_url = 'https://www.wpastra.com';
-	 	// $page_url1 = 'https://www.facebook.com/groups/wpastra/permalink/683474735455127/';
-
-	 //    $page_url = get_permalink( $post_id );
-		// $page_url = urlencode( $page_url );
 
 		if ( 'yes' === $settings['access_token'] ){
 			$access_token =  $settings['caption'];	
 		}
 		else if( 'yes' === $settings['access_token'] ){
-			echo 'Please Enter Access Token';
+			if ( empty( $settings['caption'] ) )
+				echo 'Please Enter Access Token';
+			else
+				$access_token =  $settings['caption'];
 		}
 		else{
 			echo '';
 		}
-		echo $access_token;
+		//echo $access_token;
 
-		$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
+		//$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
 		
 		$args = array( 'timeout' => 30 );	
 		if ( empty($access_token) ) {
@@ -508,11 +569,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
 		}
 
-		$urlpin = 'https://widgets.pinterest.com/v1/urls/count.json?source=6&url=https://wpastra.com/';
-
 		$response1 = wp_remote_get( $urlfb, $args );
-
-		$response2 = wp_remote_get( $urlpin, $args );
 
 		if( wp_remote_retrieve_response_code( $response1 ) == 200 ) {
 
@@ -525,21 +582,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$asbw_fb_API = get_site_transient( $asbw_fb_API );		
 
 		$count = 0;
-
-		preg_match_all('!\d+!', $response2['body'], $matches);
-
-		$asbw_pin_API = 'asbw_pin_API';
-
-		set_site_transient( $asbw_pin_API, $response2['body'] , 86400 );
-
-		$asbw_pin_API = get_site_transient( $asbw_pin_API );
-
-		// echo( $body['engagement']['share_count'] );
-		// echo "&nbsp;";
-		// echo( $matches[0][0] );
-
-		// echo "<prev>";
-		// print_r( $settings[ 'display_floating_on_window_position' ] );
 	
 		if ( 'floating' === $settings['display_position'] ){
 			echo '<div class="title_floating">';
@@ -560,11 +602,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 			$show_text = $settings['view'];
 
-			if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-facebook' )
+			if ( $settings['social_icon_list'][ 0 ]['social_icon']['value'] === 'fab fa-facebook' )
 			{
-			$share_btn_fb_custom_text =! empty( $settings['social_icon_list'][$count]['text'] ) ? $settings['social_icon_list'][$count]['text'] : 'FACEBOOK';
-
-			$button_classes = 'elementor-share-btn';
+			$share_btn_fb_custom_text =! empty( $settings['social_icon_list'][0]['text'] ) ? $settings['social_icon_list'][0]['text'] : 'FACEBOOK';
 			
 			echo '<script>
 				function basicPopup(url) {
@@ -572,20 +612,21 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				}
 			</script>
 			<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
-		
-			echo '<button class = asbw_btn';
-			echo '>';
+
+			echo '<button class = "asbw_btn elementor-animation-';
+			echo $settings['hover_animation'];
+			echo '">';
 			echo '<span class= asbw_fb>';
 			if ( $show_text ){
 				if ( 'icon-text' === $settings['view'] ){
 					echo '<i class="';
-					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo $settings['social_icon_list'][ 0 ]['social_icon']['value'];
 					echo '" ></i>';
 					echo '&nbsp;';
 					echo $share_btn_fb_custom_text;
 				}else if ( 'icon' === $settings['view'] ){
 					echo '<i class="';
-					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
+					echo $settings['social_icon_list'][ 0 ]['social_icon']['value'];
 					echo '" ></i>';
 				}
 			}
@@ -595,75 +636,29 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				}
 			}
 			$count++;
-			echo '</span>&nbsp;';
-			echo '&nbsp;';
+			echo '</span>';
 			echo '</button>';
 			echo '</a>';
-			}
-			else if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-pinterest' ){
-
-			$share_btn_pin_custom_text =! empty( $settings['social_icon_list'][$count]['text'] ) ? $settings['social_icon_list'][$count]['text'] : 'PINTEREST';
-				
-			echo '<script>
-				function basicPopup(url) {
-			popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
-				}
-			</script>
-			<a href=http://pinterest.com/pin/create/link/?url='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
-			echo '<button class = asbw_btn';
-			echo '>';
-			echo '<span class= asbw_fb>';
-			if ( $show_text ){
-				if ( 'icon-text' === $settings['view'] ){
-					echo '<i class="';
-					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
-					echo '" ></i>';
-					echo '&nbsp;';
-					echo $share_btn_pin_custom_text; 
-				}else if ( 'icon' === $settings['view'] ){
-					echo '<i class="';
-					echo $settings['social_icon_list'][ $count ]['social_icon']['value'];
-					echo '" ></i>';
-				}else if ( 'text' === $settings['view'] ) 
-			 	{ 
-			 		echo $share_btn_pin_custom_text; 
-			 	}
-			 	else{
-			 		echo '';
-			 	}
-			}
-			$count++;
-			echo '</span>&nbsp;';
-			echo '&nbsp;';
-			echo '</button>';
-			echo '</a>';
-			}
-			else{
+			} else{
 			echo "Not Supported for Social Icon!";
 			}
 			switch ($settings['show_share']) {
 			case 'yes':
-				if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-facebook' ){
-				echo '<span>';
-				echo '<b>';
-				$total_share_count = $body['engagement']['share_count']; 
-				echo $total_share_count;
-				echo '<b>&nbsp;Total Shares</b>';
-				echo '</span>';
-				} else if ( $settings['social_icon_list'][ $count ]['social_icon']['value'] === 'fab fa-pinterest' ){
-				echo '<span>';
-				echo '<b>';
-				$total_share_count = $matches[0][0]; 
-				echo $total_share_count;
-				echo '<b>&nbsp;Total Shares</b>';
-				echo '</span>';
-				} else{
-				echo '<span>';
-				echo '<b>';
-				$total_share_count = $body['engagement']['share_count'] + $matches[0][0]; 
-				echo $total_share_count;
-				echo '<b>&nbsp;Total Shares</b>';
-				echo '</span>';
+				if ( $settings['social_icon_list'][ 0 ]['social_icon']['value'] === 'fab fa-facebook' ){
+					if ( empty( $settings['caption'] ) ){
+						echo 'Please Enter Access Token For Total Share Count';
+					}
+					else{
+						echo '<span>';
+						echo '<b>';
+						$total_share_count = $body['engagement']['share_count']; 
+						echo $total_share_count;
+						echo '<b>&nbsp;</b>';
+						echo '<i class=eicon-share >';
+						echo '</i>';
+						echo '</span>';
+					}
+						
 				}
 				break;
 			
@@ -695,17 +690,22 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		var iconsHTML = {};
 		#>
 		<?php 
-		$asbw_fb_API = get_site_transient( $asbw_fb_API );	
-		echo( $asbw_fb_API['engagement']['share_count'] );
 		?>
 		<div class="title">
 			
-			<# _.each( settings.social_icon_list, function( item, index ) { 
+			<#
+			
+
+			console.log(settings.social_icon_list);
+			 _.each( settings.social_icon_list, function( item, index ) { 
+			
+			 console.log(settings.social_icon_list[count].text);
+
 			var button_wrap = 'elementor-repeater-item-' + item._id + ' .asbw_btn-' + count;
 			button_wrap += ' elementor-animation-' + settings.hover_animation;
 			
 			#>
-			<button class='asbw_btn {{button_wrap}} settings.social_icon_list'>
+			<button class='asbw_btn {{button_wrap}} settings.social_icon_list elementor-animation-'{{{settings.hover_animation}}}>
 				<#
 						iconsHTML[ count ] = elementor.helpers.renderIcon( view, item.social_icon, {}, 'span', 'object' );
 						if ( ( ! item.social ) && iconsHTML[ count ] && iconsHTML[ count ].rendered ) { #>
