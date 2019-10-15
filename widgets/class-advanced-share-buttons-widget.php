@@ -683,50 +683,68 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 * @access protected
 	 */
 	protected function _content_template() {
-
-		?>
-		<# 
-		var count = 0; 
-		var iconsHTML = {};
-		#>
-		<?php 
+		$transient = get_transient( '_site_transient_asbw_fb_API' );
+		
 		?>
 		<div class="title">
-			
 			<#
-			
-
-			console.log(settings.social_icon_list);
-			 _.each( settings.social_icon_list, function( item, index ) { 
-			
-			 console.log(settings.social_icon_list[count].text);
-			 console.log( 'icon-text' === settings.view );
-			 console.log( settings.social_icon_list[count].text ); 
-
-			var button_wrap = 'elementor-repeater-item-' + item._id + ' .asbw_btn-' + count;
-			button_wrap += ' elementor-animation-' + settings.hover_animation;
-			
-			#>
-			<button class='asbw_btn {{button_wrap}} settings.social_icon_list elementor-animation-'{{{settings.hover_animation}}}>
-				<# if('icon-text' === settings.view){ #>
-					<i class="$settings['social_icon_list'][{{count}}]['social_icon']['value']"></i>
-					<#
-					{{{settings.social_icon_list[count].text}}};
-				}else if ( 'icon' === settings.view ){ #>
-				    <i class="$settings['social_icon_list'][{{count}}]['social_icon']['value']"></i>
-				 <# }else if ( 'text' === settings.view ){
-					{{{settings.social_icon_list[count].text}}};
+			console.log( settings.social_icon_list );
+			var show_text = settings.view;
+			if ( settings.social_icon_list[0].social_icon.value === 'fab fa-facebook' )
+			{
+				var share_btn_fb_custom_text;
+				if ( '' === settings.social_icon_list[0].text ) {
+				share_btn_fb_custom_text = 'FACEBOOK';	
+				<!-- console.log(share_btn_fb_custom_text); -->
+				} else {
+				share_btn_fb_custom_text = settings.social_icon_list[0].text;		
 				}
-						iconsHTML[ count ] = elementor.helpers.renderIcon( view, item.social_icon, {}, 'span', 'object' );
-						if ( ( ! item.social ) && iconsHTML[ count ] && iconsHTML[ count ].rendered ) { #>
-							{{{ iconsHTML[ count ].value }}}
-						<# } else { #>
-				<span class= "$settings['social_icon_list'][{{count}}]['social_icon']['value']"></span>
-				 count = count + 1; 
-				<# }
-					#>
-			</button>
-			<# } ); #>
+
+			 if( 'icon-text' === settings.view ){ #>
+					<button class = "asbw_btn elementor-animation-{{{settings.hover_animation}}}">
+						<span class= asbw_fb>
+							<i class="{{{settings.social_icon_list[0].social_icon.value}}}"></i>
+						</span>
+						 {{{share_btn_fb_custom_text}}} 
+					</button>	
+					<# }else if ( 'text' === settings.view ){ #>
+					<button class = "asbw_btn elementor-animation-{{{settings.hover_animation}}}">
+						<span class= asbw_fb>
+				    	{{{share_btn_fb_custom_text}}}
+				    	</span>
+					</button>
+				 <# } else { #>
+				 <button class = "asbw_btn elementor-animation-{{{settings.hover_animation}}}">
+					<span class= asbw_fb>
+						<i class="{{{settings.social_icon_list[0].social_icon.value}}}"></i>
+					</span>
+				</button>
+				<# } #>
+			<# } #>
+			 <# switch ( settings.show_share ) {
+			case 'yes':
+				if ( settings.social_icon_list[ 0 ].social_icon.value === 'fab fa-facebook' ){
+					if ( '' === settings.caption ){
+						console.log( 'Please Enter Access Token For Total Share Count' );
+					}
+					else{ #>
+						<span>
+						<b> 
+							<?php echo $transient; ?>
+						<# var total_share_count = <?php echo $transient; ?> console.log( total_share_count )#>						
+						<b>&nbsp;</b>
+						<i class=eicon-share>
+						</i>
+						</span>
+					<# }
+						
+				} 
+				break;
+			
+			default: 
+				{{{}}}
+				break;
+		} #>
 		</div>
 		<?php
 	}
