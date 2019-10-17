@@ -719,7 +719,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		else{
 			echo '';
 		}
-		//echo $access_token;
 
 		//$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
 		
@@ -730,7 +729,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		} else {
 
-			//in case $access_token.
+		
 			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
 		}
 
