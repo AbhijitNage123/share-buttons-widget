@@ -152,23 +152,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'view',
-			[
-				'label' => __( 'View', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SELECT,
-				'label_block' => true,
-				'options' => [
-					'icon-text' => 'Icon & Text',
-					'icon' => 'Icon',
-					'text' => 'Text',
-				],
-				'default' => 'icon-text',
-				'separator' => 'before',
-				'render_type' => 'template',
-			]
-		);
-
 		$repeater->add_control(
 			'text',
 			[
@@ -192,6 +175,23 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
+			]
+		);
+
+
+		$this->add_control(
+			'view',
+			[
+				'label' => __( 'View', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+				'options' => [
+					'icon-text' => 'Icon & Text',
+					'icon' => 'Icon',
+					'text' => 'Text',
+				],
+				'default' => 'icon-text',
+				'separator' => 'before',
 			]
 		);
 
@@ -256,30 +256,34 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-			'align',
+			'alignment',
 			[
-				'label'     => __( 'Alignment', 'advanced-share-buttons-widget' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'options'   => [
-					'left'   => [
+				'label' => __( 'Alignment', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
 						'title' => __( 'Left', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-left',
+						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-center',
+						'icon' => 'eicon-text-align-center',
 					],
-					'right'  => [
+					'right' => [
 						'title' => __( 'Right', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-right',
+						'icon' => 'eicon-text-align-right',
+					],
+					'justify' => [
+						'title' => __( 'Justify', 'advanced-share-buttons-widget' ),
+						'icon' => 'eicon-text-align-justify',
 					],
 				],
-				'default'   => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn' => 'text-align: {{VALUE}};',
+				'prefix_class' => 'elementor-share-buttons%s--align-',
+				'condition' => [
+					'columns' => '0',
 				],
 			]
-		);
+		);	
 
 		// If display_position is Floating.
 		$this->add_control(
@@ -370,7 +374,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
+
 		$this->end_controls_section();
+
+
+		
 
 		$this->start_controls_section(
 			'section_buttons_style',
@@ -383,12 +391,12 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_size',
 			[
-				'label'     => __( 'Button Size', 'advanced-share-buttons-widget' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => [
+				'label' => __( 'Button Size', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
 					'px' => [
-						'min'  => 0.5,
-						'max'  => 2,
+						'min' => 0.5,
+						'max' => 2,
 						'step' => 0.05,
 					],
 				],
@@ -399,14 +407,14 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-			'button_height',
+			'icon_size',
 			[
-				'label'          => __( 'Button Height', 'advanced-share-buttons-widget' ),
-				'type'           => Controls_Manager::SLIDER,
-				'range'          => [
+				'label' => __( 'Icon Size', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
 					'em' => [
-						'min'  => 1,
-						'max'  => 7,
+						'min' => 0.5,
+						'max' => 4,
 						'step' => 0.1,
 					],
 					'px' => [
@@ -414,7 +422,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'max' => 100,
 					],
 				],
-				'default'        => [
+				'default' => [
 					'unit' => 'em',
 				],
 				'tablet_default' => [
@@ -423,41 +431,72 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'mobile_default' => [
 					'unit' => 'em',
 				],
-				'size_units'     => [ 'em', 'px' ],
-				'selectors'      => [
+				'size_units' => [ 'em', 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .uael-share-btn__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'view!' => 'text',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_height',
+			[
+				'label' => __( 'Button Height', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'em' => [
+						'min' => 1,
+						'max' => 7,
+						'step' => 0.1,
+					],
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'em',
+				],
+				'tablet_default' => [
+					'unit' => 'em',
+				],
+				'mobile_default' => [
+					'unit' => 'em',
+				],
+				'size_units' => [ 'em', 'px' ],
+				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
 		$this->add_responsive_control(
-			'button_width',
+			'border_size',
 			[
-				'label'          => __( 'Button Width', 'advanced-share-buttons-widget' ),
-				'type'           => Controls_Manager::SLIDER,
-				'range'          => [
+				'label' => __( 'Border Size', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'default' => [
+					'size' => 2,
+				],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 20,
+					],
 					'em' => [
-						'min'  => 1,
-						'max'  => 7,
+						'max' => 2,
 						'step' => 0.1,
 					],
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
 				],
-				'default'        => [
-					'unit' => 'em',
+				'selectors' => [
+					'{{WRAPPER}} .uael-share-btn' => 'border-width: {{SIZE}}{{UNIT}};',
 				],
-				'tablet_default' => [
-					'unit' => 'em',
-				],
-				'mobile_default' => [
-					'unit' => 'em',
-				],
-				'size_units'     => [ 'em', 'px' ],
-				'selectors'      => [
-					'{{WRAPPER}} .uael-share-btn' => 'width: {{SIZE}}{{UNIT}};',
+				'condition' => [
+					'skin' => [ 'framed', 'boxed' ],
 				],
 			]
 		);
@@ -488,7 +527,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-				$this->add_responsive_control(
+			$this->add_responsive_control(
 			'icon_size',
 			[
 				'label' => __( 'Icon Size', 'advanced-share-buttons-widget' ),
@@ -561,7 +600,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => __( 'Normal', 'elementor-pro' ),
+				'label' => __( 'Normal', 'advanced-share-buttons-widget' ),
 				'condition' => [
 					'color_source' => 'custom',
 				],
@@ -571,17 +610,17 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'elementor-pro' ),
+				'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.elementor-share-buttons--skin-flat .elementor-share-btn,
-					 {{WRAPPER}}.elementor-share-buttons--skin-gradient .elementor-share-btn,
-					 {{WRAPPER}}.elementor-share-buttons--skin-boxed .elementor-share-btn .elementor-share-btn__icon,
-					 {{WRAPPER}}.elementor-share-buttons--skin-minimal .elementor-share-btn .elementor-share-btn__icon' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}}.elementor-share-buttons--skin-framed .elementor-share-btn,
-					 {{WRAPPER}}.elementor-share-buttons--skin-minimal .elementor-share-btn,
-					 {{WRAPPER}}.elementor-share-buttons--skin-boxed .elementor-share-btn' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn,
+					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn,
+					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn .uael-share-btn__icon,
+					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn .uael-share-btn__icon' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}}.uaelbtn--skin-framed .uael-share-btn,
+					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn,
+					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
@@ -592,15 +631,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => __( 'Secondary Color', 'elementor-pro' ),
+				'label' => __( 'Secondary Color', 'uael-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-share-buttons--skin-flat .elementor-share-btn__icon, 
-					 {{WRAPPER}}.elementor-share-buttons--skin-flat .elementor-share-btn__text, 
-					 {{WRAPPER}}.elementor-share-buttons--skin-gradient .elementor-share-btn__icon,
-					 {{WRAPPER}}.elementor-share-buttons--skin-gradient .elementor-share-btn__text,
-					 {{WRAPPER}}.elementor-share-buttons--skin-boxed .elementor-share-btn__icon,
-					 {{WRAPPER}}.elementor-share-buttons--skin-minimal .elementor-share-btn__icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn__icon, 
+					 {{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn__text, 
+					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn__icon,
+					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn__text,
+					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn__icon,
+					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn__icon' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
