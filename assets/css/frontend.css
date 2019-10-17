@@ -22,6 +22,7 @@
 .uael-share-btn__text {
      font-size: 1.5em;
     padding-right: 1em;
+    padding-left: 1em;
     -ms-flex-item-align: stretch;
     align-self: stretch;
     -webkit-box-flex: 1;
@@ -34,6 +35,10 @@
     display: -ms-flexbox;
     display: flex;
     font-weight: 100
+}
+
+.uael-share-btn__icon i{
+    font-size: 1.7em;
 }
 
 .uael-share-btn__icon {
@@ -66,7 +71,7 @@
     border-radius: 99.9em;
 }
 
-.uaelbtn--skin-gradient{
+/*.uaelbtn--skin-gradient{
      background-color: #3b5998;
 }
 
@@ -91,4 +96,65 @@
     margin-left: -0.2em;
     border-style: solid;
     background-color: #fff; 
+}*/
+
+/* For skin gradient */
+.uaelbtn--skin-gradient .uael-share-btn__text{
+  background-color: #37538D;
+  color:#fff;
 }
+
+.uaelbtn--skin-gradient .uael-share-btn__icon {
+background-color: #3b5998; 
+color: #fff;
+background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.12)),to(transparent));
+background-image: -webkit-linear-gradient(left,rgba(0,0,0,.12),transparent); 
+background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
+background-image: linear-gradient(90deg,rgba(0,0,0,.12),transparent); 
+}
+
+    /* For skin minimal */
+    .uaelbtn--skin-minimal .uael-share-btn__icon, .uaelbtn--skin-minimal .uael-share-btn__text {
+        background-color:#3b5998;
+        color:#fff;
+    }
+    .uaelbtn--skin-minimal .uael-share-btn__icon:hover{
+        -webkit-filter: saturate(1.5) brightness(1.2);
+        filter: saturate(1.5) brightness(1.2);
+    }
+    .uaelbtn--skin-minimal .uael-share-btn__text {
+        background-color: #fff;
+        color:#000;
+    }
+    .uaelbtn--skin-framed .uael-share-btn__icon, .uaelbtn--skin-framed .uael-share-btn__text{
+        border-style: solid;
+        color:#3b5998;
+        background-color: #fff; 
+        border-color:#3b5998;
+    }
+    .elementor-grid-item .uael-share-btn{
+        border-style: solid;
+        color:#3b5998;
+        background-color: #fff; 
+        border-color:#3b5998;
+    }
+
+/*.uaelbtn--skin-framed .uael-share-btn__text {
+    background-color: #fff;
+    color:#3b5998;
+    border-style: solid;
+    border-color:#3b5998;
+}*/
+
+
+/*.uael-share-btn .uaelbtn--skin-gradient {
+  border: solid 1px #3b5998;
+  color: #eee;
+  border-radius:5px;
+ -moz-border-radius:5px;
+  background: -moz-linear-gradient(top, #5E5E5E 0%, #474747 51%, #0a0e0a 51%, #0a0809 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5E5E5E), color-stop(51%,#474747), color-stop(51%,#0a0e0a), color-stop(100%,#0a0809));
+}*/
+/*.uael-share-btn:hover {
+  color: white;
+}*/

@@ -184,7 +184,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'View', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SELECT,
-				'label_block' => true,
+				'label_block' => false,
 				'options' => [
 					'icon-text' => 'Icon & Text',
 					'icon' => 'Icon',
@@ -484,7 +484,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'range' => [
 					'px' => [
-						'min' => 1,
+						'min' => 2,
 						'max' => 20,
 					],
 					'em' => [
@@ -493,7 +493,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-grid-item .uael-share-btn' => 'border-width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'skin' => [ 'framed', 'boxed' ],
@@ -528,7 +528,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		);
 
 			$this->add_responsive_control(
-			'icon_size',
+			'uael_icon_size',
 			[
 				'label' => __( 'Icon Size', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SLIDER,
@@ -703,9 +703,19 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-	 	$post_id = get_post();
+	 	// $post_id = get_post();
 
-	 	$page_url = 'https://www.wpastra.com';
+	 	// // $page_url = 'https://www.wpastra.com';
+	 	// $page_url = get_permalink( $post_id );
+
+	 	global $wp;
+
+		echo add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+
+		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+	 	// echo $url;	
+
+	 	// $page_url = urlencode($url);
 
 		if ( 'yes' === $settings['access_token'] ){
 			$access_token =  $settings['caption'];	
@@ -780,7 +790,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			echo ' uaelbtn--skin-';
 			echo $settings['skin'];
 			echo '">';
-			echo '<span class="uael-share-btn__icon">
+			if( 'icon-text' === $settings['view'] ){
+				echo '<span class="uael-share-btn__icon">
 								<i class="fab fa-facebook" aria-hidden="true"></i>
 								<span class="elementor-screen-only">Share on facebook</span>
 							</span>
@@ -792,8 +803,32 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 									
 						</div>
 							
+						';	
+			} else if ( 'text' === $settings['view'] ){
+			
+				echo '			
+							
+						<div class="uael-share-btn__text">
+									
+										<span class="uael-share-btn__title">Facebook</span>
+									
 						</div>
+							
+						';
+
+			} else {
+
+				echo '<span class="uael-share-btn__icon">
+								<i class="fab fa-facebook" aria-hidden="true"></i>
+								<span class="elementor-screen-only">Share on facebook</span>
+							</span>
+							
+						';
+
+			}
+			echo '</div>
 					</div>';
+			
 					switch ($settings['show_share']) {
 			case 'yes':
 				if ( $settings['social_icon_list'][ 0 ]['social_icon']['value'] === 'fab fa-facebook' ){
@@ -840,7 +875,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		<div class="elementor-grid">
 			
 					<div class="elementor-grid-item">
-						<div class="uael-share-btn elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">;
+						<div class="uael-share-btn elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">
 							<#
 			console.log( settings.social_icon_list );
 			var show_text = settings.view;
@@ -849,7 +884,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				var share_btn_fb_custom_text;
 				if ( '' === settings.social_icon_list[0].text ) {
 				share_btn_fb_custom_text = 'FACEBOOK';	
-				<!-- console.log(share_btn_fb_custom_text); -->
 				} else {
 				share_btn_fb_custom_text = settings.social_icon_list[0].text;		
 				}
@@ -876,7 +910,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 								<i class="{{{settings.social_icon_list[0].social_icon.value}}}" aria-hidden="true"></i>
 								<span class="elementor-screen-only">Share on facebook</span>
 							</span>
-								<# } #>
+								<# console.log(settings.view);} #>
 							<# } #>
 						</div>
 						 <# switch ( settings.show_share ) {
