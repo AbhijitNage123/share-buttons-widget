@@ -340,21 +340,21 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'access_token',
-			[
-				'label'   => __( 'Enable Access Token', 'advanced-share-buttons-widget' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => [
-					'no'   => __( 'No', 'advanced-share-buttons-widget' ),
-					'yes' => __( 'Yes', 'advanced-share-buttons-widget' ),
-				],
-				'default' => 'no',
-				'condition'      => [
-					'show_share' => 'yes',
-				],
-			]
-		);
+		// $this->add_control(
+		// 	'access_token',
+		// 	[
+		// 		'label'   => __( 'Enable Access Token', 'advanced-share-buttons-widget' ),
+		// 		'type'    => Controls_Manager::SELECT,
+		// 		'options' => [
+		// 			'no'   => __( 'No', 'advanced-share-buttons-widget' ),
+		// 			'yes' => __( 'Yes', 'advanced-share-buttons-widget' ),
+		// 		],
+		// 		'default' => 'no',
+		// 		'condition'      => [
+		// 			'show_share' => 'yes',
+		// 		],
+		// 	]
+		// );
 
 		$this->add_control(
 			'caption',
@@ -363,8 +363,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '',
 				'placeholder' => __( 'Enter your access token', 'advanced-share-buttons-widget' ),
-				'condition'   => [
-					'access_token' => 'yes',
+				'condition'      => [
+					'show_share' => 'yes',
 				],
 				'label_block' => false,
 			]
@@ -622,19 +622,24 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	// echo $url;	
 
 	 	// $page_url = urlencode($url);
-
-		if ( 'yes' === $settings['access_token'] ){
-			$access_token =  $settings['caption'];	
-		}
-		else if( 'yes' === $settings['access_token'] ){
-			if ( empty( $settings['caption'] ) )
-				echo 'Please Enter Access Token';
-			else
+	 	
+	 	if ( !empty($settings['show_share']) ){
+		 		if ( 'yes' === $settings['show_share'] ){
 				$access_token =  $settings['caption'];
-		}
-		else{
-			echo '';
-		}
+				}else if( 'yes' === $settings['show_share'] ){
+				if ( empty( $settings['caption'] ) ){
+					
+					echo 'Please Enter Access Token';
+
+				}else{
+					$access_token =  $settings['caption'];
+				}
+			}
+			else{
+		
+			}	
+	 	}
+		
 
 		//$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
 		
@@ -649,11 +654,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
 		}
 
-		$response1 = wp_remote_get( $urlfb, $args );
+		$response = wp_remote_get( $urlfb, $args );
 
-		if( wp_remote_retrieve_response_code( $response1 ) == 200 ) {
+		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
 
-		$body = json_decode( wp_remote_retrieve_body( $response1 ), true );
+		$body = json_decode( wp_remote_retrieve_body( $response ), true );
 
 		$asbw_fb_API = 'asbw_fb_API';
 		
@@ -663,21 +668,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$count = 0;
 	
-		// if ( 'floating' === $settings['display_position'] ){
-		// 	echo '<div class="title_floating">';
-		// 	echo '<button class = asbw_floating_btn style="position: fixed;right: -7px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;"';
-		// 	echo '>';
-		// 	echo '<span class="';
-		// 	echo $settings['social_icon_list'][ 0 ]['social_icon']['value'];
-		// 	echo '" >';
-		// 	echo '</span>&nbsp;';
-		// 	echo '&nbsp;';
-		// 	echo '</button>';
-		// 	echo '</a>';
-		// 	echo '</div>';
-		// 	 } else{
-
-			 	 // s=100&p[title]
 		if ( 'floating' === $settings['display_position'] ){
 
 			$position = $settings['display_floating_align'];
@@ -758,9 +748,15 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						echo 'Please Enter Access Token For Total Share Count';
 					}
 					else{
-						echo '<span>';
+						echo '<span style="font-size: 22px;">';
 						echo '<b>';
-						$total_share_count = $body['engagement']['share_count']; 
+						// $total_share_count;
+						$total_share_count = $body['engagement']['share_count'];
+						if ( empty( $total_share_count ) ){
+							$total_share_count = 0;
+						} else {
+							$total_share_count = $body['engagement']['share_count'];
+						}
 						echo $total_share_count;
 						echo '<b>&nbsp;</b>';
 						echo '<i class=eicon-share >';
@@ -795,7 +791,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function _content_template() {
 		$transient = get_transient( '_site_transient_asbw_fb_API' );
-		
+		echo $transient;
 		?>
 		
 		<div class="elementor-grid">
@@ -803,7 +799,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					<div class="elementor-grid-item">
 						<div class="uael-share-btn elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">
 							<#
-			console.log( settings.social_icon_list );
+			console.log( settings );
 			var show_text = settings.view;
 			if ( settings.social_icon_list[0].social_icon.value === 'fab fa-facebook' )
 			{
@@ -846,12 +842,24 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						console.log( 'Please Enter Access Token For Total Share Count' );
 					}
 					else{ #>
-						<span>
+						<span style="font-size: 22px;">
 						<b> 
 							<?php echo $transient; ?>
-						<# var total_share_count = <?php echo $transient; ?> console.log( total_share_count )#>						
+
+						<# var total_share_count = <?php echo $transient; ?> console.log( total_share_count )
+							if ( '' != settings.show_share ){
+								if('yes' == settings.show_share ){
+								    if('' == settings.caption)
+										console.log('please enter access token');
+									else
+										console.log("Access Token Accepted");	
+								}else{
+									console.log('Else Access Token Rejected');
+								}
+							}
+						#>						
 						<b>&nbsp;</b>
-						<i class=eicon-share>
+						<i class="eicon-share">
 						</i>
 						</span>
 					<# }
