@@ -273,10 +273,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'title' => __( 'Right', 'advanced-share-buttons-widget' ),
 						'icon' => 'eicon-text-align-right',
 					],
-					'justify' => [
-						'title' => __( 'Justify', 'advanced-share-buttons-widget' ),
-						'icon' => 'eicon-text-align-justify',
-					],
 				],
 				'prefix_class' => 'elementor-share-buttons%s--align-',
 				'condition' => [
@@ -309,7 +305,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'default'   => 'center',
 				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};position: fixed;right: 5px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;',
 				],
 			]
 		);
@@ -340,7 +336,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'Total Share Count', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SWITCHER,
-				'default' => '',
+				'default' => 'no',
 			]
 		);
 
@@ -354,6 +350,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'yes' => __( 'Yes', 'advanced-share-buttons-widget' ),
 				],
 				'default' => 'no',
+				'condition'      => [
+					'show_share' => 'yes',
+				],
 			]
 		);
 
@@ -367,10 +366,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'condition'   => [
 					'access_token' => 'yes',
 				],
-				'dynamic'     => [
-					'active' => true,
-				],
-				'label_block' => true,
+				'label_block' => false,
 			]
 		);
 
@@ -493,90 +489,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-grid-item .uael-share-btn' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-grid-item .uael-share-btn, .uael-share-btn .elementor-animation- .uaelbtn-shape-circle .uaelbtn--skin-minimal .uael-share-btn__icon' => 'border-width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'skin' => [ 'framed', 'boxed' ],
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'padding',
-			[
-				'label' => __( 'Padding', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'selectors' => [
-					'{{WRAPPER}}' => 'padding: {{SIZE}}{{UNIT}};',
-				],
-				'default' => [
-					'unit' => 'em',
-				],
-				'tablet_default' => [
-					'unit' => 'em',
-				],
-				'mobile_default' => [
-					'unit' => 'em',
-				],
-				'range' => [
-					'em' => [
-						'min' => 0,
-						'max' => 5,
-					],
-				],
-			]
-		);
-
-			$this->add_responsive_control(
-			'uael_icon_size',
-			[
-				'label' => __( 'Icon Size', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'em' => [
-						'min' => 0.5,
-						'max' => 4,
-						'step' => 0.1,
-					],
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'default' => [
-					'unit' => 'em',
-				],
-				'tablet_default' => [
-					'unit' => 'em',
-				],
-				'mobile_default' => [
-					'unit' => 'em',
-				],
-				'size_units' => [ 'em', 'px' ],
-				'selectors' => [
-					'{{WRAPPER}} .asbw_fb .fab.fa-facebook' => 'font-size: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'view!' => 'text',
-				],
-			]
-		);
-
-		$icon_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
-
-		$this->add_responsive_control(
-			'icon_spacing',
-			[
-				'label' => __( 'Spacing', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} i.fab.fa-facebook' => $icon_spacing,
 				],
 			]
 		);
@@ -614,13 +530,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn,
-					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn,
-					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn .uael-share-btn__icon,
-					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn .uael-share-btn__icon' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}}.uaelbtn--skin-framed .uael-share-btn,
-					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn,
-					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .uael-share-btn .uael-share-btn__icon, .uael-share-btn .uael-share-btn__text, .uaelbtn--skin-minimal .uael-share-btn__icon' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
@@ -631,15 +541,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => __( 'Secondary Color', 'uael-pro' ),
+				'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn__icon, 
-					 {{WRAPPER}}.uaelbtn--skin-flat .uael-share-btn__text, 
-					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn__icon,
-					 {{WRAPPER}}.uaelbtn--skin-gradient .uael-share-btn__text,
-					 {{WRAPPER}}.uaelbtn--skin-boxed .uael-share-btn__icon,
-					 {{WRAPPER}}.uaelbtn--skin-minimal .uael-share-btn__icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .uael-share-btn .uael-share-btn__icon, .uael-share-btn .uael-share-btn__text,
+					' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
@@ -710,7 +616,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 	 	global $wp;
 
-		echo add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+		//echo add_query_arg( $wp->query_vars, home_url( $wp->request ) );
 
 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
 	 	// echo $url;	
@@ -757,31 +663,47 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$count = 0;
 	
-		if ( 'floating' === $settings['display_position'] ){
-			echo '<div class="title_floating">';
-			echo '<button class = asbw_floating_btn style="position: fixed;right: -7px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;"';
-			echo '>';
-			echo '<span class="';
-			echo $settings['social_icon_list'][ 0 ]['social_icon']['value'];
-			echo '" >';
-			echo '</span>&nbsp;';
-			echo '&nbsp;';
-			echo '</button>';
-			echo '</a>';
-			echo '</div>';
-			 }
+		// if ( 'floating' === $settings['display_position'] ){
+		// 	echo '<div class="title_floating">';
+		// 	echo '<button class = asbw_floating_btn style="position: fixed;right: -7px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;"';
+		// 	echo '>';
+		// 	echo '<span class="';
+		// 	echo $settings['social_icon_list'][ 0 ]['social_icon']['value'];
+		// 	echo '" >';
+		// 	echo '</span>&nbsp;';
+		// 	echo '&nbsp;';
+		// 	echo '</button>';
+		// 	echo '</a>';
+		// 	echo '</div>';
+		// 	 } else{
 
-			 echo '<div class="elementor-grid">
+			 	 // s=100&p[title]
+		if ( 'floating' === $settings['display_position'] ){
+
+			$position = $settings['display_floating_align'];
+		} else{
+			$position = 'inline';
+		}
+
+			 echo '<div class="elementor-grid ">
 			
 					<div class="elementor-grid-item">';
 
 				$show_text = $settings['view'];		
 				echo '<script>
 					function basicPopup(url) {
-				popupWindow = window.open(url,"popUpWindow","height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
+
+						var top = window.screen.height - 400;
+						    top = top > 0 ? top/2 : 0;
+						            
+						var left = window.screen.width - 600;
+						    left = left > 0 ? left/2 : 0;
+
+												
+						popupWindow = window.open(url,"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 					}
 				</script>
-				<a href=https://www.facebook.com/sharer.php?s=100&p[title]='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
+				<a href=https://www.facebook.com/sharer.php?u='.$page_url.' target="_blank" onclick="basicPopup(this.href);return false">';
 				
 			echo '<div class="uael-share-btn elementor-animation-';
 			echo $settings['hover_animation'];
@@ -855,7 +777,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		}
 			
 		echo '</div>';
-	}
+
+	// 		 } //else loop for floating.
+			
+	 } //if loop of wp retrive.
 
 	}
 
@@ -872,6 +797,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$transient = get_transient( '_site_transient_asbw_fb_API' );
 		
 		?>
+		
 		<div class="elementor-grid">
 			
 					<div class="elementor-grid-item">
