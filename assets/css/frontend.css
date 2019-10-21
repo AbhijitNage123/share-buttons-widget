@@ -72,6 +72,10 @@
     border-radius: 99.9em;
 }
 
+/*.uaelbtn--skin-minimal.uaelbtn-shape-circle .uael-share-btn__icon {
+    border-radius: 99.9em
+}*/
+
 /*.uaelbtn--skin-gradient{
      background-color: #3b5998;
 }
@@ -120,6 +124,7 @@ background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
 /*background-image: linear-gradient(90deg,rgba(0,0,0,.12),transparent); */
 }
 
+
     /* For skin minimal */
     .uaelbtn--skin-minimal .uael-share-btn__icon, .uaelbtn--skin-minimal .uael-share-btn__text {
         background-color:#3b5998;
@@ -145,7 +150,10 @@ background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
         background-color: #3b5998; 
         border-color:#3b5998;
     }
-
+    .elementor-grid-item .uael-share-btn .uaelbtn--skin-framed{
+        color:#3b5998;
+        border-color:#3b5998;
+    }
 /*.uaelbtn--skin-framed .uael-share-btn__text {
     background-color: #fff;
     color:#3b5998;

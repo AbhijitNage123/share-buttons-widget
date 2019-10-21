@@ -96,27 +96,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	}
 
 	/**
-	 * Get button sizes.
-	 *
-	 * Retrieve an array of button sizes for the button widget.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 * @static
-	 *
-	 * @return array An array containing button sizes.
-	 */
-	public static function get_button_sizes() {
-		return [
-			'xs' => __( 'Extra Small', 'advanced-share-buttons-widget' ),
-			'sm' => __( 'Small', 'advanced-share-buttons-widget' ),
-			'md' => __( 'Medium', 'advanced-share-buttons-widget' ),
-			'lg' => __( 'Large', 'advanced-share-buttons-widget' ),
-			'xl' => __( 'Extra Large', 'advanced-share-buttons-widget' ),
-		];
-	}
-
-	/**
 	 * Register the widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -202,7 +181,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'gradient' => __( 'Gradient', 'advanced-share-buttons-widget' ),
-					'minimal' => __( 'Minimal', 'advanced-share-buttons-widget' ),
+					'minimal' => __( 'Boxed Icon', 'advanced-share-buttons-widget' ),
 					'framed' => __( 'Framed', 'advanced-share-buttons-widget' ),
 				],
 				'default' => 'gradient',
@@ -285,19 +264,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->add_control(
 			'display_floating_align',
 			[
-				'label'       => __( 'Alignment', 'advanced-share-buttons-widget' ),
+				'label'       => __( '', 'advanced-share-buttons-widget' ),
 				'type'        => Controls_Manager::CHOOSE,
-				'default'     => 'left',
-				'options'     => [
-					'left'  => [
-						'title' => __( 'Left', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-left',
-					],
-					'right' => [
-						'title' => __( 'Right', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-right',
-					],
-				],
 				'toggle'      => false,
 				'label_block' => false,
 				'condition'   => [
@@ -309,27 +277,54 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 			]
 		);
+		// $this->add_control(
+		// 	'display_floating_align',
+		// 	[
+		// 		'label'       => __( 'Alignment', 'advanced-share-buttons-widget' ),
+		// 		'type'        => Controls_Manager::CHOOSE,
+		// 		'default'     => 'left',
+		// 		'options'     => [
+		// 			'left'  => [
+		// 				'title' => __( 'Left', 'advanced-share-buttons-widget' ),
+		// 				'icon'  => 'eicon-text-align-left',
+		// 			],
+		// 			'right' => [
+		// 				'title' => __( 'Right', 'advanced-share-buttons-widget' ),
+		// 				'icon'  => 'eicon-text-align-right',
+		// 			],
+		// 		],
+		// 		'toggle'      => false,
+		// 		'label_block' => false,
+		// 		'condition'   => [
+		// 			'display_position' => 'floating',
+		// 		],
+		// 		'default'   => 'center',
+		// 		'selectors' => [
+		// 			'{{WRAPPER}}' => 'text-align: {{VALUE}};position: fixed;right: 5px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;',
+		// 		],
+		// 	]
+		// );
 
-		$this->add_responsive_control(
-			'display_floating_on_window_position',
-			[
-				'label'          => __( 'Floating Position', 'advanced-share-buttons-widget' ),
-				'type'           => Controls_Manager::SLIDER,
-				'range'     => [
-					'px' => [
-						'min'  => 0.5,
-						'max'  => 2,
-						'step' => 0.05,
-					],
-				],
-				'selectors'      => [
-					'{{WRAPPER}} .title_floating .asbw_floating_btn' => 'top: {{VALUE}};',
-				],
-				'condition'      => [
-					'display_position' => 'floating',
-				],
-			]
-		);
+		// $this->add_responsive_control(
+		// 	'display_floating_on_window_position',
+		// 	[
+		// 		'label'          => __( 'Floating Position', 'advanced-share-buttons-widget' ),
+		// 		'type'           => Controls_Manager::SLIDER,
+		// 		'range'     => [
+		// 			'px' => [
+		// 				'min'  => 0.5,
+		// 				'max'  => 2,
+		// 				'step' => 0.05,
+		// 			],
+		// 		],
+		// 		'selectors'      => [
+		// 			'{{WRAPPER}} .elementor-grid .elementor-grid-item .uael-share-btn' => 'top: {{VALUE}};',
+		// 		],
+		// 		'condition'      => [
+		// 			'display_position' => 'floating',
+		// 		],
+		// 	]
+		// );
 
 		$this->add_control(
 			'show_share',
@@ -339,22 +334,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'default' => 'no',
 			]
 		);
-
-		// $this->add_control(
-		// 	'access_token',
-		// 	[
-		// 		'label'   => __( 'Enable Access Token', 'advanced-share-buttons-widget' ),
-		// 		'type'    => Controls_Manager::SELECT,
-		// 		'options' => [
-		// 			'no'   => __( 'No', 'advanced-share-buttons-widget' ),
-		// 			'yes' => __( 'Yes', 'advanced-share-buttons-widget' ),
-		// 		],
-		// 		'default' => 'no',
-		// 		'condition'      => [
-		// 			'show_share' => 'yes',
-		// 		],
-		// 	]
-		// );
 
 		$this->add_control(
 			'caption',
@@ -372,10 +351,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 
 		$this->end_controls_section();
-
-
 		
-
 		$this->start_controls_section(
 			'section_buttons_style',
 			[
@@ -530,22 +506,28 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn .uael-share-btn__icon, .uael-share-btn .uael-share-btn__text, .uaelbtn--skin-minimal .uael-share-btn__icon' => 'background-color: {{VALUE}}',
+					' {{WRAPPER}} .uaelbtn--skin-minimal,
+					 {{WRAPPER}} .uael-share-btn .uaelbtn--skin-gradient,
+					 .uaelbtn--skin-gradient .uael-share-btn__text,
+					 .uaelbtn--skin-gradient .uael-share-btn__icon,
+					 .uaelbtn--skin-minimal .uael-share-btn__icon' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .uael-share-btn.uaelbtn--skin-framed, .uaelbtn--skin-framed .uael-share-btn__icon .fa-facebook:before,.uaelbtn--skin-framed .uael-share-btn__text' => 'color: {{VALUE}}; border-color:{{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
 				],
 			]
 		);
-
+			//.elementor-grid-item .uael-share-btn .uael-share-btn .uael-share-btn__icon
 		$this->add_control(
 			'secondary_color',
 			[
 				'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn .uael-share-btn__icon, .uael-share-btn .uael-share-btn__text,
-					' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .uaelbtn--skin-minimal .uael-share-btn__icon .fa-facebook:before,
+					 {{WRAPPER}} .uael-share-btn .uaelbtn--skin-gradient .uael-share-btn__icon
+					 ' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'color_source' => 'custom',
@@ -565,27 +547,27 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-			$this->add_responsive_control(
-				'gap',
-				[
-					'label'      => __( 'Space between buttons', 'advanced-share-buttons-widget' ),
-					'type'       => Controls_Manager::SLIDER,
-					'size_units' => [ 'px', 'em', 'rem' ],
-					'range'      => [
-						'px' => [
-							'min' => 1,
-							'max' => 1000,
-						],
-					],
-					'default'    => [
-						'size' => 10,
-						'unit' => 'px',
-					],
-					'selectors'  => [
-						'{{WRAPPER}} .uael-share-btn' => 'margin-right: calc( {{SIZE}}{{UNIT}} / 2) ; margin-left: calc( {{SIZE}}{{UNIT}} / 2);',
-					],
-				]
-			);
+			// $this->add_responsive_control(
+			// 	'gap',
+			// 	[
+			// 		'label'      => __( 'Space between buttons', 'advanced-share-buttons-widget' ),
+			// 		'type'       => Controls_Manager::SLIDER,
+			// 		'size_units' => [ 'px', 'em', 'rem' ],
+			// 		'range'      => [
+			// 			'px' => [
+			// 				'min' => 1,
+			// 				'max' => 1000,
+			// 			],
+			// 		],
+			// 		'default'    => [
+			// 			'size' => 10,
+			// 			'unit' => 'px',
+			// 		],
+			// 		'selectors'  => [
+			// 			'{{WRAPPER}} .uael-share-btn' => 'margin-right: calc( {{SIZE}}{{UNIT}} / 2) ; margin-left: calc( {{SIZE}}{{UNIT}} / 2);',
+			// 		],
+			// 	]
+			// );
 			$this->add_control(
 				'hover_animation',
 				[
@@ -616,12 +598,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 	 	global $wp;
 
-		//echo add_query_arg( $wp->query_vars, home_url( $wp->request ) );
-
 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
-	 	// echo $url;	
-
-	 	// $page_url = urlencode($url);
 	 	
 	 	if ( !empty($settings['show_share']) ){
 		 		if ( 'yes' === $settings['show_share'] ){
@@ -666,7 +643,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		$asbw_fb_API = get_site_transient( $asbw_fb_API );		
 
-		$count = 0;
+		// $count = 0;
 	
 		if ( 'floating' === $settings['display_position'] ){
 
