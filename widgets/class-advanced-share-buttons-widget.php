@@ -105,6 +105,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 * @access protected
 	 */
 	protected function _register_controls() {
+
 		$this->start_controls_section(
 			'section_buttons_content',
 			[
@@ -349,9 +350,20 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'error_msg',
+			[
+				'type'            => Controls_Manager::RAW_HTML,
+				'label'             => sprintf( __( '%1$s Please Enter Access Token » %2$s', 'uael' ), '<a href="https://uaelementor.com/docs/advanced-heading-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-editor-screen&utm_campaign=uael-pro-plugin" target="_blank" rel="noopener">', '</a>' ),
+				'condition'      => [
+					'caption' => '',
+				],
+			]
+		);
+
 
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
 			'section_buttons_style',
 			[
@@ -535,6 +547,30 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'separator' => 'after',
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'typography',
+				'selector' => '{{WRAPPER}} .uael-share-btn__text',
+				'exclude' => [ 'line_height' ],
+			]
+		);
+
+		$this->add_control(
+			'text_padding',
+			[
+				'label' => __( 'Text Padding', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .uael-share-btn__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+				'condition' => [
+					'view' => 'text',
+				],
+			]
+		);
 
 		$this->end_controls_tab();
 		$this->end_controls_section();
@@ -542,7 +578,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'general_spacing',
 			[
-				'label' => __( 'Spacing', 'advanced-share-buttons-widget' ),
+				'label' => __( 'Animation', 'advanced-share-buttons-widget' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -577,6 +613,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			);
 
 		$this->end_controls_tab();
+		
 	}
 
 	/**
@@ -606,7 +643,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				}else if( 'yes' === $settings['show_share'] ){
 				if ( empty( $settings['caption'] ) ){
 					
-					echo 'Please Enter Access Token';
+					echo '';
 
 				}else{
 					$access_token =  $settings['caption'];
@@ -722,7 +759,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			case 'yes':
 				if ( $settings['social_icon_list'][ 0 ]['social_icon']['value'] === 'fab fa-facebook' ){
 					if ( empty( $settings['caption'] ) ){
-						echo 'Please Enter Access Token For Total Share Count';
+						echo '';//Please Enter Access Token For Total Share Count.
 					}
 					else{
 						echo '<span style="font-size: 22px;">';
