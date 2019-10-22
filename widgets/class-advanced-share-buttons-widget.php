@@ -182,7 +182,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'gradient' => __( 'Gradient', 'advanced-share-buttons-widget' ),
-					'minimal' => __( 'Boxed Icon', 'advanced-share-buttons-widget' ),
+					'minimal' => __( 'Minimal', 'advanced-share-buttons-widget' ),
 					'framed' => __( 'Framed', 'advanced-share-buttons-widget' ),
 				],
 				'default' => 'gradient',
@@ -354,13 +354,41 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'error_msg',
 			[
 				'type'            => Controls_Manager::RAW_HTML,
-				'label'             => sprintf( __( '%1$s Please Enter Access Token » %2$s', 'uael' ), '<a href="https://uaelementor.com/docs/advanced-heading-widget/?utm_source=uael-pro-dashboard&utm_medium=uael-editor-screen&utm_campaign=uael-pro-plugin" target="_blank" rel="noopener">', '</a>' ),
-				'condition'      => [
-					'caption' => '',
+				'label'           => sprintf( __( '%1$s Please Enter Access Token » %2$s', 'uael' ), '<a href="https://developers.facebook.com/docs/graph-api/using-graph-api" target="_blank" rel="noopener">', '</a>' ),
+				'condition'       => [
+					'caption'     => '',
+					'show_share' => 'yes',
 				],
 			]
 		);
+			$this->add_control(
+			'share_url_type',
+			[
+				'label' => __( 'Target URL', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'current_page' => __( 'Current Page', 'advanced-share-buttons-widget' ),
+					'custom' => __( 'Custom', 'advanced-share-buttons-widget' ),
+				],
+				'default' => 'current_page',
+				'separator' => 'before',
+			]
+		);
 
+		$this->add_control(
+			'share_url',
+			[
+				'label' => __( 'Link', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::URL,
+				'show_external' => false,
+				'placeholder' => __( 'https://your-link.com', 'advanced-share-buttons-widget' ),
+				'condition' => [
+					'share_url_type' => 'custom',
+				],
+				'show_label' => false,
+				'frontend_available' => true,
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -477,7 +505,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-grid-item .uael-share-btn, .uael-share-btn .elementor-animation- .uaelbtn-shape-circle .uaelbtn--skin-minimal .uael-share-btn__icon' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-grid-item .uael-share-btn, .uael-share-btn .elementor-animation- .uaelbtn-shape-circle .uaelbtn--skin-minimal .uael-share-btn__icon,' => 'border-width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'skin' => [ 'framed', 'boxed' ],
@@ -582,28 +610,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
-
-			// $this->add_responsive_control(
-			// 	'gap',
-			// 	[
-			// 		'label'      => __( 'Space between buttons', 'advanced-share-buttons-widget' ),
-			// 		'type'       => Controls_Manager::SLIDER,
-			// 		'size_units' => [ 'px', 'em', 'rem' ],
-			// 		'range'      => [
-			// 			'px' => [
-			// 				'min' => 1,
-			// 				'max' => 1000,
-			// 			],
-			// 		],
-			// 		'default'    => [
-			// 			'size' => 10,
-			// 			'unit' => 'px',
-			// 		],
-			// 		'selectors'  => [
-			// 			'{{WRAPPER}} .uael-share-btn' => 'margin-right: calc( {{SIZE}}{{UNIT}} / 2) ; margin-left: calc( {{SIZE}}{{UNIT}} / 2);',
-			// 		],
-			// 	]
-			// );
+		
 			$this->add_control(
 				'hover_animation',
 				[
@@ -627,15 +634,25 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-	 	// $post_id = get_post();
-
-	 	// // $page_url = 'https://www.wpastra.com';
-	 	// $page_url = get_permalink( $post_id );
-
+		
 	 	global $wp;
+	 	
+	 	if ( 'custom' === $settings['share_url_type'] ){
 
-		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+	 		if ( '' === $settings['share_url']['url'] ){
+
+	 		 $page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+
+	 		}else{
+
+	 			$page_url = esc_url( $settings['share_url']['url'] );
+
+	 		}
+
+	 	}else{
+
+	 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+	 	}
 	 	
 	 	if ( !empty($settings['show_share']) ){
 		 		if ( 'yes' === $settings['show_share'] ){
@@ -819,7 +836,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			{
 				var share_btn_fb_custom_text;
 				if ( '' === settings.social_icon_list[0].text ) {
-				share_btn_fb_custom_text = 'FACEBOOK';	
+				share_btn_fb_custom_text = 'Facebook';	
 				} else {
 				share_btn_fb_custom_text = settings.social_icon_list[0].text;		
 				}
@@ -864,11 +881,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 							if ( '' != settings.show_share ){
 								if('yes' == settings.show_share ){
 								    if('' == settings.caption)
-										console.log('please enter access token');
+										console.log("please enter access token");
 									else
 										console.log("Access Token Accepted");	
 								}else{
-									console.log('Else Access Token Rejected');
+									console.log("Else Access Token Rejected");
 								}
 							}
 						#>						

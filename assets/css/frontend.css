@@ -57,72 +57,67 @@
     position: relative
 }
 
-.uael-share-btn__title {
-    font-weight: 700;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-}
+    .uael-share-btn__title {
+        font-weight: 700;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
 
-.uaelbtn-shape-rounded {
-    border-radius: 0.5em;
-}
-
-/*.uaelbtn--skin-minimal .uael-share-btn__icon .elementor-grid-item .uael-share-btn */
- .uaelbtn-shape-circle {
+    .uael-share-btn.uaelbtn-shape-rounded.uaelbtn--skin-minimal  span.uael-share-btn__icon {
+        border-radius: 0.5em;
+    }
+     .uael-share-btn.uaelbtn-shape-rounded.uaelbtn--skin-minimal  span.uael-share-btn__icon {
+        border-radius: 0.8em;
+        bordre-color:green;
+        border-style:solid;
+        background-color:#3b5998;
+       color:#fff;
+    }
+    .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-minimal  span.uael-share-btn__icon {
+        border-radius:99.9em;
+        bordre-color:green;
+        border-style:solid;
+        background-color:#3b5998;
+        color:#fff;
+    }
+   .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed{
     border-radius: 99.9em;
+    border-color:green;
+    border-style:solid;
+   }
+   .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed div.uael-share-btn__text, .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed span.uael-share-btn__icon  {
+    background-color:white;
+    }
+    .uael-share-btn.elementor-animation-.uaelbtn-shape-circle.uaelbtn--skin-framed {
+    border: 2px #3b5998 solid;
 }
 
-/*.uaelbtn--skin-minimal.uaelbtn-shape-circle .uael-share-btn__icon {
-    border-radius: 99.9em
-}*/
+.uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed span.uael-share-btn__icon i.fab.fa-facebook, .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed .uael-share-btn__text .uael-share-btn__title {color: #3b5998;}
+     .uaelbtn-shape-circle {
+        border-radius: 99.9em;
+    }
 
-/*.uaelbtn--skin-gradient{
-     background-color: #3b5998;
-}
 
-.uaelbtn--skin-gradient, .uaelbtn--skin-minimal .uaelbtn--skin-framed{
-  padding-left: 0.9em;
-}
+    /* For skin gradient */
+    .uael-share-btn .uael-share-btn__icon{background-color: #3b5998;}
+    .uael-share-btn .uael-share-btn__text{background-color: #ea4335;}
 
-.uaelbtn--skin-gradient:hover{
+    .uaelbtn--skin-gradient .uael-share-btn__text{
+      background-color: #37538D;
+      color:#fff;
+    }
+
+    .uaelbtn--skin-gradient .uael-share-btn__icon {
+    background-color: #3b5998; 
     color: #fff;
-}
+    }
 
-.uaelbtn--skin-minimal {
-    border-radius: 0.5em;
-    border-color: #fff;
-    color: #000;
-    background-color: #fff; 
-}
-
-.uaelbtn--skin-framed {
-    color: #3b5998;
-    border-color: #3b5998;
-    margin-left: -0.2em;
-    border-style: solid;
-    background-color: #fff; 
-}*/
-
-/* For skin gradient */
-.uael-share-btn .uael-share-btn__icon{background-color: #3b5998;}
- .uael-share-btn .uael-share-btn__text{background-color: #ea4335;}
-
-.uaelbtn--skin-gradient .uael-share-btn__text{
-  background-color: #37538D;
-  color:#fff;
-}
-
-.uaelbtn--skin-gradient .uael-share-btn__icon {
-background-color: #3b5998; 
-color: #fff;
-}
-
-.uaelbtn--skin-gradient .uael-share-btn__text, .uaelbtn--skin-gradient .uael-share-btn__icon {
-background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.12)),to(transparent));
-/*background-image: -webkit-linear-gradient(left,rgba(0,0,0,.12),transparent); */
-background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
-/*background-image: linear-gradient(90deg,rgba(0,0,0,.12),transparent); */
-}
+    .uaelbtn--skin-gradient .uael-share-btn__text, .uaelbtn--skin-gradient .uael-share-btn__icon {
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.12)),to(transparent));
+    /*background-image: -webkit-linear-gradient(left,rgba(0,0,0,.12),transparent); */
+    background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
+    /*background-image: linear-gradient(90deg,rgba(0,0,0,.12),transparent); */
+    }
 
 
     /* For skin minimal */
@@ -138,38 +133,12 @@ background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
         background-color: #fff;
         color:#000;
     }
-    .uaelbtn--skin-framed .uael-share-btn__icon, .uaelbtn--skin-framed .uael-share-btn__text{
-        border-style: solid;
-        color:#3b5998;
-        background-color: #fff; 
-        border-color:#3b5998;
+    
+    .uaelbtn--skin-minimal .uael-share-btn__icon .elementor-share-btn__icon {
+    background-color: #3b5998;
     }
-    .elementor-grid-item .uael-share-btn{
-        border-style: solid;
-        color:#3b5998;
-        background-color: #3b5998; 
-        border-color:#3b5998;
-    }
+  
     .elementor-grid-item .uael-share-btn .uaelbtn--skin-framed{
         color:#3b5998;
         border-color:#3b5998;
     }
-/*.uaelbtn--skin-framed .uael-share-btn__text {
-    background-color: #fff;
-    color:#3b5998;
-    border-style: solid;
-    border-color:#3b5998;
-}*/
-
-
-/*.uael-share-btn .uaelbtn--skin-gradient {
-  border: solid 1px #3b5998;
-  color: #eee;
-  border-radius:5px;
- -moz-border-radius:5px;
-  background: -moz-linear-gradient(top, #5E5E5E 0%, #474747 51%, #0a0e0a 51%, #0a0809 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5E5E5E), color-stop(51%,#474747), color-stop(51%,#0a0e0a), color-stop(100%,#0a0809));
-}*/
-/*.uael-share-btn:hover {
-  color: white;
-}*/
