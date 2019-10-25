@@ -218,6 +218,24 @@ border-color:#1da1f2;
     border-style: solid;
     border-color: #0077b5;*/
 }
+.uael-share-btn.uaelbtn-shape-square.uaelbtn--skin-framed .uael-share-btn__text.uael-share-btn__text--linkedin {
+    background-color:white;
+     border-width: 2px;
+    border-style: solid;
+    border-color: #0077b5;
+}
+.uael-share-btn.uaelbtn-shape-square.uaelbtn--skin-framed .uael-share-btn__text.uael-share-btn__text--twitter {
+    background-color:white;
+     border-width: 2px;
+    border-style: solid;
+    border-color: #1da1f2;
+}
+.uael-share-btn.uaelbtn-shape-square.uaelbtn--skin-framed .uael-share-btn__text.uael-share-btn__text--facebook {
+    background-color:white;
+     border-width: 2px;
+    border-style: solid;
+    border-color: #3b5998;
+}
 
 .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed .uael-share-btn__text.uael-share-btn__text--linkedin .uael-share-btn__title{
     color:#0077b5;

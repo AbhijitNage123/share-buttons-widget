@@ -19,3 +19,12 @@
 // $('social-share').document.ready
 
 // } )( jQuery );
+// ( function($){
+
+// 	function basicPopup(url){
+
+// 		popupWindow = window.open(url,"popUpWindow","height=400,width=600,left="+'360'+",top="+'360'+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
+
+// 	}
+
+// })( jQuery );

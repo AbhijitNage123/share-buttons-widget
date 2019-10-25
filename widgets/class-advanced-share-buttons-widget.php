@@ -92,7 +92,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'advanced-share-buttons-widget' ];
+		return [ 'elementor-hello-world' ];
 	}
 
 	/**
@@ -900,10 +900,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			}else{
 				$url = 'https://www.linkedin.com/sharing/share-offsite/?url='.$page_url;
 			}
-			
+			// echo $button['social_icon']['value'];
+			// print_r($settings['social_icon_list']);
 			?>
 			<div class="elementor-grid-item">
-					<script>
+					<!-- <script>
 					function basicPopup(url) {
 
 						var top = window.screen.height - 400;
@@ -915,9 +916,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 												
 						popupWindow = window.open(url,"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 					}
-				</script>
-					<a href="<?php echo $url; ?>" target="_blank" onclick="basicPopup(this.href);return false">
-						<div class="uael-share-btn elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
+				</script> -->
+
+					<a href="<?php echo $url; ?>" target="_blank">
+						<div class="uael-share-btn uael-share-btn-<?php echo $button['text']; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
 								<?php if( 'icon-text' === $settings['view'] ){ ?>
 								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['text']; ?>">
 									<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
