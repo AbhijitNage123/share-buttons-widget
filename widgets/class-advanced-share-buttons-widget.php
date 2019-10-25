@@ -197,9 +197,17 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'Custom_text',
+			[
+				'label' => __( 'Custom Label', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+			]
+		);
+
+		$repeater->add_control(
 			'text',
 			[
-				'label' => __( 'Custom Label', 'advanced-share-buttons-widget' ),
+				'label' => __( 'Networks', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options' => [
@@ -302,34 +310,20 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-		// $this->add_control(
-		// 	'shape',
-		// 	[
-		// 		'label' => __( 'Shape', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::SELECT,
-		// 		'options' => [
-		// 			'square' => __( 'Square', 'advanced-share-buttons-widget' ),
-		// 			'rounded' => __( 'Rounded', 'advanced-share-buttons-widget' ),
-		// 			'circle' => __( 'Circle', 'advanced-share-buttons-widget' ),
-		// 		],
-		// 		'default' => 'square',
-		// 	]
-		// );
 		$this->add_control(
 			'shape',
 			[
 				'label' => __( 'Shape', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'rounded',
 				'options' => [
-					'rounded' => __( 'Rounded', 'advanced-share-buttons-widget' ),
 					'square' => __( 'Square', 'advanced-share-buttons-widget' ),
+					'rounded' => __( 'Rounded', 'advanced-share-buttons-widget' ),
 					'circle' => __( 'Circle', 'advanced-share-buttons-widget' ),
 				],
-				'prefix_class' => 'elementor-shape-',
+				'default' => 'square',
 			]
 		);
-
+		
 		$this->add_responsive_control(
 			'columns',
 			[
@@ -870,9 +864,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
 	 	}
 
-	 	// update_option('$uael_page_url',$page_url);
-	 	// $uael_page_url = get_option('uael_page_url');
-
 		wp_localize_script(
 			'elementor-hello-world',
 			'uael_page_url_vars',
@@ -899,7 +890,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			}	
 	 	}
 
-
+// print_r($settings['social_icon_list']);
 	 	//----------------------------------------------------------
 	 	echo '<div class="elementor-grid">';
 	 	foreach ( $settings['social_icon_list'] as $button ) {
@@ -931,31 +922,45 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						popupWindow = window.open(url,"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 					}
 				</script> -->
+				 <?php 
+				 if ( '' === $button['Custom_text'] ){
 
-					<a href="<?php echo $url; ?>" target="_blank">
+				 	$custom_text = $button['text'];
+				 	  
+				 }
+				 else{
+
+				 		$custom_text = $button['Custom_text'];
+
+				 }
+
+				
+				 ?> 
+					<!-- <a href="<?php //echo $url; ?>" target="_blank"></a> -->
 						<div class="uael-share-btn uael-share-btn-<?php echo $button['text']; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
 								<?php if( 'icon-text' === $settings['view'] ){ ?>
 								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['text']; ?>">
 									<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
-									<span class="elementor-screen-only">Share on <?php echo $button['text']; ?></span>
+									<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 					 			</span>
+					 			<?php if ( 'yes' === $settings['show_label'] || 'text' === $settings['view'] ) : ?>
 								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['text']; ?>">
-								  	<!-- <?php //if ( 'yes' === $settings['show_label'] || 'text' === $settings['view'] ) : ?> -->
-										<span class="uael-share-btn__title"><?php echo $button['text']; ?></span>
-									<!-- <?php //endif; ?> -->
+								  	 
+										<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
+									 
 								  </div>
+								<?php endif; ?>
 								<?php } else if ( 'text' === $settings['view'] ){ ?>
 											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['text']; ?>">
-												<span class="uael-share-btn__title"><?php echo $button['text']; ?></span>
+												<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
 										    </div>
 								<?php } else { ?>
 									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['text']; ?>">
 										<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
-										<span class="elementor-screen-only">Share on <?php echo $button['text']; ?></span>
+										<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 									</span>
 						<?php } ?>
 						</div>
-					</a>
 					</div>
 			<?php
 		}
@@ -1135,6 +1140,19 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					<#
 			
 				_.each( settings.social_icon_list, function( button ) {
+
+				var custom_text;
+
+				if ( '' === button.Custom_text ){
+
+				 	custom_text = button.text;
+				 	  
+				 }
+				 else{
+
+				 		custom_text = button.Custom_text;
+
+				 }
 					
 					#>
 					<div class="elementor-grid-item">
@@ -1142,15 +1160,17 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 							<# if ( 'icon' === settings.view || 'icon-text' === settings.view ) { #>
 							<span class="uael-share-btn__icon uael-share-btn__icon--{{{ button.text }}}">
 								<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
-								<span class="elementor-screen-only">Share on {{{ button.text }}}</span>
+								<span class="elementor-screen-only">Share on {{{ custom_text }}}</span>
 							</span>
 							<# } #>
 							<# if ( showText ) { #>
+							<# if ( 'yes' === settings.show_label || 'text' === settings.view ) { #>
 								<div class="uael-share-btn__text uael-share-btn__text--{{{ button.text }}}">
-									<!-- <# if ( 'yes' === settings.show_label || 'text' === settings.view ) { #> -->
-										<span class="uael-share-btn__title">{{{ button.text }}}</span>
-									<!-- <# } #> -->
+									
+										<span class="uael-share-btn__title">{{{ custom_text }}}</span>
+									
 								</div>
+								<# } #>
 							<# } #>
 						</div>
 					</div>

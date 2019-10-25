@@ -19,7 +19,7 @@
 		delicious: 'https://del.icio.us/save?url='+uael_page_url_vars.uael_page_url,
 		google: 'https://plus.google.com/share?url='+uael_page_url_vars.uael_page_url,
 		digg: 'https://digg.com/submit?url='+uael_page_url_vars.uael_page_url,
-		reddit: 'https://reddit.com/submit?url=',
+		reddit: 'https://reddit.com/submit?url='+uael_page_url_vars.uael_page_url,
 		stumbleupon: 'https://www.stumbleupon.com/submit?url='+uael_page_url_vars.uael_page_url,
 		pocket: 'https://getpocket.com/edit?url='+uael_page_url_vars.uael_page_url,
 		whatsapp: 'whatsapp://send?text=*{title}*\n{text}\n{url}',
