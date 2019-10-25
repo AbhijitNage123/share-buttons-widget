@@ -850,7 +850,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		
 
 	 	global $wp;
-	 	
+
+
+
 	 	if ( 'custom' === $settings['share_url_type'] ){
 
 	 		if ( '' === $settings['share_url']['url'] ){
@@ -867,6 +869,18 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 	 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
 	 	}
+
+	 	// update_option('$uael_page_url',$page_url);
+	 	// $uael_page_url = get_option('uael_page_url');
+
+		wp_localize_script(
+			'elementor-hello-world',
+			'uael_page_url_vars',
+			array(
+				'uael_page_url' => $page_url,
+			),
+			true
+		);
 	 	
 	 	if ( !empty($settings['show_share']) ){
 		 		if ( 'yes' === $settings['show_share'] ){
