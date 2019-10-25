@@ -816,7 +816,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				[
 					'label' => __( 'Hover Animation', 'advanced-share-buttons-widget' ),
 					'type'  => Controls_Manager::HOVER_ANIMATION,
-				],
+				]
 			);
 
 		$this->end_controls_tab();

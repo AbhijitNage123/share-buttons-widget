@@ -23,7 +23,7 @@
 		stumbleupon: 'https://www.stumbleupon.com/submit?url='+uael_page_url_vars.uael_page_url,
 		pocket: 'https://getpocket.com/edit?url='+uael_page_url_vars.uael_page_url,
 		whatsapp: 'whatsapp://send?text=*{title}*\n{text}\n{url}',
-		xing: 'https://www.xing.com/app/user?op=share&url=',
+		xing: 'https://www.xing.com/app/user?op=share&url='+uael_page_url_vars.uael_page_url,
 		print: 'javascript:print()',
 		email: 'mailto:?subject={title}&body={text}\n{url}',
 		telegram: 'https://telegram.me/share/url?url='+uael_page_url_vars.uael_page_url,
