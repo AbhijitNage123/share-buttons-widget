@@ -1,7 +1,8 @@
 ( function( $ ) {
 
 // console.log($('a').find('div.uael-share-btn'));
-// console.log(uael_page_url_vars.uael_page_url); //working
+    // console.log(uael_page_url_vars.uael_page_url); //working
+    uael_access_tokenfb = uael_page_url_vars.settings.caption;
 	/**
  	 * @param $scope The Widget wrapper element as a jQuery element
 	 * @param $ The jQuery alias
@@ -46,6 +47,18 @@
 						    	} 
 						    	if ( '' != uaellinks['facebook'] ){
 						    		// console.log( uaellinks['facebook'] );
+						    		// console.log(uael_access_tokenfb);
+						    		var urlfb;
+						    		if ( '' === uael_access_tokenfb || null === uael_access_tokenfb ) {
+
+											 urlfb = uaellinks['facebook'];
+
+										} else {
+											
+										
+											urlfb = 'https://graph.facebook.com/v2.12/?id=' + uael_page_url_vars.uael_page_url + '&access_token=' + uael_access_tokenfb + '&fields=engagement';
+										}
+
 						    			$( document ).on('click','.uael-share-btn-facebook', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
@@ -53,7 +66,7 @@
 										var left = window.screen.width - 600;
 									    left = left > 0 ? left/2 : 0;
 									    	// console.log(links);
-									    		popupWindow = window.open(uaellinks['facebook'],"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes");
+									    		popupWindow = window.open(urlfb,"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes");
 									    });
 						    	} 
 						    	if ( '' != uaellinks['linkedin'] ){

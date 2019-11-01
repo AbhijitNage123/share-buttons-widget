@@ -377,28 +377,28 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'prefix_class' => 'elementor-share-buttons%s--align-',
 				'condition' => [
-					'columns' => '0',
+					'columns' => '1',
 				],
 			]
 		);	
 
 		// If display_position is Floating.
-		$this->add_control(
-			'display_floating_align',
-			[
-				'label'       => __( '', 'advanced-share-buttons-widget' ),
-				'type'        => Controls_Manager::CHOOSE,
-				'toggle'      => false,
-				'label_block' => false,
-				'condition'   => [
-					'display_position' => 'floating',
-				],
-				'default'   => 'center',
-				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};position: fixed;right: 5px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;',
-				],
-			]
-		);
+		// $this->add_control(
+		// 	'display_floating_align',
+		// 	[
+		// 		'label'       => __( '', 'advanced-share-buttons-widget' ),
+		// 		'type'        => Controls_Manager::CHOOSE,
+		// 		'toggle'      => false,
+		// 		'label_block' => false,
+		// 		'condition'   => [
+		// 			'display_position' => 'floating',
+		// 		],
+		// 		'default'   => 'center',
+		// 		'selectors' => [
+		// 			'{{WRAPPER}}' => 'text-align: {{VALUE}};position: fixed;right: 5px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;',
+		// 		],
+		// 	]
+		// );
 		// $this->add_control(
 		// 	'display_floating_align',
 		// 	[
@@ -869,6 +869,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'uael_page_url_vars',
 			array(
 				'uael_page_url' => $page_url,
+				'settings' => $settings,
 			),
 			true
 		);
@@ -895,7 +896,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	echo '<div class="elementor-grid">';
 	 	foreach ( $settings['social_icon_list'] as $button ) {
 
-			// print_r($button['text']);//icon class
+			// print_r($custom_text);//icon class
 			$show_text = 'text' === $settings['view'] || 'yes' === $settings['show_label'];
 
 			if ( $button['social_icon']['value'] === 'fab fa-facebook' ){
@@ -922,7 +923,16 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						popupWindow = window.open(url,"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes")
 					}
 				</script> -->
-				 <?php 
+
+				 <?php
+					// if ( 'fab fa-facebook' === $button['social_icon']['value'] )
+					// {
+					// 	$custom_text = 'Facebook';
+					// } else if ( 'fab fa-twitter' === $button['social_icon']['value'] ){
+					// 	$custom_text = 'Twitter';
+					// } else if ( 'fab fa-linkedin' === $button['social_icon']['value'] ){
+					// 	$custom_text = 'LinkedIn';
+					// }
 				 if ( '' === $button['Custom_text'] ){
 
 				 	$custom_text = $button['text'];
@@ -934,28 +944,28 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 				 }
 
-				
+				// echo $button['text'] ;
 				 ?> 
 					<!-- <a href="<?php //echo $url; ?>" target="_blank"></a> -->
-						<div class="uael-share-btn uael-share-btn-<?php echo $button['text']; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
+						<div class="uael-share-btn uael-share-btn-<?php echo $custom_text; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
 								<?php if( 'icon-text' === $settings['view'] ){ ?>
-								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['text']; ?>">
+								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $custom_text; ?>">
 									<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 									<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 					 			</span>
 					 			<?php if ( 'yes' === $settings['show_label'] || 'text' === $settings['view'] ) : ?>
-								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['text']; ?>">
+								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $custom_text; ?>">
 								  	 
 										<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
 									 
 								  </div>
 								<?php endif; ?>
 								<?php } else if ( 'text' === $settings['view'] ){ ?>
-											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['text']; ?>">
+											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $custom_text; ?>">
 												<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
 										    </div>
 								<?php } else { ?>
-									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['text']; ?>">
+									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $custom_text; ?>">
 										<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 										<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 									</span>
@@ -994,12 +1004,12 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 		// $count = 0;
 	
-		if ( 'floating' === $settings['display_position'] ){
+		// if ( 'floating' === $settings['display_position'] ){
 
-			$position = $settings['display_floating_align'];
-		} else{
-			$position = 'inline';
-		}
+		// 	$position = $settings['display_floating_align'];
+		// } else{
+		// 	$position = 'inline';
+		// }
 
 	// 		 echo '<div class="elementor-grid ">';
 
