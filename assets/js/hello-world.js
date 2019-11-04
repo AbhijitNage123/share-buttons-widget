@@ -35,7 +35,7 @@
 						    	// console.log( uaellinks['twitter'] );
 						    	if ( '' != uaellinks['twitter'] ){
 						    		// console.log( uaellinks['twitter'] );
-						    			$( document ).on('click','.uael-share-btn-twitter', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-twitter', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -59,7 +59,7 @@
 											urlfb = 'https://graph.facebook.com/v2.12/?id=' + uael_page_url_vars.uael_page_url + '&access_token=' + uael_access_tokenfb + '&fields=engagement';
 										}
 
-						    			$( document ).on('click','.uael-share-btn-facebook', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-facebook', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -71,7 +71,7 @@
 						    	} 
 						    	if ( '' != uaellinks['linkedin'] ){
 						    		// console.log( uaellinks['linkedin'] );
-						    			$( document ).on('click','.uael-share-btn-linkedin', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-linkedin', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -83,7 +83,7 @@
 						    	} 
 						    	if ( '' != uaellinks['pinterest'] ){
 						    		// console.log( uaellinks['pinterest'] );
-						    			$( document ).on('click','.uael-share-btn-pinterest', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-pinterest', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -95,7 +95,7 @@
 						    	} 
 						    	if ( '' != uaellinks['vk'] ){
 						    		// console.log( uaellinks['vk'] );
-						    			$( document ).on('click','.uael-share-btn-vk', function(){
+						    			$( document ).on('click','.uael-share-fab.fa-btn-vk', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -107,7 +107,7 @@
 						    	} 
 						    	if ( '' != uaellinks['google'] ){
 						    		// console.log( uaellinks['google'] );
-						    			$( document ).on('click','.uael-share-btn-google', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-google', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -119,7 +119,7 @@
 						    	} 
 						    	if ( '' != uaellinks['odnoklassniki'] ){
 						    		// console.log( uaellinks['odnoklassniki'] );
-						    			$( document ).on('click','.uael-share-btn-odnoklassniki', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-odnoklassniki', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -131,7 +131,7 @@
 						    	} 
 						    	if ( '' != uaellinks['tumblr'] ){
 						    		// console.log( uaellinks['tumblr'] );
-						    			$( document ).on('click','.uael-share-btn-tumblr', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-tumblr', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -143,7 +143,7 @@
 						    	}
 						    	if ( '' != uaellinks['delicious'] ){
 						    		// console.log( uaellinks['delicious'] );
-						    			$( document ).on('click','.uael-share-btn-delicious', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-delicious', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -155,7 +155,7 @@
 						    	}
 						    	if ( '' != uaellinks['digg'] ){
 						    		// console.log( uaellinks['digg'] );
-						    			$( document ).on('click','.uael-share-btn-digg', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-digg', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -167,7 +167,7 @@
 						    	}
 						    	if ( '' != uaellinks['reddit'] ){
 						    		// console.log( uaellinks['reddit'] );
-						    			$( document ).on('click','.uael-share-btn-reddit', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-reddit', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -179,7 +179,7 @@
 						    	}
 						    	if ( '' != uaellinks['stumbleupon'] ){
 						    		// console.log( uaellinks['stumbleupon'] );
-						    			$( document ).on('click','.uael-share-btn-stumbleupon', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-stumbleupon', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -191,7 +191,7 @@
 						    	}
 						    	if ( '' != uaellinks['pocket'] ){
 						    		// console.log( uaellinks['pocket'] );
-						    			$( document ).on('click','.uael-share-btn-pocket', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-pocket', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -203,7 +203,7 @@
 						    	}
 						    	if ( '' != uaellinks['whatsapp'] ){
 						    		// console.log( uaellinks['whatsapp'] );
-						    			$( document ).on('click','.uael-share-btn-whatsapp', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-whatsapp', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -215,7 +215,7 @@
 						    	}
 						    	if ( '' != uaellinks['xing'] ){
 						    		// console.log( uaellinks['xing'] );
-						    			$( document ).on('click','.uael-share-btn-xing', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-xing', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -251,7 +251,7 @@
 						    	}
 						    	if ( '' != uaellinks['telegram'] ){
 						    		// console.log( uaellinks['telegram'] );
-						    			$( document ).on('click','.uael-share-btn-telegram', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-telegram', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
@@ -263,7 +263,7 @@
 						    	}
 						    	if ( '' != uaellinks['skype'] ){
 						    		// console.log( uaellinks['skype'] );
-						    			$( document ).on('click','.uael-share-btn-skype', function(){
+						    			$( document ).on('click','.uael-share-btn-fab.fa-skype', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            

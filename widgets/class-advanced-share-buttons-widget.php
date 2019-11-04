@@ -247,18 +247,21 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'social_icon' => [
 							'value' => 'fab fa-facebook',
 							'library' => 'fa-brands',
+							'text' => 'facebook',
 						],
 					],
 					[
 						'social_icon' => [
 							'value' => 'fab fa-twitter',
 							'library' => 'fa-brands',
+							'text' => 'twitter',
 						],
 					],
 					[
 						'social_icon' => [
 							'value' => 'fab fa-linkedin',
 							'library' => 'fa-brands',
+							'text' => 'linkedin',
 						],
 					],
 				],
@@ -279,6 +282,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'default' => 'icon-text',
 				'separator' => 'before',
+				'prefix_class' => 'uael-share-buttons--view-',
+				'render_type' => 'template',
 			]
 		);
 
@@ -781,6 +786,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'name' => 'typography',
 				'selector' => '{{WRAPPER}} .uael-share-btn__text',
 				'exclude' => [ 'line_height' ],
+				'condition' => [
+					'view' => ['icon-text', 'text'],
+				],
 			]
 		);
 
@@ -834,9 +842,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-		// print_r( $settings['social_icon_list']);
-		
+		// echo "<pre>";
+		// print_r( $settings['social_icon_list'][0]['text']);
+		// echo "</pre>";
 
 		// print_r($networks);
 		// print_r($settings['social_icon_list']);
@@ -943,29 +951,34 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				 		$custom_text = $button['Custom_text'];
 
 				 }
-
-				// echo $button['text'] ;
+				// echo $button['social_icon']['text'];
+				// echo $button['Custom_text'] ;
+				 // echo "<pre>";
+				 // print_r($button['social_icon']['value']);
+				 // echo "</pre>";
+				// echo $custom_text ;
+				 // echo $button['social_icon']['text'];
 				 ?> 
 					<!-- <a href="<?php //echo $url; ?>" target="_blank"></a> -->
-						<div class="uael-share-btn uael-share-btn-<?php echo $custom_text; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
+						<div class="uael-share-btn uael-share-btn-<?php echo $button['social_icon']['value']; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
 								<?php if( 'icon-text' === $settings['view'] ){ ?>
-								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $custom_text; ?>">
+								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['social_icon']['value']; ?>">
 									<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 									<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 					 			</span>
 					 			<?php if ( 'yes' === $settings['show_label'] || 'text' === $settings['view'] ) : ?>
-								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $custom_text; ?>">
+								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['social_icon']['value']; ?>">
 								  	 
 										<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
 									 
 								  </div>
 								<?php endif; ?>
 								<?php } else if ( 'text' === $settings['view'] ){ ?>
-											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $custom_text; ?>">
-												<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
+											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['social_icon']['value']; ?>">
+												<span class="uael-share-btn__title"><?php echo $custom_text ?></span>
 										    </div>
 								<?php } else { ?>
-									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $custom_text; ?>">
+									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['social_icon']['value']; ?>">
 										<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 										<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 									</span>
@@ -1166,16 +1179,16 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					
 					#>
 					<div class="elementor-grid-item">
-						<div class="uael-share-btn elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">
+						<div class="uael-share-btn uael-share-btn-{{{ button.social_icon.value }}} elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">
 							<# if ( 'icon' === settings.view || 'icon-text' === settings.view ) { #>
-							<span class="uael-share-btn__icon uael-share-btn__icon--{{{ button.text }}}">
+							<span class="uael-share-btn__icon uael-share-btn__icon--{{{ button.social_icon.value }}}">
 								<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
 								<span class="elementor-screen-only">Share on {{{ custom_text }}}</span>
 							</span>
 							<# } #>
 							<# if ( showText ) { #>
 							<# if ( 'yes' === settings.show_label || 'text' === settings.view ) { #>
-								<div class="uael-share-btn__text uael-share-btn__text--{{{ button.text }}}">
+								<div class="uael-share-btn__text uael-share-btn__text--{{{ button.social_icon.value }}}">
 									
 										<span class="uael-share-btn__title">{{{ custom_text }}}</span>
 									
