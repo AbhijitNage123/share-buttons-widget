@@ -1,9 +1,55 @@
+ul.uael-floating-btns-wrapper { list-style:none; }
+
 .elementor-grid.uael-style-floating {
   position: fixed !important;
   top: 30%;
   z-index: 9998;
   left:-55px;
 }
+/* Floating button */
+.uael-share-btn__icon.uaelbtn--skin-framed {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.uaelbtn--skin-framed {
+  border-color: #2196F3;
+  color: dodgerblue
+}
+
+.uaelbtn--skin-framed:hover {
+   background: #2196F3;
+  color: white;
+}
+
+/* Floating button gradient */
+.uael-share-btn__icon.uaelbtn--skin-gradient {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.12)),to(transparent));
+  /*background-image: -webkit-linear-gradient(left,rgba(0,0,0,.12),transparent); */
+  background-image: -o-linear-gradient(left,rgba(0,0,0,.12),transparent);
+  /*background-image: linear-gradient(90deg,rgba(0,0,0,.12),transparent); */
+
+}
+.uael-share-btn__icon{background-color: #3b5998;}
+.uael-share-btn__icon.uaelbtn--skin-gradient .uael-share-btn__icon {
+    background-color: #3b5998; 
+    color: #fff;
+    }
 
 .uael-share-btn {
     overflow: hidden;
@@ -187,6 +233,21 @@
     -webkit-border-radius: 0.5em;
     border-radius: 0.5em;
 }
+/* Floating button Shape */
+span.uael-share-btn__icon.uaelbtn-shape-rounded {
+    border-radius: 0.5em !important;
+}
+span.uael-share-btn__icon.uaelbtn-shape-square {
+    border-radius:0px;
+}
+span.uael-share-btn__icon.uaelbtn-shape-rounded {
+     -webkit-border-radius: 0.5em;
+    border-radius: 0.5em;
+}
+span.uael-share-btn__icon.uaelbtn-shape-circle {
+    border-radius: 9.99em;
+}
+
 .uael-share-btn.uaelbtn-shape-rounded .uael-share-btn__text.uael-share-btn__text--fab.fa-facebook ,.uael-share-btn.uaelbtn-shape-rounded .uael-share-btn__text.uael-share-btn__text--fab.fa-twitter,.uael-share-btn.uaelbtn-shape-rounded .uael-share-btn__text.uael-share-btn__text--fab.fa-linkedin{
 background-color: #ffffff;
 }
@@ -284,7 +345,7 @@ border-color:#1da1f2;
 
 
 
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-delicious, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-delicious {
+/*.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-delicious, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-delicious {
   background-color: #3399ff; }
 
 .uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-digg, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-digg {
@@ -310,7 +371,7 @@ border-color:#1da1f2;
 
 .uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki {
   background-color: #F4731C; }
-/*.uael-share-btn__icon.uael-share-btn__icon--fab.fa-linkedin .uael-share-btn__text.uael-share-btn__text--fab.fa-*/
+/*.uael-share-btn__icon.uael-share-btn__icon--fab.fa-linkedin .uael-share-btn__text.uael-share-btn__text--fab.fa-
 .uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-pinterest, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-pinterest {
   background-color: #bd081c; }
 
@@ -498,4 +559,4 @@ border-color:#1da1f2;
   background-color: #21759b; }
 
 .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-xing .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-xing .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #026466; }
+  background-color: #026466; }*/

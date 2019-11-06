@@ -284,6 +284,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'separator' => 'before',
 				'prefix_class' => 'uael-share-buttons--view-',
 				'render_type' => 'template',
+				'condition' => [
+					'display_position' => 'inline',
+				],
 			]
 		);
 
@@ -345,6 +348,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'6' => '6',
 				],
 				'prefix_class' => 'elementor-grid%s-',
+				'condition' => [
+					'display_position' => 'inline',
+				],
 			]
 		);
 
@@ -359,6 +365,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'default' => 'inline',
 				'prefix_class' => 'uael-style-',
+				'render_type' => 'template',
 			]
 		);
 
@@ -388,23 +395,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);	
 
-		// If display_position is Floating.
-		// $this->add_control(
-		// 	'display_floating_align',
-		// 	[
-		// 		'label'       => __( 'Align', 'advanced-share-buttons-widget' ),
-		// 		'type'        => Controls_Manager::CHOOSE,
-		// 		'toggle'      => false,
-		// 		'label_block' => false,
-		// 		'condition'   => [
-		// 			'display_position' => 'floating',
-		// 		],
-		// 		'default'   => 'center',
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .elementor-grid .uael-style-floating' => 'text-align: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
 		$this->add_control(
 			'display_floating_align',
 			[
@@ -413,46 +403,55 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'default'     => 'left',
 				'options'     => [
 					'left'  => [
-						'title' => __( 'Left', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-left',
+						'title' => __( 'Left', 'uael' ),
+						'icon'  => 'fa fa-align-left',
 					],
 					'right' => [
-						'title' => __( 'Right', 'advanced-share-buttons-widget' ),
-						'icon'  => 'eicon-text-align-right',
+						'title' => __( 'Right', 'uael' ),
+						'icon'  => 'fa fa-align-right',
 					],
 				],
 				'toggle'      => false,
 				'label_block' => false,
-				'condition'   => [
-					'display_position' => 'floating',
-				],
-				'default'   => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-grid.uael-style-floating' => 'text-align: {{VALUE}};',
+				'selectors'      => [
+					// '{{WRAPPER}} .elementor-grid.uael-style-floating' => 'width:105%;',
+					'{{WRAPPER}} .elementor-grid .elementor-grid-item' => 'float: {{VALUE}};',
 				],
 			]
 		);
-		// position: fixed;right: 5px;top: 317px;transition: all 0.2s ease-in 0s;z-index: 9999;cursor: pointer;
-		// $this->add_responsive_control(
-		// 	'display_floating_on_window_position',
-		// 	[
-		// 		'label'          => __( 'Floating Position', 'advanced-share-buttons-widget' ),
-		// 		'type'           => Controls_Manager::SLIDER,
-		// 		'range'     => [
-		// 			'px' => [
-		// 				'min'  => 0.5,
-		// 				'max'  => 2,
-		// 				'step' => 0.05,
-		// 			],
-		// 		],
-		// 		'selectors'      => [
-		// 			'{{WRAPPER}} .elementor-grid .uael-style-floating' => 'top: {{VALUE}};',
-		// 		],
-		// 		'condition'      => [
-		// 			'display_position' => 'floating',
-		// 		],
-		// 	]
-		// );
+		
+		$this->add_responsive_control(
+			'display_floating_position',
+			[
+				'label'          => __( 'Floating Position', 'uael' ),
+				'type'           => Controls_Manager::SLIDER,
+				'size_units'     => '%',
+				'default'        => [
+					'size' => '50',
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'size' => '50',
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'size' => '50',
+					'unit' => '%',
+				],
+				'range'          => [
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .elementor-grid.uael-style-floating' => 'top: {{SIZE}}{{UNIT}}; width: 105%;',
+				],
+				'condition'      => [
+					'display_position' => 'floating',
+				],
+			]
+		);
 
 		$this->add_control(
 			'show_share',
@@ -543,6 +542,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'{{WRAPPER}}.elementor-grid-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
 					'(tablet) {{WRAPPER}}.elementor-grid-tablet-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
 					'(mobile) {{WRAPPER}}.elementor-grid-mobile-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
+					'{{WRAPPER}} .uael-floating-btns-wrapper' => 'height:{{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -561,6 +561,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'(tablet) {{WRAPPER}}.elementor-grid-tablet-0 .uael-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					'(mobile) {{WRAPPER}}.elementor-grid-mobile-0 .uael-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 				],
+				'condition' => [
+					'display_position' => 'inline',
+				],
 			]
 		);
 
@@ -578,6 +581,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn' => 'font-size: calc({{SIZE}}{{UNIT}} * 10);',
+					'{{WRAPPER}} ul.uael-floating-btns-wrapper' => 'font-size: calc({{SIZE}}{{UNIT}} * 10);',
 				],
 			]
 		);
@@ -610,9 +614,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'size_units' => [ 'em', 'px' ],
 				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn__icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .uael-share-btn__icon' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'view!' => 'text',
+					'view' => [ 'icon-text' , 'icon' ],
+					'display_position' => 'floating',
 				],
 			]
 		);
@@ -645,6 +651,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'size_units' => [ 'em', 'px' ],
 				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .uael-share-btn__icon' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -670,6 +677,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-grid-item .uael-share-btn, .uael-share-btn .elementor-animation- .uaelbtn-shape-circle .uaelbtn--skin-minimal .uael-share-btn__icon,' => 'border-width: {{SIZE}}{{UNIT}};',
+
 				],
 				'condition' => [
 					'skin' => [ 'framed', 'boxed' ],
@@ -715,7 +723,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'color' => 'custom',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn__icon,.uael-share-btn__title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -730,6 +739,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__text' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'background-color: {{VALUE}};',
 
 				],
 			]
@@ -900,7 +910,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		
 			}	
 	 	}
-
 // 	 	if ( 'floating' === $settings['display_position'] ){
 // 			$this->add_render_attribute('position','uael-style-' . $settings["display_position"]);
 // 		}
@@ -908,7 +917,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 // print_r($settings['display_position']);
 	 	//----------------------------------------------------------
 	 	echo '<div class="elementor-grid uael-style-' . $settings["display_position"] . '">';
-
+	 	$count = 0;
 	 	foreach ( $settings['social_icon_list'] as $button ) {
 
 		
@@ -924,128 +933,78 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	
 			?>
 			<div class="elementor-grid-item">
+
+				
 				
 
 				 <?php
-					// if ( 'fab fa-facebook' === $button['social_icon']['value'] )
-					// {
+					// if ( 'fab fa-facebook' === $button['social_icon']['value'] ){
 					// 	$custom_text = 'Facebook';
 					// } else if ( 'fab fa-twitter' === $button['social_icon']['value'] ){
 					// 	$custom_text = 'Twitter';
 					// } else if ( 'fab fa-linkedin' === $button['social_icon']['value'] ){
 					// 	$custom_text = 'LinkedIn';
-					// }
+					// } else{
+				 // 	    $custom_text = $button['text'];				 	  
+				 //    }
 
-				 $networks = [
-		'facebook' => [
-			'title' => 'Facebook',
-		],
-		'twitter' => [
-			'title' => 'Twitter',
-		],
-		'google' => [
-			'title' => 'Google+',
-		],
-		'linkedin' => [
-			'title' => 'LinkedIn',
-		],
-		'pinterest' => [
-			'title' => 'Pinterest',
-		],
-		'reddit' => [
-			'title' => 'Reddit',
-		],
-		'vk' => [
-			'title' => 'VK',
-		],
-		'odnoklassniki' => [
-			'title' => 'OK',
-		],
-		'tumblr' => [
-			'title' => 'Tumblr',
-		],
-		'delicious' => [
-			'title' => 'Delicious',
-		],
-		'digg' => [
-			'title' => 'Digg',
-		],
-		'skype' => [
-			'title' => 'Skype',
-		],
-		'stumbleupon' => [
-			'title' => 'StumbleUpon',
-		],
-		'telegram' => [
-			'title' => 'Telegram',
-		],
-		'pocket' => [
-			'title' => 'Pocket',
-		],
-		'xing' => [
-			'title' => 'XING',
-		],
-		'whatsapp' => [
-			'title' => 'WhatsApp',
-		],
-		'email' => [
-			'title' => 'Email',
-		],
-		'print' => [
-			'title' => 'Print',
-		],
-	];
-  //    print_r($networks['facebook']['title']);
-		$custom_text = $button['text'] ? $button['text'] : $networks['facebook']['title'];
-		print_r( $custom_text );
-				 if ( '' === $button['Custom_text'] ){
+		// $custom_text = $button['text'] ? $button['text'] : $networks['facebook']['title'];
+		
+				 $custom_text = empty( $button['Custom_text'] ) ? $button['text'] : $custom_text = $button['Custom_text'] ;	
 
-				 	$custom_text = $button['text'];
-				 	  
-				 }
-				 else{
+				 $icon_prop = $button['social_icon']['value'];
+				 
+				 if ( '' !== $icon_prop ){
+				 	$uael_js_callback_class = $button['text'];
+				} 
 
-				 		$custom_text = $button['Custom_text'];
 
-				 }
+				
+				 // print_r( $button['text'] );
 				// echo $button['social_icon']['text'];
 				// echo $button['Custom_text'] ;
 				 // echo "<pre>";
-				 // print_r($button['social_icon']['value']);
+				 // print_r($button);
 				 // echo "</pre>";
+				//  if($button['label']===$button['social_icon']['value']){
+				// 	echo "x";
+				// }
 				// echo $custom_text ;
 				 // echo $button['social_icon']['text'];
-				 if ( 'floating' == $settings['display_position'] ){ ?>		
-					<ul class="uael-floating-btns-wrapper">
-						<li class="uael-share-btn uael-share-btn-<?php echo $button['social_icon']['value']; ?>">
-						<span class="uael-share-btn__icon">
+				 if ( 'floating' === $settings['display_position'] ){ ?>		
+				 	<a class="uael-share-btn-<?php echo $uael_js_callback_class; ?>">
+					<ul class="uael-floating-btns-wrapper elementor-animation-<?php echo $settings['hover_animation']; ?>">
+						<li class="uael-floating-btns-list">
+						<span class="uael-share-btn__icon uaelbtn--skin-<?php echo $settings['skin']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?>">
 							<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 						</span>
 						<span class="uael-floating-btns-label-wrapper"></span>
 						</li>
 					</ul>
+					</a>
 		         <?php } else {
 		       		?>
 					<!-- <a href="<?php //echo $url; ?>" target="_blank"></a> -->
-						<div class="uael-share-btn uael-share-btn-<?php echo $button['social_icon']['value']; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
+					
+						<div class="uael-share-btn uael-share-btn-<?php echo $uael_js_callback_class; ?> elementor-animation-<?php echo $settings['hover_animation']; ?> uaelbtn-shape-<?php echo $settings['shape']; ?> uaelbtn--skin-<?php echo $settings['skin']; ?>">
 								<?php if( 'icon-text' === $settings['view'] ){ ?>
-								<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['social_icon']['value']; ?>">
+								<span class="uael-share-btn__icon">
 									<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 									<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 					 			</span>
 					 			<?php if ( 'yes' === $settings['show_label'] || 'text' === $settings['view'] ) : ?>
-								  <div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['social_icon']['value']; ?>">
+								  <div class="uael-share-btn__text">
 								  	 
 										<span class="uael-share-btn__title"><?php echo $custom_text; ?></span>
 									 
 								  </div>
 								<?php endif; ?>
 								<?php } else if ( 'text' === $settings['view'] ){ ?>
-											<div class="uael-share-btn__text uael-share-btn__text--<?php echo $button['social_icon']['value']; ?>">
+											<div class="uael-share-btn__text">
 												<span class="uael-share-btn__title"><?php echo $custom_text ?></span>
 										    </div>
 								<?php } else { ?>
-									<span class="uael-share-btn__icon uael-share-btn__icon--<?php echo $button['social_icon']['value']; ?>">
+									<span class="uael-share-btn__icon">
 										<i class="<?php echo $button['social_icon']['value']; ?>" aria-hidden="true"></i>
 										<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 									</span>
@@ -1115,54 +1074,59 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				<div class="elementor-grid-item">
 				
 				<# var custom_text;
+				custom_text =  ( '' === button.Custom_text ) ? button.text : custom_text = button.Custom_text;	
+				
+				var icon_prop = button.social_icon.value;
 
-				if ( '' === button.Custom_text ){
+				if ( '' !== icon_prop ){
 
-				 	custom_text = button.text;
+				 	var uael_js_callback_class = button.text;
 				 	  
 				 }
-				 else{
-
-				 		custom_text = button.Custom_text;
-
-				 }
+				 console.log(uael_js_callback_class);
+				<!-- custom_text = empty($custom_text) ? $button['text'] : $custom_text;	 -->
 				 	console.log(settings.display_position);
-					if ( 'floating' == settings.display_position ){	#>	
-					<ul class="uael-floating-btns-wrapper">
-						<li class="x">
-						<span class="uael-share-btn__icon">
+					if ( 'floating' === settings.display_position ){	#>	
+					<a class="uael-share-btn-{{{ uael_js_callback_class }}}">
+					<ul class="uael-floating-btns-wrapper elementor-animation-{{{settings.hover_animation}}} ">
+						<li class="uael-floating-btns-list">
+						<span class="uael-share-btn__icon uaelbtn--skin-{{{settings.skin}}} uaelbtn-shape-{{{settings.shape}}}">
 							<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
 						</span>
 						<span class="uael-floating-btns-label-wrapper"></span>
 						</li>
 					</ul>
+				    </a>
 		         <# } 
 		         else {
 					#>
-						<div class="uael-share-btn uael-share-btn-{{{ button.social_icon.value }}} elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{settings.shape}} uaelbtn--skin-{{settings.skin}}">
-							<# if ( 'icon' === settings.view || 'icon-text' === settings.view ) { #>
-							<span class="uael-share-btn__icon uael-share-btn__icon--{{{ button.social_icon.value }}}">
-								<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
-								<span class="elementor-screen-only">Share on {{{ custom_text }}}</span>
-							</span>
-							<# } #>
-							<# if ( showText ) { #>
-							<# if ( 'yes' === settings.show_label || 'text' === settings.view ) { #>
-								<div class="uael-share-btn__text uael-share-btn__text--{{{ button.social_icon.value }}}">
-									
-										<span class="uael-share-btn__title">{{{ custom_text }}}</span>
-									
-								</div>
+						<div class="uael-share-btn uael-share-btn-{{{uael_js_callback_class}}} ?> elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{{settings.shape}}} uaelbtn--skin-{{{settings.skin}}}">
+								<# if( 'icon-text' ===  settings.view ){ #>
+								<span class="uael-share-btn__icon">
+									<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
+									<span class="elementor-screen-only">Share on {{{custom_text}}}</span>
+					 			</span>
+					 			<# if ( 'yes' === settings.show_label || 'text' === settings.view ) { #>
+								  <div class="uael-share-btn__text">
+								  	 
+									<span class="uael-share-btn__title">{{{custom_text}}}</span>
+									 
+								  </div>
 								<# } #>
-							<# } #>
+								<# } else if ( 'text' === settings.view ){ #>
+											<div class="uael-share-btn__text">
+												<span class="uael-share-btn__title">{{{custom_text}}}</span>
+										    </div>
+								<# } else { #>
+									<span class="uael-share-btn__icon">
+										<i class="{{{button.social_icon.value}}}" aria-hidden="true"></i>
+										<span class="elementor-screen-only">Share on {{{custom_text}}}</span>
+									</span>
+						<# } #>
 						</div>
 					</div>
 			<# } } ); #>
-
 		</div>
-		<?php
-		?>
-
 		<?php
 	}
 }
