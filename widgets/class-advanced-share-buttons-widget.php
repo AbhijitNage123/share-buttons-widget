@@ -445,7 +445,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .elementor-grid.uael-style-floating' => 'top: {{SIZE}}{{UNIT}}; width: 105%;',
+					'{{WRAPPER}} .elementor-grid.uael-style-floating' => 'top: {{SIZE}}{{UNIT}}; width: 103.4%;',
 				],
 				'condition'      => [
 					'display_position' => 'floating',

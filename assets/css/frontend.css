@@ -122,143 +122,617 @@ a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .
     background-color:#25d366;
 }
 
+/*floating Framed button*/
+a.uael-share-btn-facebook .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #344f86; 
+     background: transparent;
+     border:2px solid #324b80;
+}
+a.uael-share-btn-twitter .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #0099CC; 
+     background: transparent;
+     border:2px solid #0099CC;
+}
+a.uael-share-btn-linkedin .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #045f81; 
+     background: transparent;
+     border:2px solid #046082;
+}
+a.uael-share-btn-pinterest .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #b72028; 
+     background: transparent;
+     border:2px solid #b72028;
+}
+a.uael-share-btn-google .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #cc4535; 
+     background: transparent;
+     border:2px solid #c74433;
+}
+a.uael-share-btn-reddit .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #e73d01; 
+     background: transparent;
+     border:2px solid #e53c01;
+}
+a.uael-share-btn-vk .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #466b96; 
+     background: transparent;
+     border:2px solid #446992;
+}
+a.uael-share-btn-odnoklassniki .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #d67427; 
+     background: transparent;
+     border:2px solid #d67427;
+}
+a.uael-share-btn-tumblr .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #2f4a63; 
+     background: transparent;
+     border:2px solid #2f4a63;
+}
+a.uael-share-btn-delicious .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #1c52ab; 
+     background: transparent;
+     border:2px solid #1c52ab;
+}
+a.uael-share-btn-digg .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #0053ce; 
+     background: transparent;
+     border:2px solid #0053ce;
+}
+a.uael-share-btn-skype .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #009dd8; 
+     background: transparent;
+     border:2px solid #009dd8;
+}
+a.uael-share-btn-stumbleupon .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #ef4224; 
+     background: transparent;
+     border:2px solid #ef4224;
+}
+a.uael-share-btn-telegram .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #007fbf; 
+     background: transparent;
+     border:2px solid #007fbf;
+}
+a.uael-share-btn-xing .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #105b5d; 
+     background: transparent;
+     border:2px solid #105b5d;
+}
+a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon.uaelbtn--skin-framed{
+    color: #21bd5b; 
+     background: transparent;
+     border:2px solid #21bd5b;
+}
+
+/*Inline Gradient button*/
+
 /* Inline twitter button */
-.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#00acee;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#00acee;
 }
 /* Inline linkedin button */
-.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#056b91;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#056b91;
 }
 /*Inline pinterest button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#c8232c;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#c8232c;
 }
 /*Inline googleplus button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#DD4B39;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#DD4B39;
 }
 /*Inline reddit button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#FF4301;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#FF4301;
 }
 /*Inline vk button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#4C75A3;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#4C75A3;
 }
 /*Inline odnoklassniki button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#ed812b;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#ed812b;
 }
 /*Inline tumblr button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#34526f;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#34526f;
 }
 /*Inline delecious button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#205cc0;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#205cc0;
 }
 /*Inline digg button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#005be2;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#005be2;
 }
 /*Inline skype button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#00aff0;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#00aff0;
 }
 /*Inline stumbleupon button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#f74425;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#f74425;
 }
 /*Inline telegram button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#0088cc;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#0088cc;
 }
 /*Inline xing button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#126567;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#126567;
 }
 /*Inline whatsapp button*/
-.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn .uael-share-btn__icon{
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__icon{
     color:#ffffff;
     background-color:#25d366;
 }
-.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn .uael-share-btn__text{
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-gradient .uael-share-btn__text{
     color:#ffffff;
     background-color:#25d366;
 }
+/*End Gradient button*/
 
 
+/*Inline Framed button*/
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #0099CC; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #0099CC; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #007fbf;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #385490; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #385490; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #385490;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #046082; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #046082; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-framed.uaelbtn--skin-framed{
+border:2px solid #046082;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-framed.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #b52028; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-framed.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #b52028; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #b52028;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #c64333; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #c64333; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #c64333;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #e83d01; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #e83d01; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #e83d01;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #456a94; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #456a94; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #456a94;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #d37326; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #d37326; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #d37326;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #2e4963; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #2e4963; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #2e4963;    
+}
+
+
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #1c52ab; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #1c52ab; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #1c52ab;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #0053cf; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #0053cf; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #0053cf;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #00a8e6; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #00a8e6; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #00a8e6;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #db3c21; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #db3c21; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-framed.uaelbtn--skin-framed{
+border:2px solid #db3c21;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #007dbb; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #007dbb; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #007dbb;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #115d5f; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #115d5f; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #115d5f;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__icon{
+    color: #21be5c; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-framed .uael-share-btn__text{
+    color: #21be5c; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-framed{
+border:2px solid #21be5c;    
+}
+/*End of Framed CSS*/
+
+/*Inline minimal css*/
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    background: #0099CC; 
+       color: #ffffff; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #0099CC; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    background: #3b5998; 
+       color: #ffffff; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #3b5998; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-facebook .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    background: #0e76a8; 
+       color: #ffffff;
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+   color: #0e76a8; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-linkedin .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent; 
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #b52028; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #b52028; 
+        background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-pinterest .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #c64333; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #c64333; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-google .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #e83d01; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #e83d01; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-reddit .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #456a94; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #456a94; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-vk .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #d37326; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #d37326; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-odnoklassniki .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #2e4963; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #2e4963; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-tumblr .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #1c52ab; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #1c52ab; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-delicious .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #0053cf; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #0053cf; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-digg .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #00a8e6; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #00a8e6; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-skype .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #db3c21; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #db3c21; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-stumbleupon .uael-share-btn.uaelbtn--skin-minimal.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #007dbb; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #007dbb; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-telegram .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #115d5f; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #115d5f; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-xing .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__icon{
+    color: #ffffff; 
+       background: #21be5c; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-minimal .uael-share-btn__text{
+    color: #21be5c; 
+       background: transparent; 
+}
+.elementor-grid.uael-style-inline a.uael-share-btn-whatsapp .uael-share-btn.uaelbtn--skin-minimal{
+border:2px solid transparent;    
+}
+/*End Minimal CSS*/
 
 .uael-share-btn__icon{background-color: #3b5998;}
 .uael-share-btn__icon.uaelbtn--skin-gradient .uael-share-btn__icon {
@@ -338,7 +812,7 @@ a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .
     -ms-flex-pack: center;
     justify-content: center;
 }
-    .uael-share-btn.uaelbtn-shape-rounded.uaelbtn--skin-minimal  span.uael-share-btn__icon {
+    /*.uael-share-btn.uaelbtn-shape-rounded.uaelbtn--skin-minimal  span.uael-share-btn__icon {
         border-radius: 0.5em;
     }
      .uael-share-btn.uaelbtn-shape-rounded.uaelbtn--skin-minimal  span.uael-share-btn__icon {
@@ -354,7 +828,7 @@ a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .
         border-style:solid;
         background-color:#3b5998;
         color:#fff;
-    }
+    }*/
    .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed{
     border-radius: 99.9em;
     border-color:green;
@@ -396,7 +870,7 @@ a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .
 
 
     /* For skin minimal */
-    .uaelbtn--skin-minimal .uael-share-btn__icon, .uaelbtn--skin-minimal .uael-share-btn__text {
+    /*.uaelbtn--skin-minimal .uael-share-btn__icon, .uaelbtn--skin-minimal .uael-share-btn__text {
         background-color:#3b5998;
         color:#fff;
     }
@@ -411,7 +885,7 @@ a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .
     
     .uaelbtn--skin-minimal .uael-share-btn__icon .uael-share-btn.uael-share-btn-fab.fa- {
     background-color: #3b5998;
-    }
+    }*/
   
     .elementor-grid-item .uael-share-btn .uaelbtn--skin-framed{
         color:#3b5998;
@@ -557,221 +1031,3 @@ border-color:#1da1f2;
     -webkit-border-radius: 99.9em;
     border-radius: 99.9em;
 }
-
-
-
-/*.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-delicious, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-delicious {
-  background-color: #3399ff; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-digg, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-digg {
-  background-color: #005be2; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-email, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-email {
-  background-color: #ea4335; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-print, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-print {
-  background-color: #aaaaaa; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-facebook, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-facebook {
-  background-color: #3b5998; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-google, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-google {
-  background-color: #dd4b39; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-pocket, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-pocket {
-  background-color: #EF3F56; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-linkedin, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-linkedin {
-  background-color: #0077b5; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki {
-  background-color: #F4731C; }
-/*.uael-share-btn__icon.uael-share-btn__icon--fab.fa-linkedin .uael-share-btn__text.uael-share-btn__text--fab.fa-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-pinterest, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-pinterest {
-  background-color: #bd081c; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-reddit, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-reddit {
-  background-color: #ff4500; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-skype, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-skype {
-  background-color: #00AFF0; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-slideshare, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-slideshare {
-  background-color: #0077b5; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-snapchat, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-snapchat {
-  background-color: #fffc00; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-stumbleupon, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-stumbleupon {
-  background-color: #EB4924; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-tumblr, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-tumblr {
-  background-color: #35465c; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-twitch, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-twitch {
-  background-color: #6441A5; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-telegram, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-telegram {
-  background-color: #2CA5E0; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-twitter, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-twitter {
-  background-color: #1DA1F2; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-vimeo, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-vimeo {
-  background-color: #1ab7ea; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-vk, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-vk {
-  background-color: #45668e; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-whatsapp, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-whatsapp {
-  background-color: #25d366; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-wordpress, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-wordpress {
-  background-color: #21759b; }
-
-.uaelbtn--skin-flat .uael-share-btn.uael-share-btn-fab.fa-xing, .uaelbtn--skin-gradient .uael-share-btn.uael-share-btn-fab.fa-xing {
-  background-color: #026466; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-delicious, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-delicious {
-  color: #3399ff; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-digg, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-digg {
-  color: #005be2; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-email, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-email {
-  color: #ea4335; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-print, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-print {
-  color: #aaaaaa; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-facebook, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-facebook {
-  color: #3b5998; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-google, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-google {
-  color: #dd4b39; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-pocket, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-pocket {
-  color: #EF3F56; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-linkedin, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-linkedin {
-  color: #0077b5; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki {
-  color: #F4731C; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-pinterest, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-pinterest {
-  color: #bd081c; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-reddit, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-reddit {
-  color: #ff4500; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-skype, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-skype {
-  color: #00AFF0; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-slideshare, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-slideshare {
-  color: #0077b5; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-snapchat, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-snapchat {
-  color: #fffc00; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-stumbleupon, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-stumbleupon {
-  color: #EB4924; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-tumblr, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-tumblr {
-  color: #35465c; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-twitch, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-twitch {
-  color: #6441A5; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-telegram, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-telegram {
-  color: #2CA5E0; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-twitter, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-twitter {
-  color: #1DA1F2; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-vimeo, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-vimeo {
-  color: #1ab7ea; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-vk, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-vk {
-  color: #45668e; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-whatsapp, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-whatsapp {
-  color: #25d366; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-wordpress, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-wordpress {
-  color: #21759b; }
-
-.uaelbtn--skin-framed .uael-share-btn.uael-share-btn-fab.fa-xing, .uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-xing {
-  color: #026466; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-delicious .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-delicious .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #3399ff; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-digg .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-digg .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #005be2; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-email .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-email .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #ea4335; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-print .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-print .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #aaaaaa; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-facebook .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-facebook .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #3b5998; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-google .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-google .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #dd4b39; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-pocket .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-pocket .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #EF3F56; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-linkedin .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-linkedin .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #0077b5; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-odnoklassniki .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #F4731C; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-pinterest .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-pinterest .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #bd081c; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-reddit .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-reddit .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #ff4500; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-skype .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-skype .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #00AFF0; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-slideshare .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-slideshare .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #0077b5; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-snapchat .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-snapchat .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #fffc00; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-stumbleupon .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-stumbleupon .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #EB4924; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-tumblr .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-tumblr .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #35465c; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-twitch .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-twitch .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #6441A5; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-telegram .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-telegram .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #2CA5E0; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-twitter .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-twitter .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #1DA1F2; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-vimeo .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-vimeo .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #1ab7ea; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-vk .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-vk .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #45668e; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-whatsapp .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-whatsapp .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #25d366; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-wordpress .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-wordpress .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #21759b; }
-
-.uaelbtn--skin-boxed .uael-share-btn.uael-share-btn-fab.fa-xing .uael-share-btn.uael-share-btn-fab.fa-_icon, .uaelbtn--skin-minimal .uael-share-btn.uael-share-btn-fab.fa-xing .uael-share-btn.uael-share-btn-fab.fa-_icon {
-  background-color: #026466; }*/
