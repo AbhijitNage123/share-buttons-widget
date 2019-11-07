@@ -107,7 +107,7 @@
 						    	} 
 						    	if ( '' != uaellinks['google'] ){
 						    		// console.log( uaellinks['google'] );
-						    			$( document ).on('click','.uael-share-btn-google-plus', function(){
+						    			$( document ).on('click','.uael-share-btn-google', function(){
 				 							var top = window.screen.height - 400;
 									    	top = top > 0 ? top/2 : 0;
 									            
