@@ -56,6 +56,71 @@ a.uael-share-btn-linkedin .uael-floating-btns-wrapper .uael-floating-btns-list .
     color:#ffffff;
     background-color:#056b91;
 }
+/* Floating pinterest button */
+a.uael-share-btn-pinterest .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+   color:#ffffff;
+    background-color:#c8232c;
+}
+/* Floating google button */
+a.uael-share-btn-google .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+    color:#ffffff;
+    background-color:#DD4B39;
+}
+/* Floating reddit button */
+a.uael-share-btn-reddit .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+    color:#ffffff;
+    background-color:#FF4301;
+}
+/* Floating vk button */
+a.uael-share-btn-vk .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+   color:#ffffff;
+    background-color:#4C75A3;
+}
+/* Floating odnoklassniki button */
+a.uael-share-btn-odnoklassniki .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+     color:#ffffff;
+    background-color:#ed812b;
+}
+/* Floating tumblr button */
+a.uael-share-btn-tumblr .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+     color:#ffffff;
+    background-color:#34526f;
+}
+/* Floating delicious button */
+a.uael-share-btn-delicious .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+   color:#ffffff;
+    background-color:#205cc0;
+}
+/* Floating digg button */
+a.uael-share-btn-digg .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+     color:#ffffff;
+    background-color:#005be2;
+}
+/* Floating skype button */
+a.uael-share-btn-skype .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+    color:#ffffff;
+    background-color:#00aff0;
+}
+/* Floating stumbleupon button */
+a.uael-share-btn-stumbleupon .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+   color:#ffffff;
+    background-color:#f74425;
+}
+/* Floating telegram button */
+a.uael-share-btn-telegram .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+    color:#ffffff;
+    background-color:#0088cc;
+}
+/* Floating xing button */
+a.uael-share-btn-xing .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+    color:#ffffff;
+    background-color:#126567;
+}
+/* Floating whatsapp button */
+a.uael-share-btn-whatsapp .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon{
+   color:#ffffff;
+    background-color:#25d366;
+}
 
 /* Inline twitter button */
 .elementor-grid.uael-style-inline a.uael-share-btn-twitter .uael-share-btn .uael-share-btn__icon{
