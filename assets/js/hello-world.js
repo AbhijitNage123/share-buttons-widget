@@ -31,7 +31,7 @@
 		skype: 'https://web.skype.com/share?url='+uael_page_url_vars.uael_page_url,
 	};
 
-    _.each( uaellinks , function(links) {
+    $.each( uaellinks , function(links) {
 						    	// console.log( uaellinks['twitter'] );
 						    	if ( '' != uaellinks['twitter'] ){
 						    		// console.log( uaellinks['twitter'] );

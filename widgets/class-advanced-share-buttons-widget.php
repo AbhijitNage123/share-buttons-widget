@@ -784,7 +784,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'color' => 'custom',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__text' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__text' => 'background-color: {{VALUE}} !important;',
 					'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'background-color: {{VALUE}};',
 
 				],
