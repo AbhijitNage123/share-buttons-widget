@@ -22,10 +22,10 @@ ul.uael-floating-btns-wrapper { list-style:none; }
   color: dodgerblue
 }
 
-.uaelbtn--skin-framed:hover {
+/*.uaelbtn--skin-framed:hover {
    background: #2196F3;
   color: white;
-}
+}*/
 
 /* Floating button gradient */
 .uael-share-btn__icon.uaelbtn--skin-gradient {

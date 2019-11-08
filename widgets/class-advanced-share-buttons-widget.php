@@ -722,12 +722,33 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-grid-item .uael-share-btn, .uael-share-btn .elementor-animation- .uaelbtn-shape-circle .uaelbtn--skin-minimal .uael-share-btn__icon,' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-grid.uael-style-inline .elementor-grid-item div.uael-share-btn.uaelbtn--skin-framed' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-grid.uael-style-floating .elementor-grid-item span.uael-share-btn__icon.uaelbtn--skin-framed' => 'border-width: {{SIZE}}{{UNIT}};',
 
 				],
 				'condition' => [
 					'skin' => [ 'framed', 'boxed' ],
 				],
+			]
+		);
+
+		$this->add_control(
+			'uael_icon_indent',
+			[
+				'label' => __( 'Icon Spacing', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'display_position' => 'inline',
+				]
 			]
 		);
 		// $this->add_control(
