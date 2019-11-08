@@ -4,7 +4,7 @@ ul.uael-floating-btns-wrapper { list-style:none; }
   position: fixed !important;
   top: 30%;
   z-index: 9998;
-  left:-55px;
+  left:-41px;
   cursor: pointer;
 }
 /* Floating button */
@@ -841,11 +841,11 @@ border:2px solid transparent;
     border: 2px #3b5998 solid;
 }
 
-.uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed span.uael-share-btn__icon i.fab.fa-facebook, .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed .uael-share-btn__text .uael-share-btn__title {color: #3b5998;}
+/*.uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed span.uael-share-btn__icon i.fab.fa-facebook, .uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-framed .uael-share-btn__text .uael-share-btn__title {color: #3b5998;}
      .uaelbtn-shape-circle {
         border-radius: 99.9em;
     }
-
+*/
 
     /* For skin gradient */
     .uael-share-btn .uael-share-btn__icon{background-color: #3b5998;}
