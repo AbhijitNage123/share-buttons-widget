@@ -9,6 +9,7 @@ use Elementor\Core\Base;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Settings;
+use Elementor\Scheme_Color;
 
 wp_enqueue_script('elementor-hello-world');
 
@@ -801,6 +802,48 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
+		// $this->add_control(
+		// 	'primary_color',
+		// 	[
+		// 		'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'condition' => [
+		// 			'color' => 'custom',
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__title' => 'color: {{VALUE}} !important;',
+		// 			'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+
+		// $this->add_control(
+		// 	'secondary_color',
+		// 	[
+		// 		'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'condition' => [
+		// 			'color' => 'custom',
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__text' => 'background-color: {{VALUE}} !important;',
+		// 			'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'background-color: {{VALUE}};',
+
+		// 		],
+		// 	]
+		// );
+		
+		$this->start_controls_tabs( 'icon_colors' );
+
+		$this->start_controls_tab(
+			'icon_colors_normal',
+			[
+				'label' => __( 'Normal', 'elementor' ),
+			]
+		);
+
+
+		
 		$this->add_control(
 			'primary_color',
 			[
@@ -831,7 +874,51 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				],
 			]
 		);
+	$this->end_controls_tab();
 
+		$this->start_controls_tab(
+			'icon_colors_hover',
+			[
+				'label' => __( 'Hover', 'advanced-share-buttons-widget' ),
+			]
+		);
+		
+		$this->add_control(
+			'hover_primary_color',
+			[
+				'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'hover_secondary_color',
+			[
+				'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'condition' => [
+					'view!' => 'default',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+		
 		// $this->start_controls_tab(
 		// 	'tab_button_normal',
 		// 	[
