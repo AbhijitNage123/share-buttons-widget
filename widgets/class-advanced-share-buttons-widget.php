@@ -134,10 +134,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$repeater->add_control(
 			'social_icon',
 			[
-				'label' => __( 'Icon', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::ICONS,
-				'fa4compatibility' => 'social',
-				'label_block' => true,
+				// 'label' => __( 'Icon', 'advanced-share-buttons-widget' ),
+				// 'type' => Controls_Manager::ICONS,
+				// 'fa4compatibility' => 'social',
+				// 'label_block' => false,
 				'default' => [
 					'value' => 'fab fa-facebook',
 					'library' => 'fa-brands',
@@ -281,7 +281,8 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						],
 					],
 				],
-				'title_field' => '<# var migrated = "undefined" !== typeof __fa4_migrated, social = ( "undefined" === typeof social ) ? false : social; #>{{{ elementor.helpers.getSocialNetworkNameFromIcon( social_icon, social, true, migrated, true ) }}}',
+				'title_field' => '<i class="fab fa-{{{ text }}}" aria-hidden="true"></i>{{{text}}}',
+				//'title_field' => '{{{ settings }}}',
 			]
 		);
 
@@ -552,7 +553,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'label' => __( 'Columns Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 65,
+					'size' => 10,
 				],
 				'selectors' => [
 					'{{WRAPPER}}:not(.elementor-grid-0) .elementor-grid' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
@@ -575,7 +576,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'label' => __( 'Button Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 41,
+					'size' => 60,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .uael-floating-btns-wrapper' => 'height:{{SIZE}}{{UNIT}}',
@@ -638,9 +639,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'max' => 2,
 						'step' => 0.05,
 					],
-				],
-				'default' => [
-					'size' => 0.95,
 				],
 				'selectors' => [
 					'{{WRAPPER}} ul.uael-floating-btns-wrapper' => 'font-size: calc({{SIZE}}{{UNIT}} * 10);',
@@ -705,7 +703,6 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					],
 				],
 				'default' => [
-					'size' => 5,
 					'unit' => 'em',
 				],
 				'tablet_default' => [
@@ -752,42 +749,26 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'uael_icon_indent',
-			[
-				'label' => __( 'Icon Spacing', 'advanced-share-buttons-widget' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'max' => 50,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'view!' => [ 'text' ],
-					'display_position' => 'inline',
-				]
-			]
-		);
 		// $this->add_control(
-		// 	'color_source',
+		// 	'uael_icon_indent',
 		// 	[
-		// 		'label' => __( 'Color', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::SELECT,
-		// 		'label_block' => false,
-		// 		'options' => [
-		// 			'official' => 'Official Color',
-		// 			'custom' => 'Custom Color',
+		// 		'label' => __( 'Icon Spacing', 'advanced-share-buttons-widget' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'max' => 50,
+		// 			],
 		// 		],
-		// 		'default' => 'official',
-		// 		'prefix_class' => 'elementor-share-buttons--color-',
-		// 		'separator' => 'before',
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+		// 			'{{WRAPPER}} .uael-share-btn span.uael-share-btn__icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 		'condition' => [
+		// 			'view!' => [ 'text' ],
+		// 			'display_position' => 'inline',
+		// 		]
 		// 	]
 		// );
-		// $this->start_controls_tabs( 'tabs_button_style' );
 
 		$this->add_control(
 			'color',
@@ -797,41 +778,10 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'default' => 'default',
 				'options' => [
 					'default' => __( 'official Color', 'advanced-share-buttons-widget' ),
-					'custom' => __( 'custom', 'advanced-share-buttons-widget' ),
+					'custom' => __( 'custom color', 'advanced-share-buttons-widget' ),
 				],
 			]
 		);
-
-		// $this->add_control(
-		// 	'primary_color',
-		// 	[
-		// 		'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::COLOR,
-		// 		'condition' => [
-		// 			'color' => 'custom',
-		// 		],
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__title' => 'color: {{VALUE}} !important;',
-		// 			'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'color: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
-
-		// $this->add_control(
-		// 	'secondary_color',
-		// 	[
-		// 		'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::COLOR,
-		// 		'condition' => [
-		// 			'color' => 'custom',
-		// 		],
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .uael-share-btn__icon,{{WRAPPER}} .uael-share-btn__text' => 'background-color: {{VALUE}} !important;',
-		// 			'{{WRAPPER}} .uael-floating-btns-wrapper .uael-floating-btns-list .uael-share-btn__icon' => 'background-color: {{VALUE}};',
-
-		// 		],
-		// 	]
-		// );
 		
 		$this->start_controls_tabs( 'icon_colors' );
 
@@ -839,6 +789,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'icon_colors_normal',
 			[
 				'label' => __( 'Normal', 'elementor' ),
+				'condition' => [
+						'color' => 'custom',
+				],
 			]
 		);
 
@@ -880,6 +833,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			'icon_colors_hover',
 			[
 				'label' => __( 'Hover', 'advanced-share-buttons-widget' ),
+				'condition' => [
+						'color' => 'custom',
+				],
 			]
 		);
 		
@@ -890,9 +846,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover svg' => 'fill: {{VALUE}};',
+					// '{{WRAPPER}} .uael-share-btn__icon:hover,{{WRAPPER}} .uael-share-btn__text:hover' => 'background-color: {{VALUE}} !important;',
+					// '{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+					// '{{WRAPPER}}.elementor-view-framed .elementor-icon:hover, {{WRAPPER}}.elementor-view-default .elementor-icon:hover svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -907,9 +863,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'view!' => 'default',
 				],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-view-framed .elementor-icon:hover' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover svg' => 'fill: {{VALUE}};',
+					// '{{WRAPPER}} .uael-share-btn__icon .fab:hover,{{WRAPPER}} .uael-share-btn__title:hover' => 'color: {{VALUE}} !important; ',
+					// '{{WRAPPER}}.elementor-view-stacked .elementor-icon:hover' => 'color: {{VALUE}};',
+					// '{{WRAPPER}}.uael-share-btn__icon i:hover' => 'fill: {{VALUE}}; !important',
 				],
 			]
 		);
@@ -918,53 +874,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-		
-		// $this->start_controls_tab(
-		// 	'tab_button_normal',
-		// 	[
-		// 		'label' => __( 'Normal', 'advanced-share-buttons-widget' ),
-		// 		'condition' => [
-		// 			'color_source' => 'custom',
-		// 		],
-		// 	]
-		// );
 
-		// $this->add_control(
-		// 	'primary_color',
-		// 	[
-		// 		'label' => __( 'Primary Color', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::COLOR,
-		// 		'default' => '',
-		// 		'selectors' => [
-		// 			' {{WRAPPER}} .uaelbtn--skin-minimal,
-		// 			 {{WRAPPER}} .uael-share-btn .uaelbtn--skin-gradient,
-		// 			 .uaelbtn--skin-gradient .uael-share-btn__text,
-		// 			 .uaelbtn--skin-gradient .uael-share-btn__icon,
-		// 			 .uaelbtn--skin-minimal .uael-share-btn__icon' => 'background-color: {{VALUE}}',
-		// 			'{{WRAPPER}} .uael-share-btn.uaelbtn--skin-framed, .uaelbtn--skin-framed .uael-share-btn__icon .fa-facebook:before,.uaelbtn--skin-framed .uael-share-btn__text' => 'color: {{VALUE}}; border-color:{{VALUE}}',
-		// 		],
-		// 		'condition' => [
-		// 			'color_source' => 'custom',
-		// 		],
-		// 	]
-		// );
-		// 	//.elementor-grid-item .uael-share-btn .uael-share-btn .uael-share-btn__icon
-		// $this->add_control(
-		// 	'secondary_color',
-		// 	[
-		// 		'label' => __( 'Secondary Color', 'advanced-share-buttons-widget' ),
-		// 		'type' => Controls_Manager::COLOR,
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .uaelbtn--skin-minimal .uael-share-btn__icon .fa-facebook:before,
-		// 			 {{WRAPPER}} .uael-share-btn .uaelbtn--skin-gradient .uael-share-btn__icon
-		// 			 ' => 'color: {{VALUE}}',
-		// 		],
-		// 		'condition' => [
-		// 			'color_source' => 'custom',
-		// 		],
-		// 		'separator' => 'after',
-		// 	]
-		// );
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -1106,33 +1016,35 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			?>
 			<div class="elementor-grid-item">
 
-				
-				
-
 				 <?php
-					// if ( 'fab fa-facebook' === $button['social_icon']['value'] ){
-					// 	$custom_text = 'Facebook';
-					// } else if ( 'fab fa-twitter' === $button['social_icon']['value'] ){
-					// 	$custom_text = 'Twitter';
-					// } else if ( 'fab fa-linkedin' === $button['social_icon']['value'] ){
-					// 	$custom_text = 'LinkedIn';
-					// } else{
-				 // 	    $custom_text = $button['text'];				 	  
-				 //    }
-
-		// $custom_text = $button['text'] ? $button['text'] : $networks['facebook']['title'];
 		
 				 $custom_text = empty( $button['Custom_text'] ) ? $button['text'] : $custom_text = $button['Custom_text'] ;	
-
 				 $icon_prop = $button['social_icon']['value'];
 				 
 				 if ( '' !== $icon_prop ){
 				 	$uael_js_callback_class = $button['text'];
 				} 
-
-
-				
-				 // print_r( $button['text'] );
+				// print_r($button['social_icon']);
+				// echo $button['text'];
+				// echo $button['social_icon']['value'];
+				if (!empty($button['social_icon']['value'])){
+					// $str = ltrim($button['social_icon']['value'], 'fab fa-');
+					$str = str_replace("fab fa-","",$button['social_icon']['value']);
+					// echo( $str );
+					// echo "<br>";
+					// echo ( $button['text'] ); 
+					if ( $str === $button['text'] )
+					{
+						// $uael_js_callback_class = $button['social_icon']['value'];
+						$uael_js_callback_class = $str;
+					}else{
+						$uael_js_callback_class = $button['text'];
+						$button['social_icon']['value'] = 'fab fa-'.$button['text'];
+						// $button['social_icon'] = $button['social_icon']['value'];
+					}
+				  // print_r( $button['text'] );
+				  // print_r( $button['social_icon']['value'] );
+				}
 				// echo $button['social_icon']['text'];
 				// echo $button['Custom_text'] ;
 				 // echo "<pre>";
@@ -1141,7 +1053,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				//  if($button['label']===$button['social_icon']['value']){
 				// 	echo "x";
 				// }
-				// echo $custom_text ;
+				// echo $uael_js_callback_class;
 				 // echo $button['social_icon']['text'];
 				 if ( 'floating' === $settings['display_position'] ){ ?>		
 				 	<a class="uael-share-btn-<?php echo $uael_js_callback_class; ?>">
@@ -1255,7 +1167,23 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				 	var uael_js_callback_class = button.text;
 				 	  
 				 }
-				 	
+
+				if ( '' != button.social_icon.value ){
+			 		var str = button.social_icon.value;
+			 		str = str.replace("fab fa-","", button.social_icon.value );
+			 	
+			 		custom_text = str;
+			 		if ( str === button.text ){
+			 			<!-- uael_js_callback_class = button.social_icon.value; -->
+			 			uael_js_callback_class = str;
+			 		}else{
+			 			uael_js_callback_class = button.text;
+			 			var str2 = "fab fa-";
+  						button.social_icon.value = str2.concat(button.text);
+			 		}
+				  
+			 	} 
+				console.log(uael_js_callback_class); 	
             custom_text = uael_js_callback_class[0].toUpperCase()+  
             uael_js_callback_class.slice(1);
 					if ( 'floating' === settings.display_position ){	#>	
@@ -1272,7 +1200,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		         <# } 
 		         else {
 					#>
-					<a class="uael-share-btn-{{{uael_js_callback_class}}}">
+					<a class="uael-share-btn-{{{ uael_js_callback_class }}}">
 						<div class="uael-share-btn elementor-animation-{{{settings.hover_animation}}} uaelbtn-shape-{{{settings.shape}}} uaelbtn--skin-{{{settings.skin}}}">
 								<# if( 'icon-text' ===  settings.view ){ #>
 								<span class="uael-share-btn__icon">
