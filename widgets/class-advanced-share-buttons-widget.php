@@ -552,9 +552,30 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'Columns Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'em' => [
+						'min' => 0.5,
+						'max' => 4,
+						'step' => 0.1,
+					],
+					'px' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
 				'default' => [
 					'size' => 10,
+					'unit' => 'px',
 				],
+				'tablet_default' => [
+					'size' => 10,
+					'unit' => 'px',
+				],
+				'mobile_default' => [
+					'size' => 10,
+					'unit' => 'px',
+				],
+				'size_units' => ['px','em'],
 				'selectors' => [
 					'{{WRAPPER}}:not(.elementor-grid-0) .elementor-grid' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
 					'{{WRAPPER}}.elementor-grid-0 .uael-share-btn' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2)',
@@ -576,7 +597,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				'label' => __( 'Button Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 60,
+					'size' => 40,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .uael-floating-btns-wrapper' => 'height:{{SIZE}}{{UNIT}}',
@@ -592,9 +613,30 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'Rows Gap', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'em' => [
+						'min' => 0.5,
+						'max' => 4,
+						'step' => 0.1,
+					],
+					'px' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
 				'default' => [
 					'size' => 10,
+					'unit' => 'px',
 				],
+				'tablet_default' => [
+					'size' => 10,
+					'unit' => 'px',
+				],
+				'mobile_default' => [
+					'size' => 10,
+					'unit' => 'px',
+				],
+				'size_units' => ['px','em'],
 				'selectors' => [
 					'{{WRAPPER}}:not(.elementor-grid-0) .elementor-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}}',
 					'{{WRAPPER}}.elementor-grid-0 .uael-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
@@ -612,6 +654,13 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 			[
 				'label' => __( 'Button Width', 'advanced-share-buttons-widget' ),
 				'type' => Controls_Manager::SLIDER,
+				// 'range' => [
+				// 	'px' => [
+				// 		'min' => 0.5,
+				// 		'max' => 2,
+				// 		'step' => 0.05,
+				// 	],
+				// ],
 				'range' => [
 					'px' => [
 						'min' => 0.5,
@@ -619,6 +668,16 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 						'step' => 0.05,
 					],
 				],
+				'default' => [
+					'unit' => 'px',
+				],
+				'tablet_default' => [
+					'unit' => 'px',
+				],
+				'mobile_default' => [
+					'unit' => 'px',
+				],
+				'size_units' => ['px'],
 				'selectors' => [
 					'{{WRAPPER}} .uael-share-btn' => 'font-size: calc({{SIZE}}{{UNIT}} * 10);',
 				],

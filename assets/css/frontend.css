@@ -1031,3 +1031,12 @@ border-color:#1da1f2;
     -webkit-border-radius: 99.9em;
     border-radius: 99.9em;
 }
+
+
+.uael-share-btn.uaelbtn-shape-circle.uaelbtn--skin-minimal span.uael-share-btn__icon {
+    border-radius: 99.9em;
+}
+
+.uael-floating-btns-wrapper .uael-floating-btns-list span.uael-share-btn__icon {
+    height:3.7em;
+}
