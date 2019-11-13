@@ -985,25 +985,19 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 
 				 <?php
 
-				 $custom_text = empty( $button['Custom_text'] ) ? $button['text'] : $custom_text = $button['Custom_text'] ;	
+				 // $custom_text = empty( $button['Custom_text'] ) ? $button['text'] : $custom_text = $button['Custom_text'] ;	print_r($custom_text);
+
+				 if ( !empty($button['Custom_text']) ){
+				 	$custom_text = $button['Custom_text'];
+				 }else{
+				 	$custom_text = $button['text'];
+				 }
+
 				 $icon_prop = $button['text'];
 				 
 				 if ( '' !== $icon_prop ){
 				 	$uael_js_callback_class = $button['text'];
 				} 
-				
-				if (!empty($button['text'])){
-					
-					$str = str_replace("fab fa-","",$button['text']);
-					 
-					if ( $str === $button['text'] )
-					{
-						$uael_js_callback_class = $str;
-					}else{
-						$uael_js_callback_class = $button['text'];
-						$button['text'] = 'fab fa-'.$button['text'];
-					}
-				}
 							
 				 if ( 'floating' === $settings['display_position'] ){ ?>		
 				 	<a class="uael-share-btn-<?php echo $uael_js_callback_class; ?>">
@@ -1026,13 +1020,11 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 									<i class="fab fa-<?php echo $button['text']; ?>" aria-hidden="true"></i>
 									<span class="elementor-screen-only">Share on <?php echo $custom_text; ?></span>
 					 			</span>
-					 			<?php if ( 'icon-text' === $settings['view'] ) : ?>
+					 			<?php //if ( 'icon-text' === $settings['view'] ) : ?>
 								  <div class="uael-share-btn__text">
-								  	 
 										<span class="uael-share-btn__title"><?php echo ucfirst($custom_text); ?></span>
-									 
 								  </div>
-								<?php endif; ?>
+								<?php //endif; ?>
 								<?php } else if ( 'text' === $settings['view'] ){ ?>
 											<div class="uael-share-btn__text">
 												<span class="uael-share-btn__title"><?php echo ucfirst( $custom_text); ?></span>
@@ -1109,7 +1101,12 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				<div class="elementor-grid-item">
 				
 				<# var custom_text;
-				custom_text =  ( '' === button.Custom_text ) ? button.text : custom_text = button.Custom_text;	
+				
+				if ( '' != button.Custom_text ){
+						custom_text	= button.Custom_text;
+				} else {
+					custom_text = button.text;
+				}	
 				
 				var icon_prop = button.text;
 
@@ -1118,25 +1115,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 				 	var uael_js_callback_class = button.text;
 				 	  
 				 }
-
-				if ( '' != button.text ){
-			 		var str = button.text;
-			 		str = str.replace("fab fa-","", button.text );
-			 	
-			 		custom_text = str;
-			 		if ( str === button.text ){
-			 			uael_js_callback_class = str;
-			 		}else{
-			 			uael_js_callback_class = button.text;
-			 			var str2 = "fab fa-";
-  						button.text = str2.concat(button.text);
-			 		}
-				  
-			 	} 
-				
-            custom_text = uael_js_callback_class[0].toUpperCase()+  
-            uael_js_callback_class.slice(1);
-            console.log(custom_text); 	
+            	custom_text = custom_text[0].toUpperCase()+  
+            	custom_text.slice(1);
+             	
 					if ( 'floating' === settings.display_position ){	#>	
 					<a class="uael-share-btn-{{{ uael_js_callback_class }}}">
 					<ul class="uael-floating-btns-wrapper elementor-animation-{{{settings.hover_animation}}} ">
@@ -1158,21 +1139,21 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 									<i class="fab fa-{{{button.text}}}" aria-hidden="true"></i>
 									<span class="elementor-screen-only">Share on {{{custom_text}}}</span>
 					 			</span>
-					 			<# if ( 'icon-text' === settings.view ) { #>
+					 			<!-- <# if ( 'icon-text' === settings.view ) { #> -->
 								  <div class="uael-share-btn__text">
 								  	 
-									<span class="uael-share-btn__title">{{{custom_text}}}</span>
+									<span class="uael-share-btn__title">{{custom_text}}</span>
 									 
 								  </div>
-								<# } #>
+								<!-- <# } #> -->
 								<# } else if ( 'text' === settings.view ){ #>
 											<div class="uael-share-btn__text">
-												<span class="uael-share-btn__title">{{{custom_text}}}</span>
+												<span class="uael-share-btn__title">{{custom_text}}</span>
 										    </div>
 								<# } else { #>
 									<span class="uael-share-btn__icon">
 										<i class="fab fa-{{{button.text}}}" aria-hidden="true"></i>
-										<span class="elementor-screen-only">Share on {{{custom_text}}}</span>
+										<span class="elementor-screen-only">Share on {{custom_text}}</span>
 									</span>
 						<# } #>
 						</div>
