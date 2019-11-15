@@ -1,34 +1,35 @@
 ( function( $ ) {
 
 // console.log($('a').find('div.uael-share-btn'));
-    // console.log(uael_page_url_vars.uael_page_url); //working
-    uael_access_tokenfb = uael_page_url_vars.settings.caption;
+    console.log(uael_page_url_vars); //working
+    var uael_access_tokenfb = uael_page_url_vars.uael_page_val[1];
 	/**
  	 * @param $scope The Widget wrapper element as a jQuery element
 	 * @param $ The jQuery alias
 	 */ 
-	 
-
+	 // console.log(uael_access_tokenfb);
+	 // console.log(uael_access_tokenfb);
 	uaellinks = {
-		twitter: 'https://twitter.com/intent/tweet?url='+uael_page_url_vars.uael_page_url,
-		pinterest: 'https://www.pinterest.com/pin/create/button/?url='+uael_page_url_vars.uael_page_url,
-		facebook: 'https://www.facebook.com/sharer.php?u='+uael_page_url_vars.uael_page_url,
-		vk: 'https://vkontakte.ru/share.php?url='+uael_page_url_vars.uael_page_url,
-		linkedin: 'https://www.linkedin.com/shareArticle?mini=true&url='+uael_page_url_vars.uael_page_url,
-		odnoklassniki: 'https://connect.ok.ru/offer?url='+uael_page_url_vars.uael_page_url,
-		tumblr: 'https://tumblr.com/share/link?url='+uael_page_url_vars.uael_page_url,
-		delicious: 'https://del.icio.us/save?url='+uael_page_url_vars.uael_page_url,
-		google: 'https://plus.google.com/share?url='+uael_page_url_vars.uael_page_url,
-		digg: 'https://digg.com/submit?url='+uael_page_url_vars.uael_page_url,
-		reddit: 'https://reddit.com/submit?url='+uael_page_url_vars.uael_page_url,
-		stumbleupon: 'https://www.stumbleupon.com/submit?url='+uael_page_url_vars.uael_page_url,
-		pocket: 'https://getpocket.com/edit?url='+uael_page_url_vars.uael_page_url,
+		twitter: 'https://twitter.com/intent/tweet?url='+uael_page_url_vars.uael_page_val[0],
+		pinterest: 'https://www.pinterest.com/pin/find/?url='+uael_page_url_vars.uael_page_val[0],
+		facebook: 'https://www.facebook.com/sharer.php?u='+uael_page_url_vars.uael_page_val[0],
+		vk: 'https://vkontakte.ru/share.php?url='+uael_page_url_vars.uael_page_val[0],
+		linkedin: 'https://www.linkedin.com/shareArticle?mini=true&url='+uael_page_url_vars.uael_page_val[0],
+		odnoklassniki: 'https://connect.ok.ru/offer?url='+uael_page_url_vars.uael_page_val[0],
+		tumblr: 'https://tumblr.com/share/link?url='+uael_page_url_vars.uael_page_val[0],
+		delicious: 'https://del.icio.us/save?url='+uael_page_url_vars.uael_page_val[0],
+		google: 'https://plus.google.com/share?url='+uael_page_url_vars.uael_page_val[0],
+		digg: 'https://digg.com/submit?url='+uael_page_url_vars.uael_page_val[0],
+		reddit: 'https://reddit.com/submit?url='+uael_page_url_vars.uael_page_val[0],
+		stumbleupon: 'https://www.stumbleupon.com/submit?url='+uael_page_url_vars.uael_page_val[0],
+		pocket: 'https://getpocket.com/edit?url='+uael_page_url_vars.uael_page_val[0],
 		whatsapp: 'whatsapp://send?text=*{title}*\n{text}\n{url}',
-		xing: 'https://www.xing.com/app/user?op=share&url='+uael_page_url_vars.uael_page_url,
+		xing: 'https://www.xing.com/app/user?op=share&url='+uael_page_url_vars.uael_page_val[0],
 		print: 'javascript:print()',
 		email: 'mailto:?subject={title}&body={text}\n{url}',
-		telegram: 'https://telegram.me/share/url?url='+uael_page_url_vars.uael_page_url,
-		skype: 'https://web.skype.com/share?url='+uael_page_url_vars.uael_page_url,
+		telegram: 'https://telegram.me/share/url?url='+uael_page_url_vars.uael_page_val[0],
+		skype: 'https://web.skype.com/share?url='+uael_page_url_vars.uael_page_val[0],
+		buffer: 'https://buffer.com/add?url='+uael_page_url_vars.uael_page_val[0],
 	};
 
     $.each( uaellinks , function(links) {
@@ -46,18 +47,9 @@
 									    });
 						    	} 
 						    	if ( '' != uaellinks['facebook'] ){
-						    		// console.log( uaellinks['facebook'] );
-						    		// console.log(uael_access_tokenfb);
-						    		var urlfb;
-						    		if ( '' === uael_access_tokenfb || null === uael_access_tokenfb ) {
+				
 
 											 urlfb = uaellinks['facebook'];
-
-										} else {
-											
-										
-											urlfb = 'https://graph.facebook.com/v2.12/?id=' + uael_page_url_vars.uael_page_url + '&access_token=' + uael_access_tokenfb + '&fields=engagement';
-										}
 
 						    			$( document ).on('click','.uael-share-btn-facebook', function(){
 				 							var top = window.screen.height - 400;
@@ -271,6 +263,18 @@
 									    left = left > 0 ? left/2 : 0;
 									    	// console.log(links);
 									    		popupWindow = window.open(uaellinks['skype'],"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes");
+									    });
+						    	}
+						    	if ( '' != uaellinks['buffer'] ){
+						    		// console.log( uaellinks['buffer'] );
+						    			$( document ).on('click','.uael-share-btn-buffer', function(){
+				 							var top = window.screen.height - 400;
+									    	top = top > 0 ? top/2 : 0;
+									            
+										var left = window.screen.width - 600;
+									    left = left > 0 ? left/2 : 0;
+									    	// console.log(links);
+									    		popupWindow = window.open(uaellinks['buffer'],"popUpWindow","height=400,width=600,left="+left+",top="+top+",resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes");
 									    });
 						    	}
 

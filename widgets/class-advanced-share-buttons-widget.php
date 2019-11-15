@@ -93,7 +93,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'elementor-hello-world' ];
+		return [ 'uael-share-button-js' ];
 	}
 	/**
 	 * Used to set keyword for the widget.
@@ -153,6 +153,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 					'email' => 'Email',
 					'print' => 'Print',
 					'whatsapp' => 'WhatsApp',
+					'buffer' => 'Buffer',
 				],
 			    'default' => 'facebook',
 				'separator' => 'before',
@@ -941,16 +942,9 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 		$page_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
 	 	}
 
-		wp_localize_script(
-			'elementor-hello-world',
-			'uael_page_url_vars',
-			array(
-				'uael_page_url' => $page_url,
-				'settings' => $settings,
-			),
-			true
-		);
-	 	
+	 	//For Access Token
+		$access_token = 0;
+	 	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
 	 	if ( !empty($settings['show_share']) ){
 		 		if ( 'yes' === $settings['show_share'] ){
 				$access_token =  $settings['caption'];
@@ -967,18 +961,96 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 		
 			}	
 	 	}
+	 	
+	 	//For Facebook.
+	 	$array = [$page_url,$access_token,$settings,$featured_img_url];
+	 	$args = array( 'timeout' => 30 );	
+		if ( empty($access_token) ) {
+
+			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
+
+		} else {
+			
+			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
+
+		}
+
+
+			wp_localize_script(
+			'uael-share-button-js',
+			'uael_page_url_vars',
+			array(
+				'uael_page_val' => $array,
+			),
+			true
+		);
+		
+		$response = wp_remote_get( $urlfb, $args );
+
+		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
+
+		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		$asbw_fb_API = 'asbw_fb_API';
+		
+		set_site_transient( $asbw_fb_API , $body , 86400 );
+
+		$asbw_fb_API = get_site_transient( $asbw_fb_API );
+
+		$fbcount = $body['engagement']['share_count'];
+		echo "FB";
+		echo($fbcount);
+
+		echo "<br>";
+
+		//For Pinterest. 
+		$request = wp_remote_get( 'https://widgets.pinterest.com/v1/urls/count.json?source=6&url=' . $page_url );
+		if( is_wp_error( $request ) ) {
+			return false; 
+		}
+		$body = wp_remote_retrieve_body( $request );
+		$data = json_decode( $body );
+			
+			$str1 = explode(",",$body);
+			
+			preg_match_all('/\d+/', $str1[1], $matches);
+			$pinterestcount = $matches[0][0];
+			echo "Pin";
+ 			echo $pinterestcount; 
+ 			echo "<br>";
+
+ 		//For Buffer. 
+		$url = wp_remote_get( 'https://api.bufferapp.com/1/links/shares.json?url=' . $page_url );
+		print_r($url);
+		if( is_wp_error( $url ) ) {
+			return false; 
+		}
+		$body2 = wp_remote_retrieve_body( $url );
+		// $share = explode(":",$body2);
+		
+		$share = explode(":",$body2);
+		preg_match_all('/\d+/', $share[1], $matches);
+		$buffercount = 0;
+		$share = 0;
+		$buffercount = $matches[0][0];
+		// echo $share->{'shares'};
+		echo "Buffer";
+		echo $buffercount;
+		echo "<br>";
+
+
+		//For Total Share count.
+		$total = 0;
+		$total += $fbcount + $pinterestcount + $buffercount ;
+		echo $total;
+		$count = 0;
+
 	 	//----------------------------------------------------------
 	 	echo '<div class="elementor-grid uael-style-' . $settings["display_position"] . '">';
 	 	$count = 0;
 	 	foreach ( $settings['social_icon_list'] as $button ) {
 
-			if ( $button['text'] === 'fab fa-facebook' ){
-				$url = 'https://www.facebook.com/sharer.php?u='.$page_url;
-			}else if ( $button['text'] === 'fab fa-twitter' ){
-				$url = 'https://twitter.com/intent/tweet?url='.$page_url;
-			}else{
-				$url = 'https://www.linkedin.com/sharing/share-offsite/?url='.$page_url;
-			}
+			
 	
 			?>
 			<div class="elementor-grid-item">
@@ -1036,6 +1108,20 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 									</span>
 						<?php } ?>
 						</div>
+						<!-- Share Count -->
+						<?php if( 'pinterest' === $button['text'] ) { ?>
+							<div class="tooltip">
+	  							<span class="tooltiptext"><?php echo $pinterestcount; ?></span>
+							</div>
+					    <?php } else if( 'facebook' === $button['text'] ) { ?>
+							<div class="tooltip">
+	  							<span class="tooltiptext"><?php echo $fbcount; ?></span>
+							</div>
+					    <?php } else if( 'buffer' === $button['text'] ) { ?>
+							<div class="tooltip">
+	  							<span class="tooltiptext"><?php echo $buffercount; ?></span>
+							</div>
+					    <?php } ?>
 					</a>
 					</div>	
 		<?php }}
@@ -1045,28 +1131,7 @@ class Advanced_Share_Buttons_Widget extends Widget_Base {
 	 	//----------------------------------------------------------
 		//$access_token = '519754661907260|k4ABYf2VeRhu5rqePuou7KcNhmw';
 		
-		$args = array( 'timeout' => 30 );	
-		if ( empty($access_token) ) {
-
-			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url;
-
-		} else {
-
-		
-			$urlfb = 'https://graph.facebook.com/v2.12/?id=' . $page_url . '&access_token=' . $access_token . '&fields=engagement';
-		}
-
-		$response = wp_remote_get( $urlfb, $args );
-
-		if( wp_remote_retrieve_response_code( $response ) == 200 ) {
-
-		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-
-		$asbw_fb_API = 'asbw_fb_API';
-		
-		set_site_transient( $asbw_fb_API , $body , 86400 );
-
-		$asbw_fb_API = get_site_transient( $asbw_fb_API );		
+			
 
 	 
 	}//if loop of wp retrive.
